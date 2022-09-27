@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo docker build \
+    --build-arg target=debug \
+    -t cs348:server .

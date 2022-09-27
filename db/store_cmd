@@ -1,0 +1,27 @@
+sqlite3 store.db
+
+.mode csv
+
+-- CHAMPS
+
+CREATE TABLE champs (name TEXT PRIMARY KEY NOT NULL, id INTEGER NOT NULL);
+
+.import champs.csv champs
+
+-- MATCHES
+
+CREATE TABLE matches (
+    id INTEGER NOT NULL,
+    gameid INTEGER PRIMARY KEY NOT NULL,
+    platformid TEXT NOT NULL,
+    queueid INTEGER NOT NULL,
+    seasonid INTEGER NOT NULL,
+    duration INTEGER NOT NULL,
+    creation INTEGER NOT NULL,
+    version TEXT NOT NULL
+);
+
+-- Will throw error because of first row headers
+.import matches.csv matches
+
+.quit
