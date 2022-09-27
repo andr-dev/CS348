@@ -2,7 +2,7 @@
   <h1 align="center">CS348 Project</h1>
 
   <p align="center">
-    The source code for our CS348 project
+    The source code for our CS348 project.
   </p>
 </div>
 
@@ -12,7 +12,7 @@ The project has been setup to run on docker. A build and run script is provided 
 
 ### Prerequisites
 
-To build and run the project, the only technology required is Docker. All other dependencies will be intalled into the docker container. Follow the instructions at https://docs.docker.com/engine/install/ to get started.
+To build and run the project, the only technology required is Docker. All other dependencies will be installed into the docker container. Follow the instructions at https://docs.docker.com/engine/install/ to get started.
 
 ### Installation
 
