@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-sudo docker run --rm \
-    -p 3030:3030 \
-    --name cs348server \
-    -e DATABASE_URL='store.db' \
-    cs348:server
+set -e
+
+cd server
+
+cargo build
+
+cd ../
+
+export DATABASE_URL="./db/store.db"
+export RG_API_KEY=""
+
+./server/target/debug/server

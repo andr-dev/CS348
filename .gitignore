@@ -1,6 +1,13 @@
-server/target
-web/node_modules
-web/build
+db/csv/raw
+db/csv/processed
 db/store.db
 
-db/csv/processed
+rito/target
+
+server/target
+
+web/node_modules
+web/build
+
+.env
+
