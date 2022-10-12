@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 rocket = { version = "0.5.0-rc.2", features = [ "json" ] }
 sqlx = { version = "0.5.13", features = [ "runtime-tokio-rustls", "sqlite"] }
+rito = { path = "../rito" }
 
 [profile.release]
 lto = true

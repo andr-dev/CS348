@@ -2,6 +2,7 @@ use rocket::Route;
 
 mod champ;
 mod matches;
+mod summoner;
 
 #[get("/ping")]
 fn ping() -> &'static str {
@@ -13,6 +14,7 @@ pub fn routes() -> Vec<Route> {
 
     routes.extend(matches::routes());
     routes.extend(champ::routes());
+    routes.extend(summoner::routes());
 
     routes
 }
