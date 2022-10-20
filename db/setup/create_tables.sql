@@ -56,7 +56,9 @@ CREATE TABLE participants (
             'BOT'
         ) ) NOT NULL,
 
+	FOREIGN KEY (id) REFERENCES stats(id),
     FOREIGN KEY (championid) REFERENCES champs(id),
+	FOREIGN KEY (matchid) REFERENCES matches(id),
     FOREIGN KEY (ss1) REFERENCES ss(id),
     FOREIGN KEY (ss2) REFERENCES ss(id)
 );
