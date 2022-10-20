@@ -17,4 +17,4 @@ pub const SUMMONER_UPDATE_QUERY: &'static str =
 pub const SUMMONER_MATCHES_KDA_QUERY: &'static str = "SELECT AVG(kills), AVG(deaths), AVG(assists) FROM summoner_matches WHERE puuid = ?";
 
 pub const SUMMONER_MATCHES_INSERT_QUERY: &'static str =
-    "INSERT INTO summoner_matches VALUES (?, ?)";
+    "INSERT INTO summoner_matches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

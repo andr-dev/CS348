@@ -1,9 +1,9 @@
-use rito::models::MatchV5PeriodMatchDto;
+use rito::models::{MatchV5PeriodMatchDto, MatchV5PeriodParticipantDto};
 use rocket::serde::Serialize;
 use sqlx::{FromRow, Pool, Sqlite};
 
 use crate::{
-    api::summoner::DbSummoner,
+    api::{summoner::DbSummoner, DbChampion},
     error::ServiceError,
     queries::{
         MATCH_FIND_BY_ID_QUERY, MATCH_INSERT_QUERY, SUMMONER_MATCHES_INSERT_QUERY,
@@ -45,37 +45,25 @@ impl DbMatch {
         r.ok()
     }
 
-    pub async fn insert_match(
-        pool: &Pool<Sqlite>,
-        summoner: &DbSummoner,
-        rito_match: MatchV5PeriodMatchDto,
-        db_match: Self,
-    ) -> Result<(), ServiceError> {
+    pub async fn insert_match(pool: &Pool<Sqlite>, db_match: &Self) -> Result<(), ServiceError> {
         sqlx::query(MATCH_INSERT_QUERY)
             .bind(db_match.matchid.clone())
-            .bind(db_match.data_version)
-            .bind(db_match.participant0)
-            .bind(db_match.participant1)
-            .bind(db_match.participant2)
-            .bind(db_match.participant3)
-            .bind(db_match.participant4)
-            .bind(db_match.participant5)
-            .bind(db_match.participant6)
-            .bind(db_match.participant7)
-            .bind(db_match.participant8)
-            .bind(db_match.participant9)
+            .bind(db_match.data_version.clone())
+            .bind(db_match.participant0.clone())
+            .bind(db_match.participant1.clone())
+            .bind(db_match.participant2.clone())
+            .bind(db_match.participant3.clone())
+            .bind(db_match.participant4.clone())
+            .bind(db_match.participant5.clone())
+            .bind(db_match.participant6.clone())
+            .bind(db_match.participant7.clone())
+            .bind(db_match.participant8.clone())
+            .bind(db_match.participant9.clone())
             .bind(db_match.gameid)
             .bind(db_match.game_creation)
             .bind(db_match.game_duration)
             .bind(db_match.game_start_timestamp)
             .bind(db_match.game_end_timestamp)
-            .execute(pool)
-            .await
-            .map_err(|e| ServiceError { error: Box::new(e) })?;
-
-        sqlx::query(SUMMONER_MATCHES_INSERT_QUERY)
-            .bind(summoner.puuid.clone())
-            .bind(db_match.matchid)
             .execute(pool)
             .await
             .map_err(|e| ServiceError { error: Box::new(e) })
@@ -112,6 +100,176 @@ impl DbMatch {
             game_duration: match_v5.info.game_duration,
             game_start_timestamp: match_v5.info.game_start_timestamp,
             game_end_timestamp: match_v5.info.game_end_timestamp,
+        }
+    }
+}
+
+#[derive(FromRow, Serialize, Debug)]
+#[serde(crate = "rocket::serde")]
+pub struct DbSummonerMatch {
+    pub puuid: String,
+    pub matchid: String,
+
+    pub championid: i32,
+    pub win: bool,
+    pub team_position: String,
+    pub champ_level: i32,
+    pub champ_experience: i32,
+    pub vision_score: i32,
+    pub gold_earned: i32,
+    pub gold_spent: i32,
+
+    pub kills: i32,
+    pub double_kills: i32,
+    pub triple_kills: i32,
+    pub quadra_kills: i32,
+    pub penta_kills: i32,
+    pub deaths: i32,
+    pub assists: i32,
+
+    pub item0: i32,
+    pub item1: i32,
+    pub item2: i32,
+    pub item3: i32,
+    pub item4: i32,
+    pub item5: i32,
+    pub item6: i32,
+
+    pub first_blood_assist: bool,
+    pub first_blood_kill: bool,
+    pub first_tower_assist: bool,
+    pub first_tower_kill: bool,
+
+    pub dragon_kills: i32,
+    pub baron_kills: i32,
+
+    pub turret_kills: i32,
+    pub turret_takedowns: i32,
+    pub turrets_lost: i32,
+
+    pub inhibitor_kills: i32,
+    pub inhibitor_takedowns: i32,
+    pub inhibitors_lost: i32,
+
+    pub damage_dealt_to_buildings: i32,
+    pub damage_dealt_to_objectives: i32,
+    pub damage_dealt_to_turrets: i32,
+
+    pub consumables_purchased: i32,
+    pub wards_placed: i32,
+    pub wards_killed: i32,
+}
+
+impl DbSummonerMatch {
+    pub async fn insert_summoner_match(
+        pool: &Pool<Sqlite>,
+        dbsm: Self,
+    ) -> Result<(), ServiceError> {
+        sqlx::query(SUMMONER_MATCHES_INSERT_QUERY)
+            .bind(dbsm.puuid.clone())
+            .bind(dbsm.matchid.clone())
+            .bind(dbsm.championid)
+            .bind(dbsm.win)
+            .bind(dbsm.team_position)
+            .bind(dbsm.champ_level)
+            .bind(dbsm.champ_experience)
+            .bind(dbsm.vision_score)
+            .bind(dbsm.gold_earned)
+            .bind(dbsm.gold_spent)
+            .bind(dbsm.kills)
+            .bind(dbsm.double_kills)
+            .bind(dbsm.triple_kills)
+            .bind(dbsm.quadra_kills)
+            .bind(dbsm.penta_kills)
+            .bind(dbsm.deaths)
+            .bind(dbsm.assists)
+            .bind(dbsm.item0)
+            .bind(dbsm.item1)
+            .bind(dbsm.item2)
+            .bind(dbsm.item3)
+            .bind(dbsm.item4)
+            .bind(dbsm.item5)
+            .bind(dbsm.item6)
+            .bind(dbsm.first_blood_assist)
+            .bind(dbsm.first_blood_kill)
+            .bind(dbsm.first_tower_assist)
+            .bind(dbsm.first_tower_kill)
+            .bind(dbsm.dragon_kills)
+            .bind(dbsm.baron_kills)
+            .bind(dbsm.turret_kills)
+            .bind(dbsm.turret_takedowns)
+            .bind(dbsm.turrets_lost)
+            .bind(dbsm.inhibitor_kills)
+            .bind(dbsm.inhibitor_takedowns)
+            .bind(dbsm.inhibitors_lost)
+            .bind(dbsm.damage_dealt_to_buildings)
+            .bind(dbsm.damage_dealt_to_objectives)
+            .bind(dbsm.damage_dealt_to_turrets)
+            .bind(dbsm.consumables_purchased)
+            .bind(dbsm.wards_placed)
+            .bind(dbsm.wards_killed)
+            .execute(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })
+            .map(|_| ())
+    }
+
+    pub async fn from_match_v5_participant(
+        participant: MatchV5PeriodParticipantDto,
+        db_match: &DbMatch,
+    ) -> Self {
+        Self {
+            puuid: participant.puuid,
+            matchid: db_match.matchid.clone(),
+
+            championid: participant.champion_id,
+            win: participant.win,
+            team_position: participant.team_position,
+            champ_level: participant.champ_level,
+            champ_experience: participant.champ_experience,
+            vision_score: participant.vision_score,
+            gold_earned: participant.gold_earned,
+            gold_spent: participant.gold_spent,
+
+            kills: participant.kills,
+            double_kills: participant.double_kills,
+            triple_kills: participant.triple_kills,
+            quadra_kills: participant.quadra_kills,
+            penta_kills: participant.penta_kills,
+            deaths: participant.deaths,
+            assists: participant.assists,
+
+            item0: participant.item0,
+            item1: participant.item1,
+            item2: participant.item2,
+            item3: participant.item3,
+            item4: participant.item4,
+            item5: participant.item5,
+            item6: participant.item6,
+
+            first_blood_assist: participant.first_blood_assist,
+            first_blood_kill: participant.first_blood_kill,
+            first_tower_assist: participant.first_tower_assist,
+            first_tower_kill: participant.first_tower_kill,
+
+            dragon_kills: participant.dragon_kills,
+            baron_kills: participant.baron_kills,
+
+            turret_kills: participant.turret_kills,
+            turret_takedowns: participant.turret_takedowns,
+            turrets_lost: participant.turrets_lost,
+
+            inhibitor_kills: participant.inhibitor_kills,
+            inhibitor_takedowns: participant.inhibitor_takedowns,
+            inhibitors_lost: participant.inhibitors_lost,
+
+            damage_dealt_to_buildings: participant.damage_dealt_to_buildings,
+            damage_dealt_to_objectives: participant.damage_dealt_to_objectives,
+            damage_dealt_to_turrets: participant.damage_dealt_to_turrets,
+
+            consumables_purchased: participant.consumables_purchased,
+            wards_placed: participant.wards_placed,
+            wards_killed: participant.wards_killed,
         }
     }
 }

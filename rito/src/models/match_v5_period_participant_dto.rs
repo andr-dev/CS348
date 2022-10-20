@@ -20,11 +20,8 @@ pub struct MatchV5PeriodParticipantDto {
     pub champion_transform: i32,
     #[serde(rename = "consumablesPurchased")]
     pub consumables_purchased: i32,
-    #[serde(
-        rename = "damageDealtToBuildings",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub damage_dealt_to_buildings: Option<i32>,
+    #[serde(rename = "damageDealtToBuildings")]
+    pub damage_dealt_to_buildings: i32,
     #[serde(rename = "damageDealtToObjectives")]
     pub damage_dealt_to_objectives: i32,
     #[serde(rename = "damageDealtToTurrets")]
@@ -60,10 +57,10 @@ pub struct MatchV5PeriodParticipantDto {
     pub individual_position: String,
     #[serde(rename = "inhibitorKills")]
     pub inhibitor_kills: i32,
-    #[serde(rename = "inhibitorTakedowns", skip_serializing_if = "Option::is_none")]
-    pub inhibitor_takedowns: Option<i32>,
-    #[serde(rename = "inhibitorsLost", skip_serializing_if = "Option::is_none")]
-    pub inhibitors_lost: Option<i32>,
+    #[serde(rename = "inhibitorTakedowns")]
+    pub inhibitor_takedowns: i32,
+    #[serde(rename = "inhibitorsLost")]
+    pub inhibitors_lost: i32,
     #[serde(rename = "item0")]
     pub item0: i32,
     #[serde(rename = "item1")]
@@ -201,10 +198,10 @@ pub struct MatchV5PeriodParticipantDto {
     pub true_damage_taken: i32,
     #[serde(rename = "turretKills")]
     pub turret_kills: i32,
-    #[serde(rename = "turretTakedowns", skip_serializing_if = "Option::is_none")]
-    pub turret_takedowns: Option<i32>,
-    #[serde(rename = "turretsLost", skip_serializing_if = "Option::is_none")]
-    pub turrets_lost: Option<i32>,
+    #[serde(rename = "turretTakedowns")]
+    pub turret_takedowns: i32,
+    #[serde(rename = "turretsLost")]
+    pub turrets_lost: i32,
     #[serde(rename = "unrealKills")]
     pub unreal_kills: i32,
     #[serde(rename = "visionScore")]
@@ -232,6 +229,7 @@ impl MatchV5PeriodParticipantDto {
         champion_name: String,
         champion_transform: i32,
         consumables_purchased: i32,
+        damage_dealt_to_buildings: i32,
         damage_dealt_to_objectives: i32,
         damage_dealt_to_turrets: i32,
         damage_self_mitigated: i32,
@@ -249,6 +247,8 @@ impl MatchV5PeriodParticipantDto {
         gold_spent: i32,
         individual_position: String,
         inhibitor_kills: i32,
+        inhibitor_takedowns: i32,
+        inhibitors_lost: i32,
         item0: i32,
         item1: i32,
         item2: i32,
@@ -311,6 +311,8 @@ impl MatchV5PeriodParticipantDto {
         total_time_spent_dead: i32,
         total_units_healed: i32,
         triple_kills: i32,
+        turret_takedowns: i32,
+        turrets_lost: i32,
         true_damage_dealt: i32,
         true_damage_dealt_to_champions: i32,
         true_damage_taken: i32,
@@ -332,7 +334,7 @@ impl MatchV5PeriodParticipantDto {
             champion_name,
             champion_transform,
             consumables_purchased,
-            damage_dealt_to_buildings: None,
+            damage_dealt_to_buildings,
             damage_dealt_to_objectives,
             damage_dealt_to_turrets,
             damage_self_mitigated,
@@ -350,8 +352,8 @@ impl MatchV5PeriodParticipantDto {
             gold_spent,
             individual_position,
             inhibitor_kills,
-            inhibitor_takedowns: None,
-            inhibitors_lost: None,
+            inhibitor_takedowns,
+            inhibitors_lost,
             item0,
             item1,
             item2,
@@ -420,8 +422,8 @@ impl MatchV5PeriodParticipantDto {
             true_damage_dealt_to_champions,
             true_damage_taken,
             turret_kills,
-            turret_takedowns: None,
-            turrets_lost: None,
+            turret_takedowns,
+            turrets_lost,
             unreal_kills,
             vision_score,
             vision_wards_bought_in_game,

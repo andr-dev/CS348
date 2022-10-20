@@ -12,7 +12,10 @@ use rito::{
         },
         Error,
     },
-    models::{DDragonChampionResponse, MatchV5PeriodMatchDto, SummonerV4PeriodSummonerDto},
+    models::{
+        DDragonChampionResponse, MatchV5PeriodMatchDto, MatchV5PeriodParticipantDto,
+        SummonerV4PeriodSummonerDto,
+    },
 };
 
 pub struct RitoClient {
@@ -69,7 +72,7 @@ impl RitoClient {
             None,
             None,
             Some(0),
-            Some(20),
+            Some(5),
         )
         .await
     }

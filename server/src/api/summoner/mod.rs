@@ -1,5 +1,7 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
+use crate::api::matches::DbSummonerMatch;
+use crate::api::DbChampion;
 use crate::error::ServiceError;
 use crate::state::AppState;
 use rocket::State;
@@ -104,7 +106,17 @@ pub async fn update_summoner_games(
                         }
                     }
 
-                    DbMatch::insert_match(&state.pool, summoner, rito_match, db_match).await?;
+                    println!("DONE WITH SUMMONERS");
+
+                    DbMatch::insert_match(&state.pool, &db_match).await?;
+
+                    for participant in rito_match.info.participants {
+                        let summoner_match =
+                            DbSummonerMatch::from_match_v5_participant(participant, &db_match)
+                                .await;
+
+                        DbSummonerMatch::insert_summoner_match(&state.pool, summoner_match).await?;
+                    }
 
                     println!("DONE ADDING");
                 }

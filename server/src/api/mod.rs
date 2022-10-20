@@ -4,7 +4,7 @@ mod champion;
 mod matches;
 mod summoner;
 
-pub use champion::Champion;
+pub use champion::DbChampion;
 
 #[get("/ping")]
 fn ping() -> &'static str {

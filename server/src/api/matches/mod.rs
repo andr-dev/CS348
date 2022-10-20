@@ -1,6 +1,6 @@
 mod db;
 
-pub use db::DbMatch;
+pub use db::{DbMatch, DbSummonerMatch};
 
 use crate::error::ServiceError;
 use crate::state::AppState;

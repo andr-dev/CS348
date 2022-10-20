@@ -1,7 +1,7 @@
 use rito::apis::configuration::ApiKey;
 use sqlx::{sqlite::SqlitePoolOptions, Pool, Sqlite};
 
-use crate::{api::Champion, rito::client::RitoClient};
+use crate::{api::DbChampion, rito::client::RitoClient};
 
 pub struct AppState {
     pub pool: Pool<Sqlite>,
@@ -26,7 +26,7 @@ impl AppState {
     }
 
     pub async fn setup_db(self) -> Result<Self, Box<dyn std::error::Error>> {
-        if Champion::is_table_empty(&self.pool)
+        if DbChampion::is_table_empty(&self.pool)
             .await
             .map_err(|e| "failed to get is_table_empty")?
         {
@@ -37,9 +37,9 @@ impl AppState {
             for (_, champ) in champions.data {
                 println!("INSERTING CHAMP {:?}", champ.name);
 
-                let champ = Champion::from_ddragon_champion(champ);
+                let champ = DbChampion::from_ddragon_champion(champ);
 
-                Champion::insert(&self.pool, champ)
+                DbChampion::insert(&self.pool, champ)
                     .await
                     .map_err(|e| "failed to insert champ")?;
 

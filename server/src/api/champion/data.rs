@@ -10,26 +10,26 @@ use crate::{
     },
 };
 
-#[derive(FromRow, Serialize)]
+#[derive(FromRow, Serialize, Debug)]
 #[serde(crate = "rocket::serde")]
-pub struct Champion {
+pub struct DbChampion {
     pub championid: i32,
     pub cname: String,
     pub title: String,
     pub blurb: String,
 }
 
-impl Champion {
-    pub async fn get_by_name(pool: &Pool<Sqlite>, name: &String) -> Option<Champion> {
-        sqlx::query_as::<_, Champion>(CHAMPION_GET_BY_NAME_QUERY)
+impl DbChampion {
+    pub async fn get_by_name(pool: &Pool<Sqlite>, name: &String) -> Option<DbChampion> {
+        sqlx::query_as::<_, DbChampion>(CHAMPION_GET_BY_NAME_QUERY)
             .bind(name)
             .fetch_one(pool)
             .await
             .ok()
     }
 
-    pub async fn get_by_id(pool: &Pool<Sqlite>, id: i64) -> Option<Champion> {
-        sqlx::query_as::<_, Champion>(CHAMPION_GET_BY_ID_QUERY)
+    pub async fn get_by_id(pool: &Pool<Sqlite>, id: i64) -> Option<DbChampion> {
+        sqlx::query_as::<_, DbChampion>(CHAMPION_GET_BY_ID_QUERY)
             .bind(id)
             .fetch_one(pool)
             .await
@@ -45,7 +45,7 @@ impl Champion {
             == 1)
     }
 
-    pub async fn insert(pool: &Pool<Sqlite>, champ: Champion) -> Result<(), ServiceError> {
+    pub async fn insert(pool: &Pool<Sqlite>, champ: DbChampion) -> Result<(), ServiceError> {
         sqlx::query(CHAMPION_INSERT_QUERY)
             .bind(champ.championid)
             .bind(champ.cname)
