@@ -1,8 +1,8 @@
-mod data;
+mod db;
 
-pub use data::Match;
+pub use db::DbMatch;
 
-use crate::error::ResourceNotFoundError;
+use crate::error::ServiceError;
 use crate::state::AppState;
 use rocket::State;
 use rocket::{serde::json::Json, Route};
@@ -10,11 +10,13 @@ use rocket::{serde::json::Json, Route};
 #[get("/matches/<gameid>")]
 pub async fn gameid(
     state: &State<AppState>,
-    gameid: i64,
-) -> Json<Result<Match, ResourceNotFoundError>> {
-    let match_obj = Match::get_by_gameid(&state.pool, gameid).await;
+    gameid: String,
+) -> Json<Result<DbMatch, ServiceError>> {
+    let match_obj = DbMatch::find_by_match_id(&state.pool, &gameid).await;
 
-    Json(match_obj.ok_or(ResourceNotFoundError {}))
+    Json(match_obj.ok_or(ServiceError {
+        error: format!("No match found with gameid {}", gameid).into(),
+    }))
 }
 
 pub fn routes() -> Vec<Route> {

@@ -65,6 +65,7 @@ pub mod account_v1_api;
 pub mod champion_mastery_v4_api;
 pub mod champion_v3_api;
 pub mod clash_v1_api;
+pub mod ddragon_champion;
 pub mod league_exp_v4_api;
 pub mod league_v4_api;
 pub mod lol_challenges_v1_api;

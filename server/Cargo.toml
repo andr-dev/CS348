@@ -4,8 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+async-trait = "0.1.57"
+chrono = { version = "0.4.22", features = ["serde"] }
 rocket = { version = "0.5.0-rc.2", features = [ "json" ] }
-sqlx = { version = "0.5.13", features = [ "runtime-tokio-rustls", "sqlite"] }
+sqlx = { version = "0.5.13", features = [ "runtime-tokio-rustls", "sqlite", "chrono"] }
 rito = { path = "../rito" }
 
 [profile.release]

@@ -14,6 +14,8 @@ pub mod clash_v1_period_tournament_dto;
 pub use self::clash_v1_period_tournament_dto::ClashV1PeriodTournamentDto;
 pub mod clash_v1_period_tournament_phase_dto;
 pub use self::clash_v1_period_tournament_phase_dto::ClashV1PeriodTournamentPhaseDto;
+pub mod ddragon_champion;
+pub use self::ddragon_champion::{DDragonChampion, DDragonChampionResponse};
 pub mod error;
 pub use self::error::Error;
 pub mod error_status;

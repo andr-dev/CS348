@@ -29,7 +29,7 @@ impl Configuration {
 impl Default for Configuration {
     fn default() -> Self {
         Configuration {
-            base_path: "https://na1.api.riotgames.com".to_owned(),
+            base_path: "https://americas.api.riotgames.com".to_owned(),
             user_agent: Some(
                 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36".to_owned(),
             ),

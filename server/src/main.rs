@@ -8,6 +8,7 @@ use state::AppState;
 
 mod api;
 mod error;
+mod queries;
 mod rito;
 mod state;
 mod static_files;
