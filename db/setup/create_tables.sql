@@ -1,104 +1,101 @@
--- CHAMPS
+-- CHAMPIONS
 
-CREATE TABLE champs (
-    name VARCHAR(16) UNIQUE NOT NULL,
-    id INTEGER PRIMARY KEY NOT NULL
+CREATE TABLE champions (
+    championid INT PRIMARY KEY NOT NULL,
+    cname VARCHAR(32) NOT NULL,
+    title VARCHAR(64) NOT NULL,
+    blurb TEXT NOT NULL
+);
+
+-- SUMMONERS
+
+CREATE TABLE summoners (
+    accountid VARCHAR(56) UNIQUE NOT NULL,
+    profileiconid INT NOT NULL,
+    lastupdate TIMESTAMP NOT NULL,
+    sname VARCHAR(32) NOT NULL,
+    id  VARCHAR(63) NOT NULL,
+    puuid VARCHAR(78) PRIMARY KEY NOT NULL,
+    summonerlevel BIGINT NOT NULL
 );
 
 -- MATCHES
 
 CREATE TABLE matches (
-    id INTEGER PRIMARY KEY NOT NULL,
-    gameid INTEGER UNIQUE NOT NULL,
-    platformid VARCHAR(4) NOT NULL,
-    queueid INTEGER NOT NULL,
-    seasonid INTEGER NOT NULL,
-    duration INTEGER NOT NULL,
-    creation INTEGER NOT NULL,
-    -- TODO: rename keyword version
-    version VARCHAR(13) NOT NULL
+    matchid VARCHAR(64) PRIMARY KEY NOT NULL,
+    data_version VARCHAR(32) NOT NULL,
+    participant0 VARCHAR(78) REFERENCES summoners(puuid),
+    participant1 VARCHAR(78) REFERENCES summoners(puuid),
+    participant2 VARCHAR(78) REFERENCES summoners(puuid),
+    participant3 VARCHAR(78) REFERENCES summoners(puuid),
+    participant4 VARCHAR(78) REFERENCES summoners(puuid),
+    participant5 VARCHAR(78) REFERENCES summoners(puuid),
+    participant6 VARCHAR(78) REFERENCES summoners(puuid),
+    participant7 VARCHAR(78) REFERENCES summoners(puuid),
+    participant8 VARCHAR(78) REFERENCES summoners(puuid),
+    participant9 VARCHAR(78) REFERENCES summoners(puuid),
+    gameid BIGINT NOT NULL,
+    game_creation BIGINT NOT NULL,
+    game_duration BIGINT NOT NULL,
+    game_start_timestamp BIGINT NOT NULL,
+    game_end_timestamp BIGINT
 );
 
--- SUMMONER SPELLS
+-- SUMMONER MATCHES
 
-CREATE TABLE ss (
-    id INTEGER PRIMARY KEY NOT NULL,
-    name VARCHAR(1) UNIQUE NOT NULL
-);
+CREATE TABLE summoner_matches (
+    puuid VARCHAR(78) REFERENCES summoners(puuid),
+    matchid VARCHAR(64) REFERENCES matches(matchid),
 
--- PARTICIPANTS
+    championid INT REFERENCES champions(championid),
+    win BOOLEAN NOT NULL,
+    team_position VARCHAR(32) NOT NULL,
+    champ_level INT NOT NULL,
+    champ_experience INT NOT NULL,
+    vision_score INT NOT NULL,
+    gold_earned INT NOT NULL,
+    gold_spent INT NOT NULL,
 
-CREATE TABLE participants (
-    id INTEGER PRIMARY KEY NOT NULL,
-    matchid INTEGER NOT NULL,
-    player INTEGER NOT NULL,
-    championid INTEGER NOT NULL,
+    kills INT NOT NULL,
+    double_kills INT NOT NULL,
+    triple_kills INT NOT NULL,
+    quadra_kills INT NOT NULL,
+    penta_kills INT NOT NULL,
+    deaths INT NOT NULL,
+    assists INT NOT NULL,
 
-    -- ss1/ss2 are summoner spell 1/2
-    ss1 INTEGER NOT NULL,
-    ss2 INTEGER NOT NULL,
-
-    -- TODO: rename role, keyword!
-    role VARCHAR(11)
-        CHECK ( role IN (
-            'NONE',
-            'SOLO',
-            'DUO',
-            'DUO_CARRY',
-            'DUO_SUPPORT'
-        ) ) NOT NULL,
+    item0 INT NOT NULL,
+    item1 INT NOT NULL,
+    item2 INT NOT NULL,
+    item3 INT NOT NULL,
+    item4 INT NOT NULL,
+    item5 INT NOT NULL,
+    item6 INT NOT NULL,
     
-    position VARCHAR(6)
-            CHECK ( position IN (
-            'TOP',
-            'JUNGLE',
-            'MID',
-            'BOT'
-        ) ) NOT NULL,
+    first_blood_assist BOOLEAN NOT NULL,
+    first_blood_kill BOOLEAN NOT NULL,
+    first_tower_assist BOOLEAN NOT NULL,
+    first_tower_kill BOOLEAN NOT NULL,
+    
+    dragon_kills INT NOT NULL,
+    baorn_kills INT NOT NULL,
 
-    FOREIGN KEY (championid) REFERENCES champs(id),
-    FOREIGN KEY (ss1) REFERENCES ss(id),
-    FOREIGN KEY (ss2) REFERENCES ss(id)
+    turret_kills INT NOT NULL,
+    turret_takedowns INT NOT NULL,
+    turrets_lost INT NOT NULL,
+
+    inhibitor_kills INT NOT NULL,
+    inhibitor_takedowns INT NOT NULL,
+    inhibitors_list INT NOT NULL,
+    
+    damage_dealt_to_buildings INT NOT NULL,
+    damage_dealt_to_objectives INT NOT NULL,
+    damage_dealt_to_turrets INT NOT NULL,
+    
+    consumables_purchased INT NOT NULL,
+    wards_placed INT NOT NULL,
+    wards_killed INT NOT NULL,
+
+    PRIMARY KEY (puuid, matchid)
 );
 
--- STATS
-
-CREATE TABLE stats (
-    id INTEGER PRIMARY KEY NOT NULL,
-    win BOOLEAN NOT NULL
-    -- ...
-);
-
--- TEAMBANS
-
-CREATE TABLE teambans (
-    matchid INTEGER NOT NULL,
-    teamid BOOLEAN NOT NULL,
-    championid INTEGER NOT NULL,
-    banturn INTEGER NOT NULL,
-
-    PRIMARY KEY(matchid, banturn),
-
-    FOREIGN KEY (matchid) REFERENCES matches(id),
-    FOREIGN KEY (championid) REFERENCES champs(id)
-);
-
--- TEAMSTATS
-
-CREATE TABLE teamstats (
-    matchid INTEGER NOT NULL,
-    teamid BOOLEAN NOT NULL,
-    firstblood BOOLEAN NOT NULL,
-    firsttower BOOLEAN NOT NULL,
-    firstinhib BOOLEAN NOT NULL,
-    firstbaron BOOLEAN NOT NULL,
-    firstdragon BOOLEAN NOT NULL,
-    firstharry BOOLEAN NOT NULL,
-    towerkills INTEGER NOT NULL,
-    inhibkills INTEGER NOT NULL,
-    baronkills INTEGER NOT NULL,
-    dragonkills INTEGER NOT NULL,
-    harrykills INTEGER NOT NULL,
-
-    PRIMARY KEY(matchid, teamid)
-);
