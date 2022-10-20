@@ -2,7 +2,14 @@ use rito::models::MatchV5PeriodMatchDto;
 use rocket::serde::Serialize;
 use sqlx::{FromRow, Pool, Sqlite};
 
-use crate::{api::summoner::DbSummoner, error::ServiceError};
+use crate::{
+    api::summoner::DbSummoner,
+    error::ServiceError,
+    queries::{
+        MATCH_FIND_BY_ID_QUERY, MATCH_INSERT_QUERY, SUMMONER_MATCHES_INSERT_QUERY,
+        SUMMONER_MATCHES_KDA_QUERY,
+    },
+};
 
 #[derive(FromRow, Serialize, Debug)]
 #[serde(crate = "rocket::serde")]
@@ -28,7 +35,7 @@ pub struct DbMatch {
 
 impl DbMatch {
     pub async fn find_by_match_id(pool: &Pool<Sqlite>, match_id: &str) -> Option<DbMatch> {
-        let r = sqlx::query_as::<_, DbMatch>("SELECT * FROM matches WHERE matchid = ?")
+        let r = sqlx::query_as::<_, DbMatch>(MATCH_FIND_BY_ID_QUERY)
             .bind(match_id)
             .fetch_one(pool)
             .await;
@@ -44,37 +51,46 @@ impl DbMatch {
         rito_match: MatchV5PeriodMatchDto,
         db_match: Self,
     ) -> Result<(), ServiceError> {
-        sqlx::query(
-            "INSERT INTO matches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        )
-        .bind(db_match.matchid.clone())
-        .bind(db_match.data_version)
-        .bind(db_match.participant0)
-        .bind(db_match.participant1)
-        .bind(db_match.participant2)
-        .bind(db_match.participant3)
-        .bind(db_match.participant4)
-        .bind(db_match.participant5)
-        .bind(db_match.participant6)
-        .bind(db_match.participant7)
-        .bind(db_match.participant8)
-        .bind(db_match.participant9)
-        .bind(db_match.gameid)
-        .bind(db_match.game_creation)
-        .bind(db_match.game_duration)
-        .bind(db_match.game_start_timestamp)
-        .bind(db_match.game_end_timestamp)
-        .execute(pool)
-        .await
-        .map_err(|e| ServiceError { error: Box::new(e) })?;
+        sqlx::query(MATCH_INSERT_QUERY)
+            .bind(db_match.matchid.clone())
+            .bind(db_match.data_version)
+            .bind(db_match.participant0)
+            .bind(db_match.participant1)
+            .bind(db_match.participant2)
+            .bind(db_match.participant3)
+            .bind(db_match.participant4)
+            .bind(db_match.participant5)
+            .bind(db_match.participant6)
+            .bind(db_match.participant7)
+            .bind(db_match.participant8)
+            .bind(db_match.participant9)
+            .bind(db_match.gameid)
+            .bind(db_match.game_creation)
+            .bind(db_match.game_duration)
+            .bind(db_match.game_start_timestamp)
+            .bind(db_match.game_end_timestamp)
+            .execute(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })?;
 
-        sqlx::query("INSERT INTO summoner_matches VALUES (?, ?)")
+        sqlx::query(SUMMONER_MATCHES_INSERT_QUERY)
             .bind(summoner.puuid.clone())
             .bind(db_match.matchid)
             .execute(pool)
             .await
             .map_err(|e| ServiceError { error: Box::new(e) })
             .map(|_| ())
+    }
+
+    pub async fn get_kda_by_puuid(
+        pool: &Pool<Sqlite>,
+        puuid: &str,
+    ) -> Result<(f64, f64, f64), ServiceError> {
+        sqlx::query_as::<_, (f64, f64, f64)>(SUMMONER_MATCHES_KDA_QUERY)
+            .bind(puuid)
+            .fetch_one(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })
     }
 
     pub fn from_match_v5(match_v5: &MatchV5PeriodMatchDto) -> Self {

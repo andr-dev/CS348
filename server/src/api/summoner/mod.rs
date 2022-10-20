@@ -148,6 +148,20 @@ fn get_participants(db_match: &DbMatch) -> [&str; 10] {
     ]
 }
 
+#[get("/summoner/<puuid>/kda")]
+pub async fn kda(
+    state: &State<AppState>,
+    puuid: String,
+) -> Json<Result<(f64, f64, f64), ServiceError>> {
+    Json(
+        DbMatch::get_kda_by_puuid(&state.pool, &puuid)
+            .await
+            .map_err(|_| ServiceError {
+                error: format!("failed to fetch summoner with puuid {}", puuid).into(),
+            }),
+    )
+}
+
 pub fn routes() -> Vec<Route> {
-    routes![name]
+    routes![name, kda]
 }

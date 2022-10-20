@@ -4,7 +4,10 @@ use sqlx::{FromRow, Pool, Sqlite};
 
 use crate::{
     error::ServiceError,
-    queries::{CHAMPION_GET_BY_ID_QUERY, CHAMPION_GET_BY_NAME_QUERY},
+    queries::{
+        CHAMPION_GET_BY_ID_QUERY, CHAMPION_GET_BY_NAME_QUERY, CHAMPION_INSERT_QUERY,
+        CHAMPION_IS_TABLE_EMPTY_QUERY,
+    },
 };
 
 #[derive(FromRow, Serialize)]
@@ -34,17 +37,16 @@ impl Champion {
     }
 
     pub async fn is_table_empty(pool: &Pool<Sqlite>) -> Result<bool, ServiceError> {
-        Ok(sqlx::query_as::<_, (i32,)>(
-            "SELECT CASE WHEN EXISTS(SELECT 1 FROM champions) THEN 0 ELSE 1 END AS IsEmpty",
-        )
-        .fetch_one(pool)
-        .await
-        .map_err(|e| ServiceError { error: Box::new(e) })?
-        .0 == 1)
+        Ok(sqlx::query_as::<_, (i32,)>(CHAMPION_IS_TABLE_EMPTY_QUERY)
+            .fetch_one(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })?
+            .0
+            == 1)
     }
 
     pub async fn insert(pool: &Pool<Sqlite>, champ: Champion) -> Result<(), ServiceError> {
-        sqlx::query("INSERT INTO champions VALUES (?, ?, ?, ?)")
+        sqlx::query(CHAMPION_INSERT_QUERY)
             .bind(champ.championid)
             .bind(champ.cname)
             .bind(champ.title)

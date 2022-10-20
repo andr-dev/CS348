@@ -7,6 +7,11 @@ use sqlx::FromRow;
 use sqlx::Pool;
 use sqlx::Sqlite;
 
+use crate::queries::SUMMONER_FIND_BY_PUUID_QUERY;
+use crate::queries::SUMMONER_GET_BY_NAME_QUERY;
+use crate::queries::SUMMONER_INSERT_QUERY;
+use crate::queries::SUMMONER_UPDATE_QUERY;
+
 #[derive(FromRow, Serialize, Debug)]
 #[serde(crate = "rocket::serde")]
 pub struct DbSummoner {
@@ -24,7 +29,7 @@ impl DbSummoner {
     where
         Self: Sized,
     {
-        sqlx::query_as::<_, DbSummoner>("SELECT * FROM summoners WHERE puuid = ?")
+        sqlx::query_as::<_, DbSummoner>(SUMMONER_FIND_BY_PUUID_QUERY)
             .bind(puuid)
             .fetch_one(pool)
             .await
@@ -34,14 +39,14 @@ impl DbSummoner {
     where
         Self: Sized,
     {
-        sqlx::query_as::<_, DbSummoner>("SELECT * FROM summoners WHERE sname = ?")
+        sqlx::query_as::<_, DbSummoner>(SUMMONER_GET_BY_NAME_QUERY)
             .bind(name)
             .fetch_one(pool)
             .await
     }
 
     pub async fn insert_summoner(pool: &Pool<Sqlite>, summoner: &DbSummoner) -> Result<(), Error> {
-        sqlx::query("INSERT INTO summoners VALUES (?, ?, ?, ?, ?, ?, ?)")
+        sqlx::query(SUMMONER_INSERT_QUERY)
             .bind(summoner.accountid.clone())
             .bind(summoner.profileiconid.clone())
             .bind(summoner.lastupdate.clone())
@@ -57,7 +62,7 @@ impl DbSummoner {
     pub async fn update_summoner(pool: &Pool<Sqlite>, summoner: &DbSummoner) -> Result<(), Error> {
         println!("SUMMONER: {:?}", summoner);
 
-        sqlx::query("UPDATE summoners SET accountid = ? WHERE puuid = ?")
+        sqlx::query(SUMMONER_UPDATE_QUERY)
             .bind(summoner.accountid.clone())
             .bind(summoner.puuid.clone())
             .execute(pool)
