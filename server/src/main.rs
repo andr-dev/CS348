@@ -1,12 +1,15 @@
+extern crate proc_macro;
+
 #[macro_use]
 extern crate rocket;
 
 use rocket::{Build, Rocket};
-use sqlx::{sqlite::SqlitePoolOptions, Pool, Sqlite};
-use std::env;
+use state::AppState;
 
 mod api;
 mod error;
+mod rito;
+mod state;
 mod static_files;
 
 fn rocket() -> Rocket<Build> {
@@ -24,12 +27,9 @@ fn rocket() -> Rocket<Build> {
 
 #[rocket::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let pool = SqlitePoolOptions::new()
-        .max_connections(4)
-        .connect(&env::var("DATABASE_URL")?)
-        .await?;
+    let app_state = AppState::new().await?;
 
-    let _ = rocket().manage::<Pool<Sqlite>>(pool).launch().await?;
+    let _ = rocket().manage::<AppState>(app_state).launch().await?;
 
     Ok(())
 }

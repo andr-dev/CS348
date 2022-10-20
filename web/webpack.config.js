@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const packageFolder = path.resolve(__dirname, 'build')
 const isDevelopment = process.env.NODE_ENV !== "production"
@@ -28,6 +29,11 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '.css'],
         modules: ['node_modules'],
+        plugins: [
+            new TsconfigPathsPlugin({
+                extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', 'css']
+            }),
+        ]
     },
 
     module: {
@@ -46,7 +52,6 @@ module.exports = {
                             // https://babeljs.io/docs/en/babel-preset-react
                             ["@babel/preset-react", { development: isDevelopment }],
                         ],
-                        plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
                     }
                 }
             },
@@ -62,7 +67,7 @@ module.exports = {
                             },
                         },
                     {
-                        // becombine other css files into one
+                        // combine other css files into one
                         // https://www.npmjs.com/package/css-loader
                         loader: 'css-loader',
                         options: {
@@ -72,16 +77,12 @@ module.exports = {
                         }
                     },
                     {
-                        // process tailwind stuff
                         // https://webpack.js.org/loaders/postcss-loader/
                         loader: "postcss-loader",
                         options: {
                             sourceMap: isDevelopment,
                             postcssOptions: {
                                 plugins: [
-                                    require("tailwindcss"),
-                                    // add addtional postcss plugins here
-                                    // easily find plugins at https://www.postcss.parts/
                                 ]
                             }
                         },
@@ -107,7 +108,6 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: 'assets/img/[name].[ext]',
-                    // outputPath: "images",
                     esModule: false,
                 },
             },
@@ -137,7 +137,7 @@ module.exports = {
 
         // build html file
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
+            template: "./public/index.html",
             filename: "./index.html"
         }),
 

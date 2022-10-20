@@ -1,0 +1,155 @@
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-ExtraLight.ttf');
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Light.ttf');
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Medium.ttf');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-SemiBold.ttf');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Bold.ttf');
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-ExtraBold.ttf');
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Manrope", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    outline: none;
+}
+
+html,
+body {
+    margin: 0;
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 0;
+    background-color: rgb(50, 66, 98) !important;
+    border-radius: 2px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/**************/
+/* TYPOGRAPHY */
+/**************/
+
+/* .display {
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 62.4px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.titleLabel {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.headline {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.bodyMono {
+    font-family: IBM Plex Mono;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.caption {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+} */
+
+.button {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.input {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    border: none;
+    padding: 4px 0;
+}
