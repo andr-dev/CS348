@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
     #[serde(rename = "1")]
@@ -28,7 +23,18 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
 }
 
 impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
-    pub fn new(param_1: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_2: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_3: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_4: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_5: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_6: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_7: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_8: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_9: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame, param_10: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
+    pub fn new(
+        param_1: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_2: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_3: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_4: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_5: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_6: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_7: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_8: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_9: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+        param_10: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrame,
+    ) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
         MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
             param_1: Box::new(param_1),
             param_2: Box::new(param_2),
@@ -43,5 +49,3 @@ impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrames {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
     #[serde(rename = "magicDamageDone")]
@@ -32,7 +27,20 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
 }
 
 impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
-    pub fn new(magic_damage_done: i32, magic_damage_done_to_champions: i32, magic_damage_taken: i32, physical_damage_done: i32, physical_damage_done_to_champions: i32, physical_damage_taken: i32, total_damage_done: i32, total_damage_done_to_champions: i32, total_damage_taken: i32, true_damage_done: i32, true_damage_done_to_champions: i32, true_damage_taken: i32) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
+    pub fn new(
+        magic_damage_done: i32,
+        magic_damage_done_to_champions: i32,
+        magic_damage_taken: i32,
+        physical_damage_done: i32,
+        physical_damage_done_to_champions: i32,
+        physical_damage_taken: i32,
+        total_damage_done: i32,
+        total_damage_done_to_champions: i32,
+        total_damage_taken: i32,
+        true_damage_done: i32,
+        true_damage_done_to_champions: i32,
+        true_damage_taken: i32,
+    ) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
         MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
             magic_damage_done,
             magic_damage_done_to_champions,
@@ -49,5 +57,3 @@ impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats {
         }
     }
 }
-
-

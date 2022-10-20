@@ -1,5 +1,3 @@
-
-
 use reqwest;
 
 use super::{configuration, Error};

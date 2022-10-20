@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftLeagueV1PeriodTopRatedLadderEntryDto {
     #[serde(rename = "summonerId")]
@@ -22,7 +17,14 @@ pub struct TftLeagueV1PeriodTopRatedLadderEntryDto {
 }
 
 impl TftLeagueV1PeriodTopRatedLadderEntryDto {
-    pub fn new(summoner_id: String, summoner_name: String, rated_tier: RatedTier, rated_rating: i32, wins: i32, previous_update_ladder_position: i32) -> TftLeagueV1PeriodTopRatedLadderEntryDto {
+    pub fn new(
+        summoner_id: String,
+        summoner_name: String,
+        rated_tier: RatedTier,
+        rated_rating: i32,
+        wins: i32,
+        previous_update_ladder_position: i32,
+    ) -> TftLeagueV1PeriodTopRatedLadderEntryDto {
         TftLeagueV1PeriodTopRatedLadderEntryDto {
             summoner_id,
             summoner_name,
@@ -54,4 +56,3 @@ impl Default for RatedTier {
         Self::Orange
     }
 }
-

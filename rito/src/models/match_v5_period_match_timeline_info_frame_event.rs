@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameEvent {
     #[serde(rename = "realTimestamp", skip_serializing_if = "Option::is_none")]
@@ -26,7 +21,10 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameEvent {
     pub ward_type: Option<String>,
     #[serde(rename = "level", skip_serializing_if = "Option::is_none")]
     pub level: Option<i32>,
-    #[serde(rename = "assistingParticipantIds", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "assistingParticipantIds",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub assisting_participant_ids: Option<Vec<i32>>,
     #[serde(rename = "bounty", skip_serializing_if = "Option::is_none")]
     pub bounty: Option<i32>,
@@ -37,9 +35,14 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameEvent {
     #[serde(rename = "position", skip_serializing_if = "Option::is_none")]
     pub position: Option<Box<crate::models::MatchV5PeriodMatchTimelinePosition>>,
     #[serde(rename = "victimDamageDealt", skip_serializing_if = "Option::is_none")]
-    pub victim_damage_dealt: Option<Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt>>,
-    #[serde(rename = "victimDamageReceived", skip_serializing_if = "Option::is_none")]
-    pub victim_damage_received: Option<Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt>>,
+    pub victim_damage_dealt:
+        Option<Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt>>,
+    #[serde(
+        rename = "victimDamageReceived",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub victim_damage_received:
+        Option<Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt>>,
     #[serde(rename = "victimId", skip_serializing_if = "Option::is_none")]
     pub victim_id: Option<i32>,
     #[serde(rename = "killType", skip_serializing_if = "Option::is_none")]
@@ -173,4 +176,3 @@ impl Default for RHashType {
         Self::AscendedEvent
     }
 }
-

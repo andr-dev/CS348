@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftLeagueV1PeriodLeagueListDto {
     #[serde(rename = "leagueId")]
@@ -18,7 +13,13 @@ pub struct TftLeagueV1PeriodLeagueListDto {
 }
 
 impl TftLeagueV1PeriodLeagueListDto {
-    pub fn new(league_id: String, entries: Vec<crate::models::TftLeagueV1PeriodLeagueItemDto>, tier: String, name: String, queue: String) -> TftLeagueV1PeriodLeagueListDto {
+    pub fn new(
+        league_id: String,
+        entries: Vec<crate::models::TftLeagueV1PeriodLeagueItemDto>,
+        tier: String,
+        name: String,
+        queue: String,
+    ) -> TftLeagueV1PeriodLeagueListDto {
         TftLeagueV1PeriodLeagueListDto {
             league_id,
             entries,
@@ -28,5 +29,3 @@ impl TftLeagueV1PeriodLeagueListDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LorMatchV1PeriodPlayerDto {
     #[serde(rename = "puuid")]
@@ -22,7 +17,14 @@ pub struct LorMatchV1PeriodPlayerDto {
 }
 
 impl LorMatchV1PeriodPlayerDto {
-    pub fn new(puuid: String, deck_id: String, deck_code: String, factions: Vec<String>, game_outcome: String, order_of_play: i32) -> LorMatchV1PeriodPlayerDto {
+    pub fn new(
+        puuid: String,
+        deck_id: String,
+        deck_code: String,
+        factions: Vec<String>,
+        game_outcome: String,
+        order_of_play: i32,
+    ) -> LorMatchV1PeriodPlayerDto {
         LorMatchV1PeriodPlayerDto {
             puuid,
             deck_id,
@@ -33,5 +35,3 @@ impl LorMatchV1PeriodPlayerDto {
         }
     }
 }
-
-

@@ -1,11 +1,7 @@
-
-
-
 use reqwest;
 
+use super::{configuration, Error};
 use crate::apis::ResponseContent;
-use super::{Error, configuration};
-
 
 /// struct for typed errors of method [`lor_deck_v1_period_create_deck`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -43,15 +39,19 @@ pub enum LorDeckV1PeriodGetDecksError {
     UnknownValue(serde_json::Value),
 }
 
-
 /// Create a new deck for the calling user.
-pub async fn lor_deck_v1_period_create_deck(configuration: &configuration::Configuration, authorization: &str, lor_deck_v1_period_new_deck_dto: crate::models::LorDeckV1PeriodNewDeckDto) -> Result<String, Error<LorDeckV1PeriodCreateDeckError>> {
+pub async fn lor_deck_v1_period_create_deck(
+    configuration: &configuration::Configuration,
+    authorization: &str,
+    lor_deck_v1_period_new_deck_dto: crate::models::LorDeckV1PeriodNewDeckDto,
+) -> Result<String, Error<LorDeckV1PeriodCreateDeckError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
     let local_var_uri_str = format!("{}/lor/deck/v1/decks/me", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -62,9 +62,11 @@ pub async fn lor_deck_v1_period_create_deck(configuration: &configuration::Confi
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.header("Authorization", authorization.to_string());
+    local_var_req_builder =
+        local_var_req_builder.header("Authorization", authorization.to_string());
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -84,20 +86,29 @@ pub async fn lor_deck_v1_period_create_deck(configuration: &configuration::Confi
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<LorDeckV1PeriodCreateDeckError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<LorDeckV1PeriodCreateDeckError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
 /// Get a list of the calling user's decks.
-pub async fn lor_deck_v1_period_get_decks(configuration: &configuration::Configuration, authorization: &str) -> Result<Vec<crate::models::LorDeckV1PeriodDeckDto>, Error<LorDeckV1PeriodGetDecksError>> {
+pub async fn lor_deck_v1_period_get_decks(
+    configuration: &configuration::Configuration,
+    authorization: &str,
+) -> Result<Vec<crate::models::LorDeckV1PeriodDeckDto>, Error<LorDeckV1PeriodGetDecksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
     let local_var_uri_str = format!("{}/lor/deck/v1/decks/me", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -108,9 +119,11 @@ pub async fn lor_deck_v1_period_get_decks(configuration: &configuration::Configu
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.header("Authorization", authorization.to_string());
+    local_var_req_builder =
+        local_var_req_builder.header("Authorization", authorization.to_string());
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -129,9 +142,13 @@ pub async fn lor_deck_v1_period_get_decks(configuration: &configuration::Configu
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<LorDeckV1PeriodGetDecksError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<LorDeckV1PeriodGetDecksError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
-

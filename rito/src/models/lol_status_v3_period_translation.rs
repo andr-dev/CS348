@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV3PeriodTranslation {
     #[serde(rename = "updated_at")]
@@ -14,7 +9,11 @@ pub struct LolStatusV3PeriodTranslation {
 }
 
 impl LolStatusV3PeriodTranslation {
-    pub fn new(updated_at: String, locale: String, content: String) -> LolStatusV3PeriodTranslation {
+    pub fn new(
+        updated_at: String,
+        locale: String,
+        content: String,
+    ) -> LolStatusV3PeriodTranslation {
         LolStatusV3PeriodTranslation {
             updated_at,
             locale,
@@ -22,5 +21,3 @@ impl LolStatusV3PeriodTranslation {
         }
     }
 }
-
-

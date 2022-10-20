@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LeagueV4PeriodLeagueListDto {
     #[serde(rename = "leagueId")]
@@ -18,7 +13,13 @@ pub struct LeagueV4PeriodLeagueListDto {
 }
 
 impl LeagueV4PeriodLeagueListDto {
-    pub fn new(league_id: String, entries: Vec<crate::models::LeagueV4PeriodLeagueItemDto>, tier: String, name: String, queue: String) -> LeagueV4PeriodLeagueListDto {
+    pub fn new(
+        league_id: String,
+        entries: Vec<crate::models::LeagueV4PeriodLeagueItemDto>,
+        tier: String,
+        name: String,
+        queue: String,
+    ) -> LeagueV4PeriodLeagueListDto {
         LeagueV4PeriodLeagueListDto {
             league_id,
             entries,
@@ -28,5 +29,3 @@ impl LeagueV4PeriodLeagueListDto {
         }
     }
 }
-
-

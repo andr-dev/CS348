@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentV4PeriodLobbyEventDto {
     /// Timestamp from the event
@@ -17,7 +12,11 @@ pub struct TournamentV4PeriodLobbyEventDto {
 }
 
 impl TournamentV4PeriodLobbyEventDto {
-    pub fn new(timestamp: String, event_type: String, summoner_id: String) -> TournamentV4PeriodLobbyEventDto {
+    pub fn new(
+        timestamp: String,
+        event_type: String,
+        summoner_id: String,
+    ) -> TournamentV4PeriodLobbyEventDto {
         TournamentV4PeriodLobbyEventDto {
             timestamp,
             event_type,
@@ -25,5 +24,3 @@ impl TournamentV4PeriodLobbyEventDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodPerks {
     /// IDs of the perks/runes assigned.
@@ -25,5 +20,3 @@ impl SpectatorV4PeriodPerks {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LorRankedV1PeriodLeaderboardDto {
     /// A list of players in Master tier.
@@ -11,11 +6,9 @@ pub struct LorRankedV1PeriodLeaderboardDto {
 }
 
 impl LorRankedV1PeriodLeaderboardDto {
-    pub fn new(players: Vec<crate::models::LorRankedV1PeriodPlayerDto>) -> LorRankedV1PeriodLeaderboardDto {
-        LorRankedV1PeriodLeaderboardDto {
-            players,
-        }
+    pub fn new(
+        players: Vec<crate::models::LorRankedV1PeriodPlayerDto>,
+    ) -> LorRankedV1PeriodLeaderboardDto {
+        LorRankedV1PeriodLeaderboardDto { players }
     }
 }
-
-

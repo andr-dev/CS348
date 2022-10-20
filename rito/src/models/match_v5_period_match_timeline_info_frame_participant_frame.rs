@@ -1,16 +1,13 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
     #[serde(rename = "championStats")]
-    pub champion_stats: Box<crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats>,
+    pub champion_stats:
+        Box<crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats>,
     #[serde(rename = "currentGold")]
     pub current_gold: i32,
     #[serde(rename = "damageStats")]
-    pub damage_stats: Box<crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats>,
+    pub damage_stats:
+        Box<crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats>,
     #[serde(rename = "goldPerSecond")]
     pub gold_per_second: i32,
     #[serde(rename = "jungleMinionsKilled")]
@@ -32,7 +29,20 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
 }
 
 impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
-    pub fn new(champion_stats: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats, current_gold: i32, damage_stats: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats, gold_per_second: i32, jungle_minions_killed: i32, level: i32, minions_killed: i32, participant_id: i32, position: crate::models::MatchV5PeriodMatchTimelinePosition, time_enemy_spent_controlled: i32, total_gold: i32, xp: i32) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
+    pub fn new(
+        champion_stats: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats,
+        current_gold: i32,
+        damage_stats: crate::models::MatchV5PeriodMatchTimelineInfoFrameParticipantFrameDamageStats,
+        gold_per_second: i32,
+        jungle_minions_killed: i32,
+        level: i32,
+        minions_killed: i32,
+        participant_id: i32,
+        position: crate::models::MatchV5PeriodMatchTimelinePosition,
+        time_enemy_spent_controlled: i32,
+        total_gold: i32,
+        xp: i32,
+    ) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
         MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
             champion_stats: Box::new(champion_stats),
             current_gold,
@@ -49,5 +59,3 @@ impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrame {
         }
     }
 }
-
-

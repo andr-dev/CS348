@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolChallengesV1PeriodPlayerClientPreferences {
     #[serde(rename = "bannerAccent", skip_serializing_if = "Option::is_none")]
@@ -22,5 +17,3 @@ impl LolChallengesV1PeriodPlayerClientPreferences {
         }
     }
 }
-
-

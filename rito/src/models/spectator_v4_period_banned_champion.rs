@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodBannedChampion {
     /// The turn during which the champion was banned
@@ -25,5 +20,3 @@ impl SpectatorV4PeriodBannedChampion {
         }
     }
 }
-
-

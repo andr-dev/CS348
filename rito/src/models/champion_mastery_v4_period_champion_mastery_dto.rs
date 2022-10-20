@@ -1,8 +1,4 @@
-
-
 /// ChampionMasteryV4PeriodChampionMasteryDto : This object contains single Champion Mastery information for player and champion combination.
-
-
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ChampionMasteryV4PeriodChampionMasteryDto {
@@ -37,7 +33,17 @@ pub struct ChampionMasteryV4PeriodChampionMasteryDto {
 
 impl ChampionMasteryV4PeriodChampionMasteryDto {
     /// This object contains single Champion Mastery information for player and champion combination.
-    pub fn new(champion_points_until_next_level: i64, chest_granted: bool, champion_id: i64, last_play_time: i64, champion_level: i32, summoner_id: String, champion_points: i32, champion_points_since_last_level: i64, tokens_earned: i32) -> ChampionMasteryV4PeriodChampionMasteryDto {
+    pub fn new(
+        champion_points_until_next_level: i64,
+        chest_granted: bool,
+        champion_id: i64,
+        last_play_time: i64,
+        champion_level: i32,
+        summoner_id: String,
+        champion_points: i32,
+        champion_points_since_last_level: i64,
+        tokens_earned: i32,
+    ) -> ChampionMasteryV4PeriodChampionMasteryDto {
         ChampionMasteryV4PeriodChampionMasteryDto {
             champion_points_until_next_level,
             chest_granted,
@@ -51,5 +57,3 @@ impl ChampionMasteryV4PeriodChampionMasteryDto {
         }
     }
 }
-
-

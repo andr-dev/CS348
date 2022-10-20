@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV3PeriodShardStatus {
     #[serde(rename = "locales")]
@@ -20,7 +15,14 @@ pub struct LolStatusV3PeriodShardStatus {
 }
 
 impl LolStatusV3PeriodShardStatus {
-    pub fn new(locales: Vec<String>, hostname: String, name: String, services: Vec<crate::models::LolStatusV3PeriodService>, slug: String, region_tag: String) -> LolStatusV3PeriodShardStatus {
+    pub fn new(
+        locales: Vec<String>,
+        hostname: String,
+        name: String,
+        services: Vec<crate::models::LolStatusV3PeriodService>,
+        slug: String,
+        region_tag: String,
+    ) -> LolStatusV3PeriodShardStatus {
         LolStatusV3PeriodShardStatus {
             locales,
             hostname,
@@ -31,5 +33,3 @@ impl LolStatusV3PeriodShardStatus {
         }
     }
 }
-
-

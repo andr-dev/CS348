@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodFinishingDamageDto {
     #[serde(rename = "damageType")]
@@ -14,7 +9,11 @@ pub struct ValMatchV1PeriodFinishingDamageDto {
 }
 
 impl ValMatchV1PeriodFinishingDamageDto {
-    pub fn new(damage_type: String, damage_item: String, is_secondary_fire_mode: bool) -> ValMatchV1PeriodFinishingDamageDto {
+    pub fn new(
+        damage_type: String,
+        damage_item: String,
+        is_secondary_fire_mode: bool,
+    ) -> ValMatchV1PeriodFinishingDamageDto {
         ValMatchV1PeriodFinishingDamageDto {
             damage_type,
             damage_item,
@@ -22,5 +21,3 @@ impl ValMatchV1PeriodFinishingDamageDto {
         }
     }
 }
-
-

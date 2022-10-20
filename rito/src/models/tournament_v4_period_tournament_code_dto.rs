@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentV4PeriodTournamentCodeDto {
     /// The tournament code.
@@ -47,7 +42,21 @@ pub struct TournamentV4PeriodTournamentCodeDto {
 }
 
 impl TournamentV4PeriodTournamentCodeDto {
-    pub fn new(code: String, spectators: String, lobby_name: String, meta_data: String, password: String, team_size: i32, provider_id: i32, pick_type: String, tournament_id: i32, id: i32, region: Region, map: String, participants: Vec<String>) -> TournamentV4PeriodTournamentCodeDto {
+    pub fn new(
+        code: String,
+        spectators: String,
+        lobby_name: String,
+        meta_data: String,
+        password: String,
+        team_size: i32,
+        provider_id: i32,
+        pick_type: String,
+        tournament_id: i32,
+        id: i32,
+        region: Region,
+        map: String,
+        participants: Vec<String>,
+    ) -> TournamentV4PeriodTournamentCodeDto {
         TournamentV4PeriodTournamentCodeDto {
             code,
             spectators,
@@ -98,4 +107,3 @@ impl Default for Region {
         Self::Br
     }
 }
-

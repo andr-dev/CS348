@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LorInventoryV1PeriodCardDto {
     #[serde(rename = "code")]
@@ -13,11 +8,6 @@ pub struct LorInventoryV1PeriodCardDto {
 
 impl LorInventoryV1PeriodCardDto {
     pub fn new(code: String, count: String) -> LorInventoryV1PeriodCardDto {
-        LorInventoryV1PeriodCardDto {
-            code,
-            count,
-        }
+        LorInventoryV1PeriodCardDto { code, count }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodParticipant {
     /// Flag indicating whether or not this participant is a bot
@@ -29,7 +24,15 @@ pub struct SpectatorV4PeriodParticipant {
 }
 
 impl SpectatorV4PeriodParticipant {
-    pub fn new(bot: bool, spell2_id: i64, profile_icon_id: i64, summoner_name: String, champion_id: i64, team_id: i64, spell1_id: i64) -> SpectatorV4PeriodParticipant {
+    pub fn new(
+        bot: bool,
+        spell2_id: i64,
+        profile_icon_id: i64,
+        summoner_name: String,
+        champion_id: i64,
+        team_id: i64,
+        spell1_id: i64,
+    ) -> SpectatorV4PeriodParticipant {
         SpectatorV4PeriodParticipant {
             bot,
             spell2_id,
@@ -41,5 +44,3 @@ impl SpectatorV4PeriodParticipant {
         }
     }
 }
-
-

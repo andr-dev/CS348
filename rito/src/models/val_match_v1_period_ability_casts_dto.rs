@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodAbilityCastsDto {
     #[serde(rename = "grenadeCasts")]
@@ -16,7 +11,12 @@ pub struct ValMatchV1PeriodAbilityCastsDto {
 }
 
 impl ValMatchV1PeriodAbilityCastsDto {
-    pub fn new(grenade_casts: i32, ability1_casts: i32, ability2_casts: i32, ultimate_casts: i32) -> ValMatchV1PeriodAbilityCastsDto {
+    pub fn new(
+        grenade_casts: i32,
+        ability1_casts: i32,
+        ability2_casts: i32,
+        ultimate_casts: i32,
+    ) -> ValMatchV1PeriodAbilityCastsDto {
         ValMatchV1PeriodAbilityCastsDto {
             grenade_casts,
             ability1_casts,
@@ -25,5 +25,3 @@ impl ValMatchV1PeriodAbilityCastsDto {
         }
     }
 }
-
-

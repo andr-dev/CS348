@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodPlayerDto {
     #[serde(rename = "puuid")]
@@ -28,7 +23,18 @@ pub struct ValMatchV1PeriodPlayerDto {
 }
 
 impl ValMatchV1PeriodPlayerDto {
-    pub fn new(puuid: String, game_name: String, tag_line: String, team_id: String, party_id: String, character_id: String, stats: crate::models::ValMatchV1PeriodPlayerStatsDto, competitive_tier: i32, player_card: String, player_title: String) -> ValMatchV1PeriodPlayerDto {
+    pub fn new(
+        puuid: String,
+        game_name: String,
+        tag_line: String,
+        team_id: String,
+        party_id: String,
+        character_id: String,
+        stats: crate::models::ValMatchV1PeriodPlayerStatsDto,
+        competitive_tier: i32,
+        player_card: String,
+        player_title: String,
+    ) -> ValMatchV1PeriodPlayerDto {
         ValMatchV1PeriodPlayerDto {
             puuid,
             game_name,
@@ -43,5 +49,3 @@ impl ValMatchV1PeriodPlayerDto {
         }
     }
 }
-
-

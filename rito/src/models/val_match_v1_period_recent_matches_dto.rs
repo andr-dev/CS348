@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodRecentMatchesDto {
     #[serde(rename = "currentTime")]
@@ -20,5 +15,3 @@ impl ValMatchV1PeriodRecentMatchesDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftLeagueV1PeriodMiniSeriesDto {
     #[serde(rename = "losses")]
@@ -16,7 +11,12 @@ pub struct TftLeagueV1PeriodMiniSeriesDto {
 }
 
 impl TftLeagueV1PeriodMiniSeriesDto {
-    pub fn new(losses: i32, progress: String, target: i32, wins: i32) -> TftLeagueV1PeriodMiniSeriesDto {
+    pub fn new(
+        losses: i32,
+        progress: String,
+        target: i32,
+        wins: i32,
+    ) -> TftLeagueV1PeriodMiniSeriesDto {
         TftLeagueV1PeriodMiniSeriesDto {
             losses,
             progress,
@@ -25,5 +25,3 @@ impl TftLeagueV1PeriodMiniSeriesDto {
         }
     }
 }
-
-

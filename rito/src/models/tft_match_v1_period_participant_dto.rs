@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodParticipantDto {
     #[serde(rename = "companion")]
@@ -39,7 +34,19 @@ pub struct TftMatchV1PeriodParticipantDto {
 }
 
 impl TftMatchV1PeriodParticipantDto {
-    pub fn new(companion: crate::models::TftMatchV1PeriodCompanionDto, gold_left: i32, last_round: i32, level: i32, placement: i32, players_eliminated: i32, puuid: String, time_eliminated: f32, total_damage_to_players: i32, traits: Vec<crate::models::TftMatchV1PeriodTraitDto>, units: Vec<crate::models::TftMatchV1PeriodUnitDto>) -> TftMatchV1PeriodParticipantDto {
+    pub fn new(
+        companion: crate::models::TftMatchV1PeriodCompanionDto,
+        gold_left: i32,
+        last_round: i32,
+        level: i32,
+        placement: i32,
+        players_eliminated: i32,
+        puuid: String,
+        time_eliminated: f32,
+        total_damage_to_players: i32,
+        traits: Vec<crate::models::TftMatchV1PeriodTraitDto>,
+        units: Vec<crate::models::TftMatchV1PeriodUnitDto>,
+    ) -> TftMatchV1PeriodParticipantDto {
         TftMatchV1PeriodParticipantDto {
             companion: Box::new(companion),
             gold_left,
@@ -55,5 +62,3 @@ impl TftMatchV1PeriodParticipantDto {
         }
     }
 }
-
-

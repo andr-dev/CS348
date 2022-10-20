@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolChallengesV1PeriodChallengeInfo {
     #[serde(rename = "challengeId")]
@@ -22,7 +17,12 @@ pub struct LolChallengesV1PeriodChallengeInfo {
 }
 
 impl LolChallengesV1PeriodChallengeInfo {
-    pub fn new(challenge_id: i64, percentile: f64, level: String, value: f64) -> LolChallengesV1PeriodChallengeInfo {
+    pub fn new(
+        challenge_id: i64,
+        percentile: f64,
+        level: String,
+        value: f64,
+    ) -> LolChallengesV1PeriodChallengeInfo {
         LolChallengesV1PeriodChallengeInfo {
             challenge_id,
             percentile,
@@ -34,5 +34,3 @@ impl LolChallengesV1PeriodChallengeInfo {
         }
     }
 }
-
-

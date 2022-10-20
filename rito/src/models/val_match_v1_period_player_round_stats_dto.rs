@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodPlayerRoundStatsDto {
     #[serde(rename = "puuid")]
@@ -20,7 +15,14 @@ pub struct ValMatchV1PeriodPlayerRoundStatsDto {
 }
 
 impl ValMatchV1PeriodPlayerRoundStatsDto {
-    pub fn new(puuid: String, kills: Vec<crate::models::ValMatchV1PeriodKillDto>, damage: Vec<crate::models::ValMatchV1PeriodDamageDto>, score: i32, economy: crate::models::ValMatchV1PeriodEconomyDto, ability: crate::models::ValMatchV1PeriodAbilityDto) -> ValMatchV1PeriodPlayerRoundStatsDto {
+    pub fn new(
+        puuid: String,
+        kills: Vec<crate::models::ValMatchV1PeriodKillDto>,
+        damage: Vec<crate::models::ValMatchV1PeriodDamageDto>,
+        score: i32,
+        economy: crate::models::ValMatchV1PeriodEconomyDto,
+        ability: crate::models::ValMatchV1PeriodAbilityDto,
+    ) -> ValMatchV1PeriodPlayerRoundStatsDto {
         ValMatchV1PeriodPlayerRoundStatsDto {
             puuid,
             kills,
@@ -31,5 +33,3 @@ impl ValMatchV1PeriodPlayerRoundStatsDto {
         }
     }
 }
-
-

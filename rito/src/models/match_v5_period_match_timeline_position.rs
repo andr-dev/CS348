@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelinePosition {
     #[serde(rename = "x")]
@@ -13,11 +8,6 @@ pub struct MatchV5PeriodMatchTimelinePosition {
 
 impl MatchV5PeriodMatchTimelinePosition {
     pub fn new(x: i32, y: i32) -> MatchV5PeriodMatchTimelinePosition {
-        MatchV5PeriodMatchTimelinePosition {
-            x,
-            y,
-        }
+        MatchV5PeriodMatchTimelinePosition { x, y }
     }
 }
-
-

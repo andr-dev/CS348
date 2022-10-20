@@ -1,11 +1,7 @@
-
-
-
 use reqwest;
 
+use super::{configuration, Error};
 use crate::apis::ResponseContent;
-use super::{Error, configuration};
-
 
 /// struct for typed errors of method [`val_ranked_v1_period_get_leaderboard`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -25,21 +21,35 @@ pub enum ValRankedV1PeriodGetLeaderboardError {
     UnknownValue(serde_json::Value),
 }
 
-
 /// Get leaderboard for the competitive queue
-pub async fn val_ranked_v1_period_get_leaderboard(configuration: &configuration::Configuration, act_id: &str, size: Option<i32>, start_index: Option<i32>) -> Result<crate::models::ValRankedV1PeriodLeaderboardDto, Error<ValRankedV1PeriodGetLeaderboardError>> {
+pub async fn val_ranked_v1_period_get_leaderboard(
+    configuration: &configuration::Configuration,
+    act_id: &str,
+    size: Option<i32>,
+    start_index: Option<i32>,
+) -> Result<
+    crate::models::ValRankedV1PeriodLeaderboardDto,
+    Error<ValRankedV1PeriodGetLeaderboardError>,
+> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/val/ranked/v1/leaderboards/by-act/{actId}", local_var_configuration.base_path, actId=crate::apis::urlencode(act_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/val/ranked/v1/leaderboards/by-act/{actId}",
+        local_var_configuration.base_path,
+        actId = crate::apis::urlencode(act_id)
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = size {
-        local_var_req_builder = local_var_req_builder.query(&[("size", &local_var_str.to_string())]);
+        local_var_req_builder =
+            local_var_req_builder.query(&[("size", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_str) = start_index {
-        local_var_req_builder = local_var_req_builder.query(&[("startIndex", &local_var_str.to_string())]);
+        local_var_req_builder =
+            local_var_req_builder.query(&[("startIndex", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -50,7 +60,8 @@ pub async fn val_ranked_v1_period_get_leaderboard(configuration: &configuration:
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -70,9 +81,13 @@ pub async fn val_ranked_v1_period_get_leaderboard(configuration: &configuration:
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ValRankedV1PeriodGetLeaderboardError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ValRankedV1PeriodGetLeaderboardError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchDto {
     #[serde(rename = "metadata")]
@@ -12,12 +7,13 @@ pub struct MatchV5PeriodMatchDto {
 }
 
 impl MatchV5PeriodMatchDto {
-    pub fn new(metadata: crate::models::MatchV5PeriodMetadataDto, info: crate::models::MatchV5PeriodInfoDto) -> MatchV5PeriodMatchDto {
+    pub fn new(
+        metadata: crate::models::MatchV5PeriodMetadataDto,
+        info: crate::models::MatchV5PeriodInfoDto,
+    ) -> MatchV5PeriodMatchDto {
         MatchV5PeriodMatchDto {
             metadata: Box::new(metadata),
             info: Box::new(info),
         }
     }
 }
-
-

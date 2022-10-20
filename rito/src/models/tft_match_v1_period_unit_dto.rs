@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodUnitDto {
     /// A list of the unit's items. Please refer to the Teamfight Tactics documentation for item ids.
@@ -26,7 +21,13 @@ pub struct TftMatchV1PeriodUnitDto {
 }
 
 impl TftMatchV1PeriodUnitDto {
-    pub fn new(items: Vec<i32>, character_id: String, name: String, rarity: i32, tier: i32) -> TftMatchV1PeriodUnitDto {
+    pub fn new(
+        items: Vec<i32>,
+        character_id: String,
+        name: String,
+        rarity: i32,
+        tier: i32,
+    ) -> TftMatchV1PeriodUnitDto {
         TftMatchV1PeriodUnitDto {
             items,
             character_id,
@@ -37,5 +38,3 @@ impl TftMatchV1PeriodUnitDto {
         }
     }
 }
-
-

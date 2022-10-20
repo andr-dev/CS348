@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LorMatchV1PeriodMetadataDto {
     /// Match data version.
@@ -17,7 +12,11 @@ pub struct LorMatchV1PeriodMetadataDto {
 }
 
 impl LorMatchV1PeriodMetadataDto {
-    pub fn new(data_version: String, match_id: String, participants: Vec<String>) -> LorMatchV1PeriodMetadataDto {
+    pub fn new(
+        data_version: String,
+        match_id: String,
+        participants: Vec<String>,
+    ) -> LorMatchV1PeriodMetadataDto {
         LorMatchV1PeriodMetadataDto {
             data_version,
             match_id,
@@ -25,5 +24,3 @@ impl LorMatchV1PeriodMetadataDto {
         }
     }
 }
-
-

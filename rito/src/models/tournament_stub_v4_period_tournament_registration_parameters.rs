@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentStubV4PeriodTournamentRegistrationParameters {
     /// The provider ID to specify the regional registered provider data to associate this tournament.
@@ -21,5 +16,3 @@ impl TournamentStubV4PeriodTournamentRegistrationParameters {
         }
     }
 }
-
-

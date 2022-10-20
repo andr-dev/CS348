@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodDamageDto {
     /// PUUID
@@ -19,7 +14,13 @@ pub struct ValMatchV1PeriodDamageDto {
 }
 
 impl ValMatchV1PeriodDamageDto {
-    pub fn new(receiver: String, damage: i32, legshots: i32, bodyshots: i32, headshots: i32) -> ValMatchV1PeriodDamageDto {
+    pub fn new(
+        receiver: String,
+        damage: i32,
+        legshots: i32,
+        bodyshots: i32,
+        headshots: i32,
+    ) -> ValMatchV1PeriodDamageDto {
         ValMatchV1PeriodDamageDto {
             receiver,
             damage,
@@ -29,5 +30,3 @@ impl ValMatchV1PeriodDamageDto {
         }
     }
 }
-
-

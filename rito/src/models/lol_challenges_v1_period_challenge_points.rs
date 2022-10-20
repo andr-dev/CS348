@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolChallengesV1PeriodChallengePoints {
     #[serde(rename = "level")]
@@ -25,5 +20,3 @@ impl LolChallengesV1PeriodChallengePoints {
         }
     }
 }
-
-

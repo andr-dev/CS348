@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodFeaturedGames {
     /// The list of featured games
@@ -14,12 +9,13 @@ pub struct SpectatorV4PeriodFeaturedGames {
 }
 
 impl SpectatorV4PeriodFeaturedGames {
-    pub fn new(game_list: Vec<crate::models::SpectatorV4PeriodFeaturedGameInfo>, client_refresh_interval: i64) -> SpectatorV4PeriodFeaturedGames {
+    pub fn new(
+        game_list: Vec<crate::models::SpectatorV4PeriodFeaturedGameInfo>,
+        client_refresh_interval: i64,
+    ) -> SpectatorV4PeriodFeaturedGames {
         SpectatorV4PeriodFeaturedGames {
             game_list,
             client_refresh_interval,
         }
     }
 }
-
-

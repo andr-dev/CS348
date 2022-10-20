@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodTraitDto {
     /// Trait name.
@@ -33,5 +28,3 @@ impl TftMatchV1PeriodTraitDto {
         }
     }
 }
-
-

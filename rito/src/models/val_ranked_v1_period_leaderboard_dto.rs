@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValRankedV1PeriodLeaderboardDto {
     /// The shard for the given leaderboard.
@@ -16,14 +11,21 @@ pub struct ValRankedV1PeriodLeaderboardDto {
     pub total_players: i64,
     #[serde(rename = "players")]
     pub players: Vec<crate::models::ValRankedV1PeriodPlayerDto>,
-    #[serde(rename = "immortalStartingPage", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "immortalStartingPage",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub immortal_starting_page: Option<i64>,
-    #[serde(rename = "immortalStartingIndex", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "immortalStartingIndex",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub immortal_starting_index: Option<i64>,
     #[serde(rename = "topTierRRThreshold", skip_serializing_if = "Option::is_none")]
     pub top_tier_rr_threshold: Option<i64>,
     #[serde(rename = "tierDetails", skip_serializing_if = "Option::is_none")]
-    pub tier_details: Option<::std::collections::HashMap<String, crate::models::ValRankedV1PeriodTierDetailDto>>,
+    pub tier_details:
+        Option<::std::collections::HashMap<String, crate::models::ValRankedV1PeriodTierDetailDto>>,
     #[serde(rename = "startIndex", skip_serializing_if = "Option::is_none")]
     pub start_index: Option<i64>,
     #[serde(rename = "query", skip_serializing_if = "Option::is_none")]
@@ -31,7 +33,12 @@ pub struct ValRankedV1PeriodLeaderboardDto {
 }
 
 impl ValRankedV1PeriodLeaderboardDto {
-    pub fn new(shard: String, act_id: String, total_players: i64, players: Vec<crate::models::ValRankedV1PeriodPlayerDto>) -> ValRankedV1PeriodLeaderboardDto {
+    pub fn new(
+        shard: String,
+        act_id: String,
+        total_players: i64,
+        players: Vec<crate::models::ValRankedV1PeriodPlayerDto>,
+    ) -> ValRankedV1PeriodLeaderboardDto {
         ValRankedV1PeriodLeaderboardDto {
             shard,
             act_id,
@@ -46,5 +53,3 @@ impl ValRankedV1PeriodLeaderboardDto {
         }
     }
 }
-
-

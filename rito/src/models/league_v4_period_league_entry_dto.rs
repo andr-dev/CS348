@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LeagueV4PeriodLeagueEntryDto {
     #[serde(rename = "leagueId", skip_serializing_if = "Option::is_none")]
@@ -40,7 +35,18 @@ pub struct LeagueV4PeriodLeagueEntryDto {
 }
 
 impl LeagueV4PeriodLeagueEntryDto {
-    pub fn new(summoner_id: String, summoner_name: String, queue_type: String, league_points: i32, wins: i32, losses: i32, hot_streak: bool, veteran: bool, fresh_blood: bool, inactive: bool) -> LeagueV4PeriodLeagueEntryDto {
+    pub fn new(
+        summoner_id: String,
+        summoner_name: String,
+        queue_type: String,
+        league_points: i32,
+        wins: i32,
+        losses: i32,
+        hot_streak: bool,
+        veteran: bool,
+        fresh_blood: bool,
+        inactive: bool,
+    ) -> LeagueV4PeriodLeagueEntryDto {
         LeagueV4PeriodLeagueEntryDto {
             league_id: None,
             summoner_id,
@@ -59,5 +65,3 @@ impl LeagueV4PeriodLeagueEntryDto {
         }
     }
 }
-
-

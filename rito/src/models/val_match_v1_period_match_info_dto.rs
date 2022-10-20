@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodMatchInfoDto {
     #[serde(rename = "matchId")]
@@ -30,7 +25,19 @@ pub struct ValMatchV1PeriodMatchInfoDto {
 }
 
 impl ValMatchV1PeriodMatchInfoDto {
-    pub fn new(match_id: String, map_id: String, game_length_millis: i32, game_start_millis: i64, provisioning_flow_id: String, is_completed: bool, custom_game_name: String, queue_id: String, game_mode: String, is_ranked: bool, season_id: String) -> ValMatchV1PeriodMatchInfoDto {
+    pub fn new(
+        match_id: String,
+        map_id: String,
+        game_length_millis: i32,
+        game_start_millis: i64,
+        provisioning_flow_id: String,
+        is_completed: bool,
+        custom_game_name: String,
+        queue_id: String,
+        game_mode: String,
+        is_ranked: bool,
+        season_id: String,
+    ) -> ValMatchV1PeriodMatchInfoDto {
         ValMatchV1PeriodMatchInfoDto {
             match_id,
             map_id,
@@ -46,5 +53,3 @@ impl ValMatchV1PeriodMatchInfoDto {
         }
     }
 }
-
-

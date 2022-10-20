@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodPlayerLocationsDto {
     #[serde(rename = "puuid")]
@@ -14,7 +9,11 @@ pub struct ValMatchV1PeriodPlayerLocationsDto {
 }
 
 impl ValMatchV1PeriodPlayerLocationsDto {
-    pub fn new(puuid: String, view_radians: f32, location: crate::models::ValMatchV1PeriodLocationDto) -> ValMatchV1PeriodPlayerLocationsDto {
+    pub fn new(
+        puuid: String,
+        view_radians: f32,
+        location: crate::models::ValMatchV1PeriodLocationDto,
+    ) -> ValMatchV1PeriodPlayerLocationsDto {
         ValMatchV1PeriodPlayerLocationsDto {
             puuid,
             view_radians,
@@ -22,5 +21,3 @@ impl ValMatchV1PeriodPlayerLocationsDto {
         }
     }
 }
-
-

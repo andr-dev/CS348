@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodPerkStyleDto {
     #[serde(rename = "description")]
@@ -14,7 +9,11 @@ pub struct MatchV5PeriodPerkStyleDto {
 }
 
 impl MatchV5PeriodPerkStyleDto {
-    pub fn new(description: String, selections: Vec<crate::models::MatchV5PeriodPerkStyleSelectionDto>, style: i32) -> MatchV5PeriodPerkStyleDto {
+    pub fn new(
+        description: String,
+        selections: Vec<crate::models::MatchV5PeriodPerkStyleSelectionDto>,
+        style: i32,
+    ) -> MatchV5PeriodPerkStyleDto {
         MatchV5PeriodPerkStyleDto {
             description,
             selections,
@@ -22,5 +21,3 @@ impl MatchV5PeriodPerkStyleDto {
         }
     }
 }
-
-

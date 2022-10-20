@@ -1,14 +1,10 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolChallengesV1PeriodChallengeConfigInfoDto {
     #[serde(rename = "id")]
     pub id: i64,
     #[serde(rename = "localizedNames")]
-    pub localized_names: ::std::collections::HashMap<String, ::std::collections::HashMap<String, String>>,
+    pub localized_names:
+        ::std::collections::HashMap<String, ::std::collections::HashMap<String, String>>,
     /// DISABLED - not visible and not calculated, HIDDEN - not visible, but calculated, ENABLED - visible and calculated, ARCHIVED - visible, but not calculated
     #[serde(rename = "state")]
     pub state: State,
@@ -26,7 +22,16 @@ pub struct LolChallengesV1PeriodChallengeConfigInfoDto {
 }
 
 impl LolChallengesV1PeriodChallengeConfigInfoDto {
-    pub fn new(id: i64, localized_names: ::std::collections::HashMap<String, ::std::collections::HashMap<String, String>>, state: State, leaderboard: bool, thresholds: ::std::collections::HashMap<String, f64>) -> LolChallengesV1PeriodChallengeConfigInfoDto {
+    pub fn new(
+        id: i64,
+        localized_names: ::std::collections::HashMap<
+            String,
+            ::std::collections::HashMap<String, String>,
+        >,
+        state: State,
+        leaderboard: bool,
+        thresholds: ::std::collections::HashMap<String, f64>,
+    ) -> LolChallengesV1PeriodChallengeConfigInfoDto {
         LolChallengesV1PeriodChallengeConfigInfoDto {
             id,
             localized_names,
@@ -72,4 +77,3 @@ impl Default for Tracking {
         Self::Lifetime
     }
 }
-

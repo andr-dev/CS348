@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AccountV1PeriodAccountDto {
     #[serde(rename = "puuid")]
@@ -24,5 +19,3 @@ impl AccountV1PeriodAccountDto {
         }
     }
 }
-
-

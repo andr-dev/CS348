@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodParticipantDto {
     #[serde(rename = "assists")]
@@ -25,7 +20,10 @@ pub struct MatchV5PeriodParticipantDto {
     pub champion_transform: i32,
     #[serde(rename = "consumablesPurchased")]
     pub consumables_purchased: i32,
-    #[serde(rename = "damageDealtToBuildings", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "damageDealtToBuildings",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub damage_dealt_to_buildings: Option<i32>,
     #[serde(rename = "damageDealtToObjectives")]
     pub damage_dealt_to_objectives: i32,
@@ -224,7 +222,106 @@ pub struct MatchV5PeriodParticipantDto {
 }
 
 impl MatchV5PeriodParticipantDto {
-    pub fn new(assists: i32, baron_kills: i32, bounty_level: i32, champ_experience: i32, champ_level: i32, champion_id: i32, champion_name: String, champion_transform: i32, consumables_purchased: i32, damage_dealt_to_objectives: i32, damage_dealt_to_turrets: i32, damage_self_mitigated: i32, deaths: i32, detector_wards_placed: i32, double_kills: i32, dragon_kills: i32, first_blood_assist: bool, first_blood_kill: bool, first_tower_assist: bool, first_tower_kill: bool, game_ended_in_early_surrender: bool, game_ended_in_surrender: bool, gold_earned: i32, gold_spent: i32, individual_position: String, inhibitor_kills: i32, item0: i32, item1: i32, item2: i32, item3: i32, item4: i32, item5: i32, item6: i32, items_purchased: i32, killing_sprees: i32, kills: i32, lane: String, largest_critical_strike: i32, largest_killing_spree: i32, largest_multi_kill: i32, longest_time_spent_living: i32, magic_damage_dealt: i32, magic_damage_dealt_to_champions: i32, magic_damage_taken: i32, neutral_minions_killed: i32, nexus_kills: i32, objectives_stolen: i32, objectives_stolen_assists: i32, participant_id: i32, penta_kills: i32, perks: crate::models::MatchV5PeriodPerksDto, physical_damage_dealt: i32, physical_damage_dealt_to_champions: i32, physical_damage_taken: i32, profile_icon: i32, puuid: String, quadra_kills: i32, riot_id_name: String, riot_id_tagline: String, role: String, sight_wards_bought_in_game: i32, spell1_casts: i32, spell2_casts: i32, spell3_casts: i32, spell4_casts: i32, summoner1_casts: i32, summoner1_id: i32, summoner2_casts: i32, summoner2_id: i32, summoner_id: String, summoner_level: i32, summoner_name: String, team_early_surrendered: bool, team_id: i32, team_position: String, time_c_cing_others: i32, time_played: i32, total_damage_dealt: i32, total_damage_dealt_to_champions: i32, total_damage_shielded_on_teammates: i32, total_damage_taken: i32, total_heal: i32, total_heals_on_teammates: i32, total_minions_killed: i32, total_time_cc_dealt: i32, total_time_spent_dead: i32, total_units_healed: i32, triple_kills: i32, true_damage_dealt: i32, true_damage_dealt_to_champions: i32, true_damage_taken: i32, turret_kills: i32, unreal_kills: i32, vision_score: i32, vision_wards_bought_in_game: i32, wards_killed: i32, wards_placed: i32, win: bool) -> MatchV5PeriodParticipantDto {
+    pub fn new(
+        assists: i32,
+        baron_kills: i32,
+        bounty_level: i32,
+        champ_experience: i32,
+        champ_level: i32,
+        champion_id: i32,
+        champion_name: String,
+        champion_transform: i32,
+        consumables_purchased: i32,
+        damage_dealt_to_objectives: i32,
+        damage_dealt_to_turrets: i32,
+        damage_self_mitigated: i32,
+        deaths: i32,
+        detector_wards_placed: i32,
+        double_kills: i32,
+        dragon_kills: i32,
+        first_blood_assist: bool,
+        first_blood_kill: bool,
+        first_tower_assist: bool,
+        first_tower_kill: bool,
+        game_ended_in_early_surrender: bool,
+        game_ended_in_surrender: bool,
+        gold_earned: i32,
+        gold_spent: i32,
+        individual_position: String,
+        inhibitor_kills: i32,
+        item0: i32,
+        item1: i32,
+        item2: i32,
+        item3: i32,
+        item4: i32,
+        item5: i32,
+        item6: i32,
+        items_purchased: i32,
+        killing_sprees: i32,
+        kills: i32,
+        lane: String,
+        largest_critical_strike: i32,
+        largest_killing_spree: i32,
+        largest_multi_kill: i32,
+        longest_time_spent_living: i32,
+        magic_damage_dealt: i32,
+        magic_damage_dealt_to_champions: i32,
+        magic_damage_taken: i32,
+        neutral_minions_killed: i32,
+        nexus_kills: i32,
+        objectives_stolen: i32,
+        objectives_stolen_assists: i32,
+        participant_id: i32,
+        penta_kills: i32,
+        perks: crate::models::MatchV5PeriodPerksDto,
+        physical_damage_dealt: i32,
+        physical_damage_dealt_to_champions: i32,
+        physical_damage_taken: i32,
+        profile_icon: i32,
+        puuid: String,
+        quadra_kills: i32,
+        riot_id_name: String,
+        riot_id_tagline: String,
+        role: String,
+        sight_wards_bought_in_game: i32,
+        spell1_casts: i32,
+        spell2_casts: i32,
+        spell3_casts: i32,
+        spell4_casts: i32,
+        summoner1_casts: i32,
+        summoner1_id: i32,
+        summoner2_casts: i32,
+        summoner2_id: i32,
+        summoner_id: String,
+        summoner_level: i32,
+        summoner_name: String,
+        team_early_surrendered: bool,
+        team_id: i32,
+        team_position: String,
+        time_c_cing_others: i32,
+        time_played: i32,
+        total_damage_dealt: i32,
+        total_damage_dealt_to_champions: i32,
+        total_damage_shielded_on_teammates: i32,
+        total_damage_taken: i32,
+        total_heal: i32,
+        total_heals_on_teammates: i32,
+        total_minions_killed: i32,
+        total_time_cc_dealt: i32,
+        total_time_spent_dead: i32,
+        total_units_healed: i32,
+        triple_kills: i32,
+        true_damage_dealt: i32,
+        true_damage_dealt_to_champions: i32,
+        true_damage_taken: i32,
+        turret_kills: i32,
+        unreal_kills: i32,
+        vision_score: i32,
+        vision_wards_bought_in_game: i32,
+        wards_killed: i32,
+        wards_placed: i32,
+        win: bool,
+    ) -> MatchV5PeriodParticipantDto {
         MatchV5PeriodParticipantDto {
             assists,
             baron_kills,
@@ -335,5 +432,3 @@ impl MatchV5PeriodParticipantDto {
         }
     }
 }
-
-

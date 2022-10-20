@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodLocationDto {
     #[serde(rename = "x")]
@@ -13,11 +8,6 @@ pub struct ValMatchV1PeriodLocationDto {
 
 impl ValMatchV1PeriodLocationDto {
     pub fn new(x: i32, y: i32) -> ValMatchV1PeriodLocationDto {
-        ValMatchV1PeriodLocationDto {
-            x,
-            y,
-        }
+        ValMatchV1PeriodLocationDto { x, y }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodFeaturedGameInfo {
     /// The game mode              (Legal values:  CLASSIC,  ODIN,  ARAM,  TUTORIAL,  ONEFORALL,  ASCENSION,  FIRSTBLOOD,  KINGPORO)
@@ -40,7 +35,19 @@ pub struct SpectatorV4PeriodFeaturedGameInfo {
 }
 
 impl SpectatorV4PeriodFeaturedGameInfo {
-    pub fn new(game_mode: GameMode, game_length: i64, map_id: i64, game_type: GameType, banned_champions: Vec<crate::models::SpectatorV4PeriodBannedChampion>, game_id: i64, observers: crate::models::SpectatorV4PeriodObserver, game_queue_config_id: i64, game_start_time: i64, participants: Vec<crate::models::SpectatorV4PeriodParticipant>, platform_id: String) -> SpectatorV4PeriodFeaturedGameInfo {
+    pub fn new(
+        game_mode: GameMode,
+        game_length: i64,
+        map_id: i64,
+        game_type: GameType,
+        banned_champions: Vec<crate::models::SpectatorV4PeriodBannedChampion>,
+        game_id: i64,
+        observers: crate::models::SpectatorV4PeriodObserver,
+        game_queue_config_id: i64,
+        game_start_time: i64,
+        participants: Vec<crate::models::SpectatorV4PeriodParticipant>,
+        platform_id: String,
+    ) -> SpectatorV4PeriodFeaturedGameInfo {
         SpectatorV4PeriodFeaturedGameInfo {
             game_mode,
             game_length,
@@ -99,4 +106,3 @@ impl Default for GameType {
         Self::CustomGame
     }
 }
-

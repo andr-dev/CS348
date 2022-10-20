@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LorMatchV1PeriodInfoDto {
     /// (Legal values:  Constructed,  Expeditions,  Tutorial)
@@ -23,7 +18,14 @@ pub struct LorMatchV1PeriodInfoDto {
 }
 
 impl LorMatchV1PeriodInfoDto {
-    pub fn new(game_mode: GameMode, game_type: GameType, game_start_time_utc: String, game_version: String, players: Vec<crate::models::LorMatchV1PeriodPlayerDto>, total_turn_count: i32) -> LorMatchV1PeriodInfoDto {
+    pub fn new(
+        game_mode: GameMode,
+        game_type: GameType,
+        game_start_time_utc: String,
+        game_version: String,
+        players: Vec<crate::models::LorMatchV1PeriodPlayerDto>,
+        total_turn_count: i32,
+    ) -> LorMatchV1PeriodInfoDto {
         LorMatchV1PeriodInfoDto {
             game_mode,
             game_type,
@@ -75,4 +77,3 @@ impl Default for GameType {
         Self::Ranked
     }
 }
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
     #[serde(rename = "basic")]
@@ -26,7 +21,17 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
 }
 
 impl MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
-    pub fn new(basic: bool, magic_damage: i32, name: String, participant_id: i32, physical_damage: i32, spell_name: String, spell_slot: i32, true_damage: i32, r#type: String) -> MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
+    pub fn new(
+        basic: bool,
+        magic_damage: i32,
+        name: String,
+        participant_id: i32,
+        physical_damage: i32,
+        spell_name: String,
+        spell_slot: i32,
+        true_damage: i32,
+        r#type: String,
+    ) -> MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
         MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
             basic,
             magic_damage,
@@ -40,5 +45,3 @@ impl MatchV5PeriodMatchTimelineInfoFrameEventVictimDamageDealt {
         }
     }
 }
-
-

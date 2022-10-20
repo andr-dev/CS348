@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodCurrentGameParticipant {
     /// The ID of the champion played by this participant
@@ -37,7 +32,17 @@ pub struct SpectatorV4PeriodCurrentGameParticipant {
 }
 
 impl SpectatorV4PeriodCurrentGameParticipant {
-    pub fn new(champion_id: i64, profile_icon_id: i64, bot: bool, team_id: i64, summoner_name: String, summoner_id: String, spell1_id: i64, spell2_id: i64, game_customization_objects: Vec<crate::models::SpectatorV4PeriodGameCustomizationObject>) -> SpectatorV4PeriodCurrentGameParticipant {
+    pub fn new(
+        champion_id: i64,
+        profile_icon_id: i64,
+        bot: bool,
+        team_id: i64,
+        summoner_name: String,
+        summoner_id: String,
+        spell1_id: i64,
+        spell2_id: i64,
+        game_customization_objects: Vec<crate::models::SpectatorV4PeriodGameCustomizationObject>,
+    ) -> SpectatorV4PeriodCurrentGameParticipant {
         SpectatorV4PeriodCurrentGameParticipant {
             champion_id,
             perks: None,
@@ -52,5 +57,3 @@ impl SpectatorV4PeriodCurrentGameParticipant {
         }
     }
 }
-
-

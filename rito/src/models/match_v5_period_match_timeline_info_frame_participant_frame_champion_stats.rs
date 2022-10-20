@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
     #[serde(rename = "abilityHaste", skip_serializing_if = "Option::is_none")]
@@ -58,7 +53,30 @@ pub struct MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
 }
 
 impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
-    pub fn new(ability_power: i32, armor: i32, armor_pen: i32, armor_pen_percent: i32, attack_damage: i32, attack_speed: i32, bonus_armor_pen_percent: i32, bonus_magic_pen_percent: i32, cc_reduction: i32, cooldown_reduction: i32, health: i32, health_max: i32, health_regen: i32, lifesteal: i32, magic_pen: i32, magic_pen_percent: i32, magic_resist: i32, movement_speed: i32, power: i32, power_max: i32, power_regen: i32, spell_vamp: i32) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
+    pub fn new(
+        ability_power: i32,
+        armor: i32,
+        armor_pen: i32,
+        armor_pen_percent: i32,
+        attack_damage: i32,
+        attack_speed: i32,
+        bonus_armor_pen_percent: i32,
+        bonus_magic_pen_percent: i32,
+        cc_reduction: i32,
+        cooldown_reduction: i32,
+        health: i32,
+        health_max: i32,
+        health_regen: i32,
+        lifesteal: i32,
+        magic_pen: i32,
+        magic_pen_percent: i32,
+        magic_resist: i32,
+        movement_speed: i32,
+        power: i32,
+        power_max: i32,
+        power_regen: i32,
+        spell_vamp: i32,
+    ) -> MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
         MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
             ability_haste: None,
             ability_power,
@@ -88,5 +106,3 @@ impl MatchV5PeriodMatchTimelineInfoFrameParticipantFrameChampionStats {
         }
     }
 }
-
-

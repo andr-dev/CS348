@@ -1,8 +1,4 @@
-
-
 /// SummonerV4PeriodSummonerDto : represents a summoner
-
-
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SummonerV4PeriodSummonerDto {
@@ -31,7 +27,15 @@ pub struct SummonerV4PeriodSummonerDto {
 
 impl SummonerV4PeriodSummonerDto {
     /// represents a summoner
-    pub fn new(account_id: String, profile_icon_id: i32, revision_date: i64, name: String, id: String, puuid: String, summoner_level: i64) -> SummonerV4PeriodSummonerDto {
+    pub fn new(
+        account_id: String,
+        profile_icon_id: i32,
+        revision_date: i64,
+        name: String,
+        id: String,
+        puuid: String,
+        summoner_level: i64,
+    ) -> SummonerV4PeriodSummonerDto {
         SummonerV4PeriodSummonerDto {
             account_id,
             profile_icon_id,
@@ -43,5 +47,3 @@ impl SummonerV4PeriodSummonerDto {
         }
     }
 }
-
-

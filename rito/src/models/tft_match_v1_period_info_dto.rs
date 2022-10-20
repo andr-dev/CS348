@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodInfoDto {
     /// Unix timestamp.
@@ -28,7 +23,14 @@ pub struct TftMatchV1PeriodInfoDto {
 }
 
 impl TftMatchV1PeriodInfoDto {
-    pub fn new(game_datetime: i64, game_length: f32, game_version: String, participants: Vec<crate::models::TftMatchV1PeriodParticipantDto>, queue_id: i32, tft_set_number: i32) -> TftMatchV1PeriodInfoDto {
+    pub fn new(
+        game_datetime: i64,
+        game_length: f32,
+        game_version: String,
+        participants: Vec<crate::models::TftMatchV1PeriodParticipantDto>,
+        queue_id: i32,
+        tft_set_number: i32,
+    ) -> TftMatchV1PeriodInfoDto {
         TftMatchV1PeriodInfoDto {
             game_datetime,
             game_length,
@@ -40,5 +42,3 @@ impl TftMatchV1PeriodInfoDto {
         }
     }
 }
-
-

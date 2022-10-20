@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodRoundResultDto {
     #[serde(rename = "roundNum")]
@@ -40,7 +35,23 @@ pub struct ValMatchV1PeriodRoundResultDto {
 }
 
 impl ValMatchV1PeriodRoundResultDto {
-    pub fn new(round_num: i32, round_result: String, round_ceremony: String, winning_team: String, bomb_planter: String, bomb_defuser: String, plant_round_time: i32, plant_player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>, plant_location: crate::models::ValMatchV1PeriodLocationDto, plant_site: String, defuse_round_time: i32, defuse_player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>, defuse_location: crate::models::ValMatchV1PeriodLocationDto, player_stats: Vec<crate::models::ValMatchV1PeriodPlayerRoundStatsDto>, round_result_code: String) -> ValMatchV1PeriodRoundResultDto {
+    pub fn new(
+        round_num: i32,
+        round_result: String,
+        round_ceremony: String,
+        winning_team: String,
+        bomb_planter: String,
+        bomb_defuser: String,
+        plant_round_time: i32,
+        plant_player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>,
+        plant_location: crate::models::ValMatchV1PeriodLocationDto,
+        plant_site: String,
+        defuse_round_time: i32,
+        defuse_player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>,
+        defuse_location: crate::models::ValMatchV1PeriodLocationDto,
+        player_stats: Vec<crate::models::ValMatchV1PeriodPlayerRoundStatsDto>,
+        round_result_code: String,
+    ) -> ValMatchV1PeriodRoundResultDto {
         ValMatchV1PeriodRoundResultDto {
             round_num,
             round_result,
@@ -60,5 +71,3 @@ impl ValMatchV1PeriodRoundResultDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodKillDto {
     #[serde(rename = "timeSinceGameStartMillis")]
@@ -27,7 +22,16 @@ pub struct ValMatchV1PeriodKillDto {
 }
 
 impl ValMatchV1PeriodKillDto {
-    pub fn new(time_since_game_start_millis: i32, time_since_round_start_millis: i32, killer: String, victim: String, victim_location: crate::models::ValMatchV1PeriodLocationDto, assistants: Vec<String>, player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>, finishing_damage: crate::models::ValMatchV1PeriodFinishingDamageDto) -> ValMatchV1PeriodKillDto {
+    pub fn new(
+        time_since_game_start_millis: i32,
+        time_since_round_start_millis: i32,
+        killer: String,
+        victim: String,
+        victim_location: crate::models::ValMatchV1PeriodLocationDto,
+        assistants: Vec<String>,
+        player_locations: Vec<crate::models::ValMatchV1PeriodPlayerLocationsDto>,
+        finishing_damage: crate::models::ValMatchV1PeriodFinishingDamageDto,
+    ) -> ValMatchV1PeriodKillDto {
         ValMatchV1PeriodKillDto {
             time_since_game_start_millis,
             time_since_round_start_millis,
@@ -40,5 +44,3 @@ impl ValMatchV1PeriodKillDto {
         }
     }
 }
-
-

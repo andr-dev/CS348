@@ -1,11 +1,7 @@
-
-
-
 use reqwest;
 
+use super::{configuration, Error};
 use crate::apis::ResponseContent;
-use super::{Error, configuration};
-
 
 /// struct for typed errors of method [`val_content_v1_period_get_content`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -25,18 +21,25 @@ pub enum ValContentV1PeriodGetContentError {
     UnknownValue(serde_json::Value),
 }
 
-
 /// Get content optionally filtered by locale
-pub async fn val_content_v1_period_get_content(configuration: &configuration::Configuration, locale: Option<&str>) -> Result<crate::models::ValContentV1PeriodContentDto, Error<ValContentV1PeriodGetContentError>> {
+pub async fn val_content_v1_period_get_content(
+    configuration: &configuration::Configuration,
+    locale: Option<&str>,
+) -> Result<crate::models::ValContentV1PeriodContentDto, Error<ValContentV1PeriodGetContentError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/val/content/v1/contents", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/val/content/v1/contents",
+        local_var_configuration.base_path
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = locale {
-        local_var_req_builder = local_var_req_builder.query(&[("locale", &local_var_str.to_string())]);
+        local_var_req_builder =
+            local_var_req_builder.query(&[("locale", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -47,7 +50,8 @@ pub async fn val_content_v1_period_get_content(configuration: &configuration::Co
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -67,9 +71,13 @@ pub async fn val_content_v1_period_get_content(configuration: &configuration::Co
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ValContentV1PeriodGetContentError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ValContentV1PeriodGetContentError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
-

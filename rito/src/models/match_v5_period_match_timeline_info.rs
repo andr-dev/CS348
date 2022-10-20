@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodMatchTimelineInfo {
     #[serde(rename = "frameInterval")]
@@ -16,7 +11,10 @@ pub struct MatchV5PeriodMatchTimelineInfo {
 }
 
 impl MatchV5PeriodMatchTimelineInfo {
-    pub fn new(frame_interval: i32, frames: Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrame>) -> MatchV5PeriodMatchTimelineInfo {
+    pub fn new(
+        frame_interval: i32,
+        frames: Vec<crate::models::MatchV5PeriodMatchTimelineInfoFrame>,
+    ) -> MatchV5PeriodMatchTimelineInfo {
         MatchV5PeriodMatchTimelineInfo {
             frame_interval,
             frames,
@@ -25,5 +23,3 @@ impl MatchV5PeriodMatchTimelineInfo {
         }
     }
 }
-
-

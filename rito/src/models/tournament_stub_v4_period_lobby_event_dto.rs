@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentStubV4PeriodLobbyEventDto {
     /// The summonerId that triggered the event (Encrypted)
@@ -17,7 +12,11 @@ pub struct TournamentStubV4PeriodLobbyEventDto {
 }
 
 impl TournamentStubV4PeriodLobbyEventDto {
-    pub fn new(summoner_id: String, event_type: String, timestamp: String) -> TournamentStubV4PeriodLobbyEventDto {
+    pub fn new(
+        summoner_id: String,
+        event_type: String,
+        timestamp: String,
+    ) -> TournamentStubV4PeriodLobbyEventDto {
         TournamentStubV4PeriodLobbyEventDto {
             summoner_id,
             event_type,
@@ -25,5 +24,3 @@ impl TournamentStubV4PeriodLobbyEventDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ClashV1PeriodPlayerDto {
     #[serde(rename = "summonerId")]
@@ -66,4 +61,3 @@ impl Default for Role {
         Self::Captain
     }
 }
-

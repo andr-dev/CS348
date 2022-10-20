@@ -1,11 +1,7 @@
-
-
-
 use reqwest;
 
+use super::{configuration, Error};
 use crate::apis::ResponseContent;
-use super::{Error, configuration};
-
 
 /// struct for typed errors of method [`clash_v1_period_get_players_by_summoner`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -97,15 +93,23 @@ pub enum ClashV1PeriodGetTournamentsError {
     UnknownValue(serde_json::Value),
 }
 
-
 /// Get players by summoner ID. ## Implementation Notes This endpoint returns a list of active Clash players for a given summoner ID. If a summoner registers for multiple tournaments at the same time (e.g., Saturday and Sunday) then both registrations would appear in this list.
-pub async fn clash_v1_period_get_players_by_summoner(configuration: &configuration::Configuration, summoner_id: &str) -> Result<Vec<crate::models::ClashV1PeriodPlayerDto>, Error<ClashV1PeriodGetPlayersBySummonerError>> {
+pub async fn clash_v1_period_get_players_by_summoner(
+    configuration: &configuration::Configuration,
+    summoner_id: &str,
+) -> Result<Vec<crate::models::ClashV1PeriodPlayerDto>, Error<ClashV1PeriodGetPlayersBySummonerError>>
+{
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/lol/clash/v1/players/by-summoner/{summonerId}", local_var_configuration.base_path, summonerId=crate::apis::urlencode(summoner_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/lol/clash/v1/players/by-summoner/{summonerId}",
+        local_var_configuration.base_path,
+        summonerId = crate::apis::urlencode(summoner_id)
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -116,7 +120,8 @@ pub async fn clash_v1_period_get_players_by_summoner(configuration: &configurati
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -136,20 +141,33 @@ pub async fn clash_v1_period_get_players_by_summoner(configuration: &configurati
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ClashV1PeriodGetPlayersBySummonerError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ClashV1PeriodGetPlayersBySummonerError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
 /// Get team by ID.
-pub async fn clash_v1_period_get_team_by_id(configuration: &configuration::Configuration, team_id: &str) -> Result<crate::models::ClashV1PeriodTeamDto, Error<ClashV1PeriodGetTeamByIdError>> {
+pub async fn clash_v1_period_get_team_by_id(
+    configuration: &configuration::Configuration,
+    team_id: &str,
+) -> Result<crate::models::ClashV1PeriodTeamDto, Error<ClashV1PeriodGetTeamByIdError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/lol/clash/v1/teams/{teamId}", local_var_configuration.base_path, teamId=crate::apis::urlencode(team_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/lol/clash/v1/teams/{teamId}",
+        local_var_configuration.base_path,
+        teamId = crate::apis::urlencode(team_id)
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -160,7 +178,8 @@ pub async fn clash_v1_period_get_team_by_id(configuration: &configuration::Confi
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -180,20 +199,33 @@ pub async fn clash_v1_period_get_team_by_id(configuration: &configuration::Confi
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ClashV1PeriodGetTeamByIdError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ClashV1PeriodGetTeamByIdError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
 /// Get tournament by ID.
-pub async fn clash_v1_period_get_tournament_by_id(configuration: &configuration::Configuration, tournament_id: i32) -> Result<crate::models::ClashV1PeriodTournamentDto, Error<ClashV1PeriodGetTournamentByIdError>> {
+pub async fn clash_v1_period_get_tournament_by_id(
+    configuration: &configuration::Configuration,
+    tournament_id: i32,
+) -> Result<crate::models::ClashV1PeriodTournamentDto, Error<ClashV1PeriodGetTournamentByIdError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/lol/clash/v1/tournaments/{tournamentId}", local_var_configuration.base_path, tournamentId=tournament_id);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/lol/clash/v1/tournaments/{tournamentId}",
+        local_var_configuration.base_path,
+        tournamentId = tournament_id
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -204,7 +236,8 @@ pub async fn clash_v1_period_get_tournament_by_id(configuration: &configuration:
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -224,20 +257,34 @@ pub async fn clash_v1_period_get_tournament_by_id(configuration: &configuration:
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ClashV1PeriodGetTournamentByIdError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ClashV1PeriodGetTournamentByIdError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
 /// Get tournament by team ID.
-pub async fn clash_v1_period_get_tournament_by_team(configuration: &configuration::Configuration, team_id: &str) -> Result<crate::models::ClashV1PeriodTournamentDto, Error<ClashV1PeriodGetTournamentByTeamError>> {
+pub async fn clash_v1_period_get_tournament_by_team(
+    configuration: &configuration::Configuration,
+    team_id: &str,
+) -> Result<crate::models::ClashV1PeriodTournamentDto, Error<ClashV1PeriodGetTournamentByTeamError>>
+{
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/lol/clash/v1/tournaments/by-team/{teamId}", local_var_configuration.base_path, teamId=crate::apis::urlencode(team_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/lol/clash/v1/tournaments/by-team/{teamId}",
+        local_var_configuration.base_path,
+        teamId = crate::apis::urlencode(team_id)
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -248,7 +295,8 @@ pub async fn clash_v1_period_get_tournament_by_team(configuration: &configuratio
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -268,20 +316,32 @@ pub async fn clash_v1_period_get_tournament_by_team(configuration: &configuratio
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ClashV1PeriodGetTournamentByTeamError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ClashV1PeriodGetTournamentByTeamError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
 /// Get all active or upcoming tournaments.
-pub async fn clash_v1_period_get_tournaments(configuration: &configuration::Configuration, ) -> Result<Vec<crate::models::ClashV1PeriodTournamentDto>, Error<ClashV1PeriodGetTournamentsError>> {
+pub async fn clash_v1_period_get_tournaments(
+    configuration: &configuration::Configuration,
+) -> Result<Vec<crate::models::ClashV1PeriodTournamentDto>, Error<ClashV1PeriodGetTournamentsError>>
+{
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/lol/clash/v1/tournaments", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!(
+        "{}/lol/clash/v1/tournaments",
+        local_var_configuration.base_path
+    );
+    let mut local_var_req_builder =
+        local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -292,7 +352,8 @@ pub async fn clash_v1_period_get_tournaments(configuration: &configuration::Conf
         local_var_req_builder = local_var_req_builder.query(&[("api_key", local_var_value)]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+        local_var_req_builder =
+            local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -312,9 +373,13 @@ pub async fn clash_v1_period_get_tournaments(configuration: &configuration::Conf
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<ClashV1PeriodGetTournamentsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        let local_var_entity: Option<ClashV1PeriodGetTournamentsError> =
+            serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent {
+            status: local_var_status,
+            content: local_var_content,
+            entity: local_var_entity,
+        };
         Err(Error::ResponseError(local_var_error))
     }
 }
-

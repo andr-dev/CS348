@@ -1,5 +1,3 @@
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV4PeriodStatusDto {
     #[serde(rename = "id")]

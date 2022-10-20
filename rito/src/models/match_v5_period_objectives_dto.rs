@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodObjectivesDto {
     #[serde(rename = "baron")]
@@ -20,7 +15,14 @@ pub struct MatchV5PeriodObjectivesDto {
 }
 
 impl MatchV5PeriodObjectivesDto {
-    pub fn new(baron: crate::models::MatchV5PeriodObjectiveDto, champion: crate::models::MatchV5PeriodObjectiveDto, dragon: crate::models::MatchV5PeriodObjectiveDto, inhibitor: crate::models::MatchV5PeriodObjectiveDto, rift_herald: crate::models::MatchV5PeriodObjectiveDto, tower: crate::models::MatchV5PeriodObjectiveDto) -> MatchV5PeriodObjectivesDto {
+    pub fn new(
+        baron: crate::models::MatchV5PeriodObjectiveDto,
+        champion: crate::models::MatchV5PeriodObjectiveDto,
+        dragon: crate::models::MatchV5PeriodObjectiveDto,
+        inhibitor: crate::models::MatchV5PeriodObjectiveDto,
+        rift_herald: crate::models::MatchV5PeriodObjectiveDto,
+        tower: crate::models::MatchV5PeriodObjectiveDto,
+    ) -> MatchV5PeriodObjectivesDto {
         MatchV5PeriodObjectivesDto {
             baron: Box::new(baron),
             champion: Box::new(champion),
@@ -31,5 +33,3 @@ impl MatchV5PeriodObjectivesDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodCompanionDto {
     #[serde(rename = "skin_ID")]
@@ -22,5 +17,3 @@ impl TftMatchV1PeriodCompanionDto {
         }
     }
 }
-
-

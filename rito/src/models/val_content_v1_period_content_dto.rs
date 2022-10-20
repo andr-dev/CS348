@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValContentV1PeriodContentDto {
     #[serde(rename = "version")]
@@ -40,7 +35,23 @@ pub struct ValContentV1PeriodContentDto {
 }
 
 impl ValContentV1PeriodContentDto {
-    pub fn new(version: String, characters: Vec<crate::models::ValContentV1PeriodContentItemDto>, maps: Vec<crate::models::ValContentV1PeriodContentItemDto>, chromas: Vec<crate::models::ValContentV1PeriodContentItemDto>, skins: Vec<crate::models::ValContentV1PeriodContentItemDto>, skin_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>, equips: Vec<crate::models::ValContentV1PeriodContentItemDto>, game_modes: Vec<crate::models::ValContentV1PeriodContentItemDto>, sprays: Vec<crate::models::ValContentV1PeriodContentItemDto>, spray_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>, charms: Vec<crate::models::ValContentV1PeriodContentItemDto>, charm_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>, player_cards: Vec<crate::models::ValContentV1PeriodContentItemDto>, player_titles: Vec<crate::models::ValContentV1PeriodContentItemDto>, acts: Vec<crate::models::ValContentV1PeriodActDto>) -> ValContentV1PeriodContentDto {
+    pub fn new(
+        version: String,
+        characters: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        maps: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        chromas: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        skins: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        skin_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        equips: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        game_modes: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        sprays: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        spray_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        charms: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        charm_levels: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        player_cards: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        player_titles: Vec<crate::models::ValContentV1PeriodContentItemDto>,
+        acts: Vec<crate::models::ValContentV1PeriodActDto>,
+    ) -> ValContentV1PeriodContentDto {
         ValContentV1PeriodContentDto {
             version,
             characters,
@@ -61,5 +72,3 @@ impl ValContentV1PeriodContentDto {
         }
     }
 }
-
-

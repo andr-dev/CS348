@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV4PeriodContentDto {
     #[serde(rename = "locale")]
@@ -13,11 +8,6 @@ pub struct LolStatusV4PeriodContentDto {
 
 impl LolStatusV4PeriodContentDto {
     pub fn new(locale: String, content: String) -> LolStatusV4PeriodContentDto {
-        LolStatusV4PeriodContentDto {
-            locale,
-            content,
-        }
+        LolStatusV4PeriodContentDto { locale, content }
     }
 }
-
-

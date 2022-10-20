@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValContentV1PeriodActDto {
     #[serde(rename = "name")]
@@ -31,5 +26,3 @@ impl ValContentV1PeriodActDto {
         }
     }
 }
-
-

@@ -1,8 +1,4 @@
-
-
 /// TftSummonerV1PeriodSummonerDto : represents a summoner
-
-
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftSummonerV1PeriodSummonerDto {
@@ -31,7 +27,15 @@ pub struct TftSummonerV1PeriodSummonerDto {
 
 impl TftSummonerV1PeriodSummonerDto {
     /// represents a summoner
-    pub fn new(account_id: String, profile_icon_id: i32, revision_date: i64, name: String, id: String, puuid: String, summoner_level: i64) -> TftSummonerV1PeriodSummonerDto {
+    pub fn new(
+        account_id: String,
+        profile_icon_id: i32,
+        revision_date: i64,
+        name: String,
+        id: String,
+        puuid: String,
+        summoner_level: i64,
+    ) -> TftSummonerV1PeriodSummonerDto {
         TftSummonerV1PeriodSummonerDto {
             account_id,
             profile_icon_id,
@@ -43,5 +47,3 @@ impl TftSummonerV1PeriodSummonerDto {
         }
     }
 }
-
-

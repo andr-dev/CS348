@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentStubV4PeriodTournamentCodeParameters {
     /// Optional list of encrypted summonerIds in order to validate the players eligible to join the lobby. NOTE: We currently do not enforce participants at the team level, but rather the aggregate of teamOne and teamTwo. We may add the ability to enforce at the team level in the future.
@@ -26,7 +21,12 @@ pub struct TournamentStubV4PeriodTournamentCodeParameters {
 }
 
 impl TournamentStubV4PeriodTournamentCodeParameters {
-    pub fn new(team_size: i32, pick_type: PickType, map_type: MapType, spectator_type: SpectatorType) -> TournamentStubV4PeriodTournamentCodeParameters {
+    pub fn new(
+        team_size: i32,
+        pick_type: PickType,
+        map_type: MapType,
+        spectator_type: SpectatorType,
+    ) -> TournamentStubV4PeriodTournamentCodeParameters {
         TournamentStubV4PeriodTournamentCodeParameters {
             allowed_summoner_ids: None,
             metadata: None,
@@ -88,4 +88,3 @@ impl Default for SpectatorType {
         Self::None
     }
 }
-

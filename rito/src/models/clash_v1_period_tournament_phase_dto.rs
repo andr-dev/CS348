@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ClashV1PeriodTournamentPhaseDto {
     #[serde(rename = "id")]
@@ -16,7 +11,12 @@ pub struct ClashV1PeriodTournamentPhaseDto {
 }
 
 impl ClashV1PeriodTournamentPhaseDto {
-    pub fn new(id: i32, registration_time: i64, start_time: i64, cancelled: bool) -> ClashV1PeriodTournamentPhaseDto {
+    pub fn new(
+        id: i32,
+        registration_time: i64,
+        start_time: i64,
+        cancelled: bool,
+    ) -> ClashV1PeriodTournamentPhaseDto {
         ClashV1PeriodTournamentPhaseDto {
             id,
             registration_time,
@@ -25,5 +25,3 @@ impl ClashV1PeriodTournamentPhaseDto {
         }
     }
 }
-
-

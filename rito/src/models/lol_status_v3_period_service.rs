@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV3PeriodService {
     #[serde(rename = "name")]
@@ -16,7 +11,12 @@ pub struct LolStatusV3PeriodService {
 }
 
 impl LolStatusV3PeriodService {
-    pub fn new(name: String, slug: String, status: String, incidents: Vec<crate::models::LolStatusV3PeriodIncident>) -> LolStatusV3PeriodService {
+    pub fn new(
+        name: String,
+        slug: String,
+        status: String,
+        incidents: Vec<crate::models::LolStatusV3PeriodIncident>,
+    ) -> LolStatusV3PeriodService {
         LolStatusV3PeriodService {
             name,
             slug,
@@ -25,5 +25,3 @@ impl LolStatusV3PeriodService {
         }
     }
 }
-
-

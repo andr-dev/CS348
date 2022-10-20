@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftStatusV1PeriodContentDto {
     #[serde(rename = "locale")]
@@ -13,11 +8,6 @@ pub struct TftStatusV1PeriodContentDto {
 
 impl TftStatusV1PeriodContentDto {
     pub fn new(locale: String, content: String) -> TftStatusV1PeriodContentDto {
-        TftStatusV1PeriodContentDto {
-            locale,
-            content,
-        }
+        TftStatusV1PeriodContentDto { locale, content }
     }
 }
-
-

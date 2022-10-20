@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ClashV1PeriodTournamentDto {
     #[serde(rename = "id")]
@@ -19,7 +14,13 @@ pub struct ClashV1PeriodTournamentDto {
 }
 
 impl ClashV1PeriodTournamentDto {
-    pub fn new(id: i32, theme_id: i32, name_key: String, name_key_secondary: String, schedule: Vec<crate::models::ClashV1PeriodTournamentPhaseDto>) -> ClashV1PeriodTournamentDto {
+    pub fn new(
+        id: i32,
+        theme_id: i32,
+        name_key: String,
+        name_key_secondary: String,
+        schedule: Vec<crate::models::ClashV1PeriodTournamentPhaseDto>,
+    ) -> ClashV1PeriodTournamentDto {
         ClashV1PeriodTournamentDto {
             id,
             theme_id,
@@ -29,5 +30,3 @@ impl ClashV1PeriodTournamentDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodEconomyDto {
     #[serde(rename = "loadoutValue")]
@@ -18,7 +13,13 @@ pub struct ValMatchV1PeriodEconomyDto {
 }
 
 impl ValMatchV1PeriodEconomyDto {
-    pub fn new(loadout_value: i32, weapon: String, armor: String, remaining: i32, spent: i32) -> ValMatchV1PeriodEconomyDto {
+    pub fn new(
+        loadout_value: i32,
+        weapon: String,
+        armor: String,
+        remaining: i32,
+        spent: i32,
+    ) -> ValMatchV1PeriodEconomyDto {
         ValMatchV1PeriodEconomyDto {
             loadout_value,
             weapon,
@@ -28,5 +29,3 @@ impl ValMatchV1PeriodEconomyDto {
         }
     }
 }
-
-

@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodTeamDto {
     #[serde(rename = "bans")]
@@ -16,7 +11,12 @@ pub struct MatchV5PeriodTeamDto {
 }
 
 impl MatchV5PeriodTeamDto {
-    pub fn new(bans: Vec<crate::models::MatchV5PeriodBanDto>, objectives: crate::models::MatchV5PeriodObjectivesDto, team_id: i32, win: bool) -> MatchV5PeriodTeamDto {
+    pub fn new(
+        bans: Vec<crate::models::MatchV5PeriodBanDto>,
+        objectives: crate::models::MatchV5PeriodObjectivesDto,
+        team_id: i32,
+        win: bool,
+    ) -> MatchV5PeriodTeamDto {
         MatchV5PeriodTeamDto {
             bans,
             objectives: Box::new(objectives),
@@ -25,5 +25,3 @@ impl MatchV5PeriodTeamDto {
         }
     }
 }
-
-

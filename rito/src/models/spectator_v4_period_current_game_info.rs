@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodCurrentGameInfo {
     /// The ID of the game
@@ -40,7 +35,18 @@ pub struct SpectatorV4PeriodCurrentGameInfo {
 }
 
 impl SpectatorV4PeriodCurrentGameInfo {
-    pub fn new(game_id: i64, game_type: String, game_start_time: i64, map_id: i64, game_length: i64, platform_id: String, game_mode: String, banned_champions: Vec<crate::models::SpectatorV4PeriodBannedChampion>, observers: crate::models::SpectatorV4PeriodObserver, participants: Vec<crate::models::SpectatorV4PeriodCurrentGameParticipant>) -> SpectatorV4PeriodCurrentGameInfo {
+    pub fn new(
+        game_id: i64,
+        game_type: String,
+        game_start_time: i64,
+        map_id: i64,
+        game_length: i64,
+        platform_id: String,
+        game_mode: String,
+        banned_champions: Vec<crate::models::SpectatorV4PeriodBannedChampion>,
+        observers: crate::models::SpectatorV4PeriodObserver,
+        participants: Vec<crate::models::SpectatorV4PeriodCurrentGameParticipant>,
+    ) -> SpectatorV4PeriodCurrentGameInfo {
         SpectatorV4PeriodCurrentGameInfo {
             game_id,
             game_type,
@@ -56,5 +62,3 @@ impl SpectatorV4PeriodCurrentGameInfo {
         }
     }
 }
-
-

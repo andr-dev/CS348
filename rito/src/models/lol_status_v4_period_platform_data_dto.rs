@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV4PeriodPlatformDataDto {
     #[serde(rename = "id")]
@@ -18,7 +13,13 @@ pub struct LolStatusV4PeriodPlatformDataDto {
 }
 
 impl LolStatusV4PeriodPlatformDataDto {
-    pub fn new(id: String, name: String, locales: Vec<String>, maintenances: Vec<crate::models::LolStatusV4PeriodStatusDto>, incidents: Vec<crate::models::LolStatusV4PeriodStatusDto>) -> LolStatusV4PeriodPlatformDataDto {
+    pub fn new(
+        id: String,
+        name: String,
+        locales: Vec<String>,
+        maintenances: Vec<crate::models::LolStatusV4PeriodStatusDto>,
+        incidents: Vec<crate::models::LolStatusV4PeriodStatusDto>,
+    ) -> LolStatusV4PeriodPlatformDataDto {
         LolStatusV4PeriodPlatformDataDto {
             id,
             name,
@@ -28,5 +29,3 @@ impl LolStatusV4PeriodPlatformDataDto {
         }
     }
 }
-
-

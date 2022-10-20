@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ChampionV3PeriodChampionInfo {
     #[serde(rename = "maxNewPlayerLevel")]
@@ -14,7 +9,11 @@ pub struct ChampionV3PeriodChampionInfo {
 }
 
 impl ChampionV3PeriodChampionInfo {
-    pub fn new(max_new_player_level: i32, free_champion_ids_for_new_players: Vec<i32>, free_champion_ids: Vec<i32>) -> ChampionV3PeriodChampionInfo {
+    pub fn new(
+        max_new_player_level: i32,
+        free_champion_ids_for_new_players: Vec<i32>,
+        free_champion_ids: Vec<i32>,
+    ) -> ChampionV3PeriodChampionInfo {
         ChampionV3PeriodChampionInfo {
             max_new_player_level,
             free_champion_ids_for_new_players,
@@ -22,5 +21,3 @@ impl ChampionV3PeriodChampionInfo {
         }
     }
 }
-
-

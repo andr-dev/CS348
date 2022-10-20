@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodMatchDto {
     #[serde(rename = "metadata")]
@@ -12,12 +7,13 @@ pub struct TftMatchV1PeriodMatchDto {
 }
 
 impl TftMatchV1PeriodMatchDto {
-    pub fn new(metadata: crate::models::TftMatchV1PeriodMetadataDto, info: crate::models::TftMatchV1PeriodInfoDto) -> TftMatchV1PeriodMatchDto {
+    pub fn new(
+        metadata: crate::models::TftMatchV1PeriodMetadataDto,
+        info: crate::models::TftMatchV1PeriodInfoDto,
+    ) -> TftMatchV1PeriodMatchDto {
         TftMatchV1PeriodMatchDto {
             metadata: Box::new(metadata),
             info: Box::new(info),
         }
     }
 }
-
-

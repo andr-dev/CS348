@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftMatchV1PeriodMetadataDto {
     /// Match data version.
@@ -17,7 +12,11 @@ pub struct TftMatchV1PeriodMetadataDto {
 }
 
 impl TftMatchV1PeriodMetadataDto {
-    pub fn new(data_version: String, match_id: String, participants: Vec<String>) -> TftMatchV1PeriodMetadataDto {
+    pub fn new(
+        data_version: String,
+        match_id: String,
+        participants: Vec<String>,
+    ) -> TftMatchV1PeriodMetadataDto {
         TftMatchV1PeriodMetadataDto {
             data_version,
             match_id,
@@ -25,5 +24,3 @@ impl TftMatchV1PeriodMetadataDto {
         }
     }
 }
-
-

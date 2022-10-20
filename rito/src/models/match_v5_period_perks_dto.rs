@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodPerksDto {
     #[serde(rename = "statPerks")]
@@ -12,12 +7,13 @@ pub struct MatchV5PeriodPerksDto {
 }
 
 impl MatchV5PeriodPerksDto {
-    pub fn new(stat_perks: crate::models::MatchV5PeriodPerkStatsDto, styles: Vec<crate::models::MatchV5PeriodPerkStyleDto>) -> MatchV5PeriodPerksDto {
+    pub fn new(
+        stat_perks: crate::models::MatchV5PeriodPerkStatsDto,
+        styles: Vec<crate::models::MatchV5PeriodPerkStyleDto>,
+    ) -> MatchV5PeriodPerksDto {
         MatchV5PeriodPerksDto {
             stat_perks: Box::new(stat_perks),
             styles,
         }
     }
 }
-
-

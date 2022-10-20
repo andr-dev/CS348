@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodBanDto {
     #[serde(rename = "championId")]
@@ -19,5 +14,3 @@ impl MatchV5PeriodBanDto {
         }
     }
 }
-
-

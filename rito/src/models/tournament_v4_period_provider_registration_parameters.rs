@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentV4PeriodProviderRegistrationParameters {
     /// The region in which the provider will be running tournaments.              (Legal values:  BR,  EUNE,  EUW,  JP,  LAN,  LAS,  NA,  OCE,  PBE,  RU,  TR)
@@ -15,10 +10,7 @@ pub struct TournamentV4PeriodProviderRegistrationParameters {
 
 impl TournamentV4PeriodProviderRegistrationParameters {
     pub fn new(region: Region, url: String) -> TournamentV4PeriodProviderRegistrationParameters {
-        TournamentV4PeriodProviderRegistrationParameters {
-            region,
-            url,
-        }
+        TournamentV4PeriodProviderRegistrationParameters { region, url }
     }
 }
 
@@ -54,4 +46,3 @@ impl Default for Region {
         Self::Br
     }
 }
-

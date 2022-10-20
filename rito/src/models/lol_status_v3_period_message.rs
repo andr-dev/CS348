@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolStatusV3PeriodMessage {
     #[serde(rename = "id")]
@@ -24,7 +19,16 @@ pub struct LolStatusV3PeriodMessage {
 }
 
 impl LolStatusV3PeriodMessage {
-    pub fn new(id: String, author: String, heading: String, content: String, severity: String, created_at: String, updated_at: String, translations: Vec<crate::models::LolStatusV3PeriodTranslation>) -> LolStatusV3PeriodMessage {
+    pub fn new(
+        id: String,
+        author: String,
+        heading: String,
+        content: String,
+        severity: String,
+        created_at: String,
+        updated_at: String,
+        translations: Vec<crate::models::LolStatusV3PeriodTranslation>,
+    ) -> LolStatusV3PeriodMessage {
         LolStatusV3PeriodMessage {
             id,
             author,
@@ -37,5 +41,3 @@ impl LolStatusV3PeriodMessage {
         }
     }
 }
-
-

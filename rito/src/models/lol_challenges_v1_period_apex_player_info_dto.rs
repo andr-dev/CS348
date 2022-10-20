@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LolChallengesV1PeriodApexPlayerInfoDto {
     #[serde(rename = "puuid")]
@@ -22,5 +17,3 @@ impl LolChallengesV1PeriodApexPlayerInfoDto {
         }
     }
 }
-
-

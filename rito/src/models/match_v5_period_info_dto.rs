@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodInfoDto {
     /// Unix timestamp for when the game is created on the game server (i.e., the loading screen).
@@ -48,7 +43,21 @@ pub struct MatchV5PeriodInfoDto {
 }
 
 impl MatchV5PeriodInfoDto {
-    pub fn new(game_creation: i64, game_duration: i64, game_id: i64, game_mode: String, game_name: String, game_start_timestamp: i64, game_type: String, game_version: String, map_id: i32, participants: Vec<crate::models::MatchV5PeriodParticipantDto>, platform_id: String, queue_id: i32, teams: Vec<crate::models::MatchV5PeriodTeamDto>) -> MatchV5PeriodInfoDto {
+    pub fn new(
+        game_creation: i64,
+        game_duration: i64,
+        game_id: i64,
+        game_mode: String,
+        game_name: String,
+        game_start_timestamp: i64,
+        game_type: String,
+        game_version: String,
+        map_id: i32,
+        participants: Vec<crate::models::MatchV5PeriodParticipantDto>,
+        platform_id: String,
+        queue_id: i32,
+        teams: Vec<crate::models::MatchV5PeriodTeamDto>,
+    ) -> MatchV5PeriodInfoDto {
         MatchV5PeriodInfoDto {
             game_creation,
             game_duration,
@@ -68,5 +77,3 @@ impl MatchV5PeriodInfoDto {
         }
     }
 }
-
-

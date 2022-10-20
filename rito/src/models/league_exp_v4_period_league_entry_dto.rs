@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LeagueExpV4PeriodLeagueEntryDto {
     #[serde(rename = "leagueId")]
@@ -40,7 +35,21 @@ pub struct LeagueExpV4PeriodLeagueEntryDto {
 }
 
 impl LeagueExpV4PeriodLeagueEntryDto {
-    pub fn new(league_id: String, summoner_id: String, summoner_name: String, queue_type: String, tier: String, rank: String, league_points: i32, wins: i32, losses: i32, hot_streak: bool, veteran: bool, fresh_blood: bool, inactive: bool) -> LeagueExpV4PeriodLeagueEntryDto {
+    pub fn new(
+        league_id: String,
+        summoner_id: String,
+        summoner_name: String,
+        queue_type: String,
+        tier: String,
+        rank: String,
+        league_points: i32,
+        wins: i32,
+        losses: i32,
+        hot_streak: bool,
+        veteran: bool,
+        fresh_blood: bool,
+        inactive: bool,
+    ) -> LeagueExpV4PeriodLeagueEntryDto {
         LeagueExpV4PeriodLeagueEntryDto {
             league_id,
             summoner_id,
@@ -59,5 +68,3 @@ impl LeagueExpV4PeriodLeagueEntryDto {
         }
     }
 }
-
-

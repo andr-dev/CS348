@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftLeagueV1PeriodLeagueEntryDto {
     /// Not included for the RANKED_TFT_TURBO queueType.
@@ -53,7 +48,13 @@ pub struct TftLeagueV1PeriodLeagueEntryDto {
 }
 
 impl TftLeagueV1PeriodLeagueEntryDto {
-    pub fn new(summoner_id: String, summoner_name: String, queue_type: String, wins: i32, losses: i32) -> TftLeagueV1PeriodLeagueEntryDto {
+    pub fn new(
+        summoner_id: String,
+        summoner_name: String,
+        queue_type: String,
+        wins: i32,
+        losses: i32,
+    ) -> TftLeagueV1PeriodLeagueEntryDto {
         TftLeagueV1PeriodLeagueEntryDto {
             league_id: None,
             summoner_id,
@@ -95,4 +96,3 @@ impl Default for RatedTier {
         Self::Orange
     }
 }
-

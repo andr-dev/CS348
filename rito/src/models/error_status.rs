@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ErrorStatus {
     #[serde(rename = "status_code", skip_serializing_if = "Option::is_none")]
@@ -19,5 +14,3 @@ impl ErrorStatus {
         }
     }
 }
-
-

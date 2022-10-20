@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TournamentV4PeriodLobbyEventDtoWrapper {
     #[serde(rename = "eventList")]
@@ -10,11 +5,9 @@ pub struct TournamentV4PeriodLobbyEventDtoWrapper {
 }
 
 impl TournamentV4PeriodLobbyEventDtoWrapper {
-    pub fn new(event_list: Vec<crate::models::TournamentV4PeriodLobbyEventDto>) -> TournamentV4PeriodLobbyEventDtoWrapper {
-        TournamentV4PeriodLobbyEventDtoWrapper {
-            event_list,
-        }
+    pub fn new(
+        event_list: Vec<crate::models::TournamentV4PeriodLobbyEventDto>,
+    ) -> TournamentV4PeriodLobbyEventDtoWrapper {
+        TournamentV4PeriodLobbyEventDtoWrapper { event_list }
     }
 }
-
-

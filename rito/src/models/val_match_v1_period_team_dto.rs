@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodTeamDto {
     /// This is an arbitrary string. Red and Blue in bomb modes. The puuid of the player in deathmatch.
@@ -20,7 +15,13 @@ pub struct ValMatchV1PeriodTeamDto {
 }
 
 impl ValMatchV1PeriodTeamDto {
-    pub fn new(team_id: String, won: bool, rounds_played: i32, rounds_won: i32, num_points: i32) -> ValMatchV1PeriodTeamDto {
+    pub fn new(
+        team_id: String,
+        won: bool,
+        rounds_played: i32,
+        rounds_won: i32,
+        num_points: i32,
+    ) -> ValMatchV1PeriodTeamDto {
         ValMatchV1PeriodTeamDto {
             team_id,
             won,
@@ -30,5 +31,3 @@ impl ValMatchV1PeriodTeamDto {
         }
     }
 }
-
-

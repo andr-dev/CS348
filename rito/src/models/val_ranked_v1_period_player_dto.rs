@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValRankedV1PeriodPlayerDto {
     /// This field may be omitted if the player has been anonymized.
@@ -25,7 +20,11 @@ pub struct ValRankedV1PeriodPlayerDto {
 }
 
 impl ValRankedV1PeriodPlayerDto {
-    pub fn new(leaderboard_rank: i64, ranked_rating: i64, number_of_wins: i64) -> ValRankedV1PeriodPlayerDto {
+    pub fn new(
+        leaderboard_rank: i64,
+        ranked_rating: i64,
+        number_of_wins: i64,
+    ) -> ValRankedV1PeriodPlayerDto {
         ValRankedV1PeriodPlayerDto {
             puuid: None,
             game_name: None,
@@ -37,5 +36,3 @@ impl ValRankedV1PeriodPlayerDto {
         }
     }
 }
-
-

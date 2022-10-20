@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SpectatorV4PeriodGameCustomizationObject {
     /// Category identifier for Game Customization
@@ -15,11 +10,6 @@ pub struct SpectatorV4PeriodGameCustomizationObject {
 
 impl SpectatorV4PeriodGameCustomizationObject {
     pub fn new(category: String, content: String) -> SpectatorV4PeriodGameCustomizationObject {
-        SpectatorV4PeriodGameCustomizationObject {
-            category,
-            content,
-        }
+        SpectatorV4PeriodGameCustomizationObject { category, content }
     }
 }
-
-

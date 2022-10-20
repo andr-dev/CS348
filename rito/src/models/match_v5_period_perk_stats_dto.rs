@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MatchV5PeriodPerkStatsDto {
     #[serde(rename = "defense")]
@@ -22,5 +17,3 @@ impl MatchV5PeriodPerkStatsDto {
         }
     }
 }
-
-

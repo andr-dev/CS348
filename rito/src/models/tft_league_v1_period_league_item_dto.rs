@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TftLeagueV1PeriodLeagueItemDto {
     #[serde(rename = "freshBlood")]
@@ -33,7 +28,18 @@ pub struct TftLeagueV1PeriodLeagueItemDto {
 }
 
 impl TftLeagueV1PeriodLeagueItemDto {
-    pub fn new(fresh_blood: bool, wins: i32, summoner_name: String, inactive: bool, veteran: bool, hot_streak: bool, rank: String, league_points: i32, losses: i32, summoner_id: String) -> TftLeagueV1PeriodLeagueItemDto {
+    pub fn new(
+        fresh_blood: bool,
+        wins: i32,
+        summoner_name: String,
+        inactive: bool,
+        veteran: bool,
+        hot_streak: bool,
+        rank: String,
+        league_points: i32,
+        losses: i32,
+        summoner_id: String,
+    ) -> TftLeagueV1PeriodLeagueItemDto {
         TftLeagueV1PeriodLeagueItemDto {
             fresh_blood,
             wins,
@@ -49,5 +55,3 @@ impl TftLeagueV1PeriodLeagueItemDto {
         }
     }
 }
-
-

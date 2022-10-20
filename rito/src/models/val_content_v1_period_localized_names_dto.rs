@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValContentV1PeriodLocalizedNamesDto {
     #[serde(rename = "ar-AE")]
@@ -46,7 +41,26 @@ pub struct ValContentV1PeriodLocalizedNamesDto {
 }
 
 impl ValContentV1PeriodLocalizedNamesDto {
-    pub fn new(ar_ae: String, de_de: String, en_us: String, es_es: String, es_mx: String, fr_fr: String, id_id: String, it_it: String, ja_jp: String, ko_kr: String, pl_pl: String, pt_br: String, ru_ru: String, th_th: String, tr_tr: String, vi_vn: String, zh_cn: String, zh_tw: String) -> ValContentV1PeriodLocalizedNamesDto {
+    pub fn new(
+        ar_ae: String,
+        de_de: String,
+        en_us: String,
+        es_es: String,
+        es_mx: String,
+        fr_fr: String,
+        id_id: String,
+        it_it: String,
+        ja_jp: String,
+        ko_kr: String,
+        pl_pl: String,
+        pt_br: String,
+        ru_ru: String,
+        th_th: String,
+        tr_tr: String,
+        vi_vn: String,
+        zh_cn: String,
+        zh_tw: String,
+    ) -> ValContentV1PeriodLocalizedNamesDto {
         ValContentV1PeriodLocalizedNamesDto {
             ar_ae,
             de_de,
@@ -70,5 +84,3 @@ impl ValContentV1PeriodLocalizedNamesDto {
         }
     }
 }
-
-

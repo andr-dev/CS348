@@ -1,8 +1,3 @@
-
-
-
-
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ValMatchV1PeriodMatchDto {
     #[serde(rename = "matchInfo")]
@@ -18,7 +13,13 @@ pub struct ValMatchV1PeriodMatchDto {
 }
 
 impl ValMatchV1PeriodMatchDto {
-    pub fn new(match_info: crate::models::ValMatchV1PeriodMatchInfoDto, players: Vec<crate::models::ValMatchV1PeriodPlayerDto>, coaches: Vec<crate::models::ValMatchV1PeriodCoachDto>, teams: Vec<crate::models::ValMatchV1PeriodTeamDto>, round_results: Vec<crate::models::ValMatchV1PeriodRoundResultDto>) -> ValMatchV1PeriodMatchDto {
+    pub fn new(
+        match_info: crate::models::ValMatchV1PeriodMatchInfoDto,
+        players: Vec<crate::models::ValMatchV1PeriodPlayerDto>,
+        coaches: Vec<crate::models::ValMatchV1PeriodCoachDto>,
+        teams: Vec<crate::models::ValMatchV1PeriodTeamDto>,
+        round_results: Vec<crate::models::ValMatchV1PeriodRoundResultDto>,
+    ) -> ValMatchV1PeriodMatchDto {
         ValMatchV1PeriodMatchDto {
             match_info: Box::new(match_info),
             players,
@@ -28,5 +29,3 @@ impl ValMatchV1PeriodMatchDto {
         }
     }
 }
-
-
