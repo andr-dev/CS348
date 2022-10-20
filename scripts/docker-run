@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo docker run --rm \
+    -p 3030:3030 \
+    --name cs348server \
+    -e DATABASE_URL='store.db' \
+    cs348:server

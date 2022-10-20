@@ -53,7 +53,7 @@ RUN yarn install
 
 # Copy in sources
 
-COPY web/tailwind.config.js web/webpack.config.js /usr/src/web/
+COPY web/webpack.config.js /usr/src/web/
 COPY web/src /usr/src/web/src/
 
 # Build application

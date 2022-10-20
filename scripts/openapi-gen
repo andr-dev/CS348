@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+rm -rf openapi
+rm -rf rito/src
+
+mkdir openapi
+mkdir rito/src
+
+wget -O openapi/openapi-3.0.0.json http://www.mingweisamuel.com/riotapi-schema/openapi-3.0.0.json
+
+sudo docker run --rm \
+  -v ${PWD}/openapi:/local openapitools/openapi-generator-cli generate \
+  -i /local/openapi-3.0.0.json \
+  -g rust \
+  -o /local/out
+
+sudo find openapi/out -type d -user root -exec sudo chown -R $USER: {} +
+
+mv openapi/out/src/* rito/src
+
+rm -rf openapi
+
