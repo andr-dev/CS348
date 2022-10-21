@@ -17,11 +17,9 @@ Install sqlite3 and [https://doc.rust-lang.org/cargo/getting-started/installatio
 <!-- USAGE EXAMPLES -->
 ### Usage
 
-Once the server is started, navigate to localhost:3030 to view the webapp. You can also try different queries under the /api route.
-
 In `scripts/run` add your Riot API key (https://developer.riotgames.com/) to `RG_API_KEY`
 
-Run `./db/reset.sh` then `./scripts/run` from the home directory
+Reset the database with `./db/reset.sh` then run `./scripts/run` from the home directory
 
 Once the server is started, navigate to localhost:8000 to view the webapp.
 
