@@ -23,7 +23,7 @@ Reset the database with `./db/reset.sh` then run `./scripts/run` from the home d
 
 Once the server is started, navigate to localhost:8000 to view the webapp.
 
-To populate the database, navigate to `http://localhost:8000/api/summoner/Dee%20See` with a user's summoner id (i.e. Dee See)
+To populate the database with data from the Riot API, navigate to `http://localhost:8000/api/summoner/Dee%20See` with a user's summoner id (i.e. Dee See)
 
 ## Testing
 
