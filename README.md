@@ -2,7 +2,7 @@
   <h1 align="center">CS348 Project</h1>
 
   <p align="center">
-    The source code for our CS348 project.
+    The source code for our CS348 project written in Rust and integrating the [Riot Developer API](https://developer.riotgames.com/)
   </p>
 </div>
 
