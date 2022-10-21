@@ -10,24 +10,19 @@
 
 The project has been setup to run on docker. A build and run script is provided in the scripts folder.
 
-### Prerequisites
-
-To build and run the project, the only technology required is Docker. All other dependencies will be installed into the docker container. Follow the instructions at https://docs.docker.com/engine/install/ to get started.
-
 ### Installation
 
-Run the following build script.
-
-```
-sudo ./scripts/build
-```
+Install sqlite3 and [https://doc.rust-lang.org/cargo/getting-started/installation.html](Rust)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To start the application, run the following command.
-```
-sudo ./scripts/run
-```
-
 Once the server is started, navigate to localhost:3030 to view the webapp. You can also try different queries under the /api route.
+
+In `scripts/run` add your Riot API key (https://developer.riotgames.com/)
+
+Run `./db/reset.sh` then `./scripts/run` from the home directory
+
+Once the server is started, navigate to localhost:8000 to view the webapp.
+
+To populate the database, navigate to `http://localhost:8000/api/summoner/Dee%20See` with a user's summoner id (i.e. Dee See)
