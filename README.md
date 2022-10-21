@@ -15,7 +15,14 @@ The project has been setup to run on docker. A build and run script is provided 
 Install sqlite3 and [https://doc.rust-lang.org/cargo/getting-started/installation.html](Rust)
 
 <!-- USAGE EXAMPLES -->
-### Usage
+
+### Sample Usage
+
+Reset the database with `./db/reset.sh` then run `./scripts/run_sample` from the home directory
+
+You are now ready to run sample sqlite3 queries
+
+### Production Usage
 
 In `scripts/run` add your Riot API key (https://developer.riotgames.com/) to `RG_API_KEY`
 
