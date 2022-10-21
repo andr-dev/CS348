@@ -1,0 +1,1 @@
+SELECT * FROM champions ORDER BY championid;
