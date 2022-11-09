@@ -11,6 +11,8 @@ serde = { version = "1.0.145" }
 serde_derive = { version = "1.0.145" }
 serde_json = { version = "1.0.85" }
 sqlx = { version = "0.5.13", features = [ "runtime-tokio-rustls", "sqlite", "chrono"] }
+tokio = { version = "1.21.1" }
+
 rito = { path = "../rito" }
 
 [profile.release]

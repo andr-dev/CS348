@@ -17,11 +17,13 @@ use rito::{
         SummonerV4PeriodSummonerDto,
     },
 };
+use super::ratelimit::RateLimiter;
 
 pub struct RitoClient {
     config_zone: Configuration,   // NA, BR, ...
     config_region: Configuration, // AMERICAS
     config_ddragon: Configuration,
+    limiter: RateLimiter,
 }
 
 impl RitoClient {
@@ -43,6 +45,7 @@ impl RitoClient {
             config_zone,
             config_region,
             config_ddragon,
+            limiter: RateLimiter::new(100, 2 * 60),
         }
     }
 
@@ -50,6 +53,8 @@ impl RitoClient {
         &self,
         puuid: &str,
     ) -> Result<SummonerV4PeriodSummonerDto, Error<SummonerV4PeriodGetByPuuidError>> {
+        self.limiter.wait().await;
+
         summoner_v4_period_get_by_puuid(&self.config_zone, puuid).await
     }
 
@@ -57,6 +62,8 @@ impl RitoClient {
         &self,
         name: &str,
     ) -> Result<SummonerV4PeriodSummonerDto, Error<SummonerV4PeriodGetBySummonerNameError>> {
+        self.limiter.wait().await;
+
         summoner_v4_period_get_by_summoner_name(&self.config_zone, name).await
     }
 
@@ -64,6 +71,8 @@ impl RitoClient {
         &self,
         puuid: &str,
     ) -> Result<Vec<String>, Error<MatchV5PeriodGetMatchIdsByPuuidError>> {
+        self.limiter.wait().await;
+
         match_v5_period_get_match_ids_by_puuid(
             &self.config_region,
             puuid,
@@ -81,12 +90,16 @@ impl RitoClient {
         &self,
         match_id: &str,
     ) -> Result<MatchV5PeriodMatchDto, Error<MatchV5PeriodGetMatchError>> {
+        self.limiter.wait().await;
+
         match_v5_period_get_match(&self.config_region, match_id).await
     }
 
     pub async fn get_champions(
         &self,
     ) -> Result<DDragonChampionResponse, Error<DDragonChampionResponseError>> {
+        self.limiter.wait().await;
+
         ddragon_champion_get_champions(&self.config_ddragon).await
     }
 }
