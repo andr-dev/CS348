@@ -20,7 +20,7 @@ const theme: DefaultTheme = {
 
         neutralDarker: "",
         neutralDark: "",
-        neutral: "rgb(255, 255, 255, 0.6)",
+        neutral: "rgba(255, 255, 255, 0.6)",
         neutralLight: "",
         neutralLighter: "",
 

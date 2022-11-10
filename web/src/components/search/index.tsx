@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Typography from "@ui/typography";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import Button from "@mui/material/Button";
 import { IconButton, Input, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
@@ -13,22 +13,35 @@ const search = () => {
     const navigate = useNavigate();
     const [summonerNameInput, setSummonerNameInput] = useState<string>("");
 
-    const handleClick = () => {
+    const doSearch = () => {
         if (summonerNameInput) {
             navigate(`/summoner/${summonerNameInput}`);
+        }
+    }
+    const handleClick = () => {
+        doSearch()
+    }
+    const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key == 'Enter') {
+            doSearch()
         }
     }
 
     return (
         <SearchContainer>
             <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
-                <TextField label={summonerNameInput ? "" : "Search..."}
-                size="small" 
-                onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
-                InputLabelProps={{shrink: false}}
-                sx={{
-                    "& fieldset": { border: 'none' },
-                }}
+                <TextField 
+                    label={summonerNameInput ? "" : "Search..."}
+                    size="small" 
+                    onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
+                    InputProps={{
+                        onKeyDown: handleKeyPress
+                        
+                    }}
+                    InputLabelProps={{shrink: false}}
+                    sx={{
+                        "& fieldset": { border: 'none' },
+                    }}
                 />
                 <IconButton onClick={handleClick} size="small">
                     <SearchIcon />
