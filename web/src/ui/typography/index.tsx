@@ -4,7 +4,8 @@ import styled, { AnyStyledComponent, DefaultTheme } from 'styled-components'
 
 type TypographyLevels =
     | 'button'
-    | 'input';
+    | 'input'
+    | 'header';
 
 type TypographyPropsType = {
     className?: string
@@ -38,11 +39,13 @@ function Typography({
     const componentMap: Record<TypographyLevels, string> = {
         button: 'span',
         input: 'input',
+        header: 'h1',
     }
 
     const colorMap: Record<TypographyLevels, keyof DefaultTheme['colors']> = {
         button: 'text',
         input: 'grey',
+        header: 'text',
     }
 
     const HtmlTag = componentMap[level];
