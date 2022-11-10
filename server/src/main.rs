@@ -3,10 +3,12 @@ extern crate proc_macro;
 #[macro_use]
 extern crate rocket;
 
+use cors::CORS;
 use rocket::{Build, Rocket};
 use state::AppState;
 
 mod api;
+mod cors;
 mod error;
 mod queries;
 mod rito;
@@ -30,7 +32,11 @@ fn rocket() -> Rocket<Build> {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let app_state = AppState::new().await?;
 
-    let _ = rocket().manage::<AppState>(app_state).launch().await?;
+    let _ = rocket()
+        .manage::<AppState>(app_state)
+        .attach(CORS)
+        .launch()
+        .await?;
 
     Ok(())
 }
