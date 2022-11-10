@@ -3,15 +3,36 @@ import Flex from '@ui/flex';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Typography from "@ui/typography";
-import Button from "@components/button";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import { IconButton, Input, TextField } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 const search = () => {
+    const navigate = useNavigate();
+    const [summonerNameInput, setSummonerNameInput] = useState<string>("");
+
+    const handleClick = () => {
+        if (summonerNameInput) {
+            navigate(`/summoner/${summonerNameInput}`);
+        }
+    }
+
     return (
         <SearchContainer>
             <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
-                <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "rgba(0, 0, 0, 0.4)", marginLeft: "8px" }} size="sm" />
-                <SearchInput level="input" placeholder="Search..." />
-                <Button label="NA" pill />
+                <TextField label={summonerNameInput ? "" : "Search..."}
+                size="small" 
+                onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
+                InputLabelProps={{shrink: false}}
+                sx={{
+                    "& fieldset": { border: 'none' },
+                }}
+                />
+                <IconButton onClick={handleClick} size="small">
+                    <SearchIcon />
+                </IconButton>
             </SearchWrapper>
         </SearchContainer>
     )

@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
         sidebarItemHeight: 56
     },
     colors: {
-        primaryLight: "",
+        primaryLight: "rgb(232, 95, 114)",
         primary: "rgb(232, 64, 87)",
         primaryDark: "",
 

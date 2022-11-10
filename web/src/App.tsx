@@ -16,6 +16,7 @@ import Flex from '@ui/flex';
 
 import { AnimatePresence } from 'framer-motion';
 import BasePage from "@pages/base";
+import { SummonerPage } from "@pages/summonerpage";
 
 const AppLayout: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
     const theme = useTheme();
@@ -39,6 +40,8 @@ const AppLayout: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
                         <Route path="/" element={<BasePage />}>
                             <Route index element={<Home />} />
                             <Route path="champs" element={<Champs />} />
+                            {/* <Route path="about" element={<About />} /> */}
+                            <Route path="summoner/:summonerName" element={<SummonerPage />} />
                         </Route>
                     </Routes>
                 </AnimatePresence>

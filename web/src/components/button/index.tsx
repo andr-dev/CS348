@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const button = (props: {
     label: string
+    onClick: () => void
     pill?: boolean
 }) => {
     return (
@@ -20,7 +21,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     :hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: ${props => props.theme.colors.primaryLight};
     }
 `;
 

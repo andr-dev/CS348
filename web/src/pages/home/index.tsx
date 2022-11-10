@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Home: React.FC = () => {
-    return (<div>Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br /></div>);
+const Home: FC = () => {
+    
+
+    return (
+        <div>Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br />Home <br /></div>
+    );
 };
 
 export default Home;
