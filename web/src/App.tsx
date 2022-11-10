@@ -5,7 +5,7 @@ import Loader from "@components/loader";
 import Navbar from "@components/navbar";
 
 import { INITIAL_APP_STATE, appContext, appReducer } from "./context";
-import About from "@pages/about";
+import Champs from "@pages/champs";
 import Home from "@pages/home";
 
 import theme from "@styles/theme";
@@ -38,7 +38,7 @@ const AppLayout: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
                     <Routes location={location} key={location.pathname} >
                         <Route path="/" element={<BasePage />}>
                             <Route index element={<Home />} />
-                            <Route path="about" element={<About />} />
+                            <Route path="champs" element={<Champs />} />
                         </Route>
                     </Routes>
                 </AnimatePresence>

@@ -6,7 +6,7 @@ use crate::{
     error::ServiceError,
     queries::{
         CHAMPION_GET_BY_ID_QUERY, CHAMPION_GET_BY_NAME_QUERY, CHAMPION_INSERT_QUERY,
-        CHAMPION_IS_TABLE_EMPTY_QUERY,
+        CHAMPION_IS_TABLE_EMPTY_QUERY, CHAMPION_WINRATE_QUERY
     },
 };
 
@@ -64,5 +64,14 @@ impl DbChampion {
             title: champ.title,
             blurb: champ.blurb,
         }
+    }
+
+    pub async fn get_win_rate(pool: &Pool<Sqlite>, min: u32, max: u32) -> Result<Vec<(i64, f64)>, ServiceError> {
+        sqlx::query_as::<_, (i64, f64)>(CHAMPION_WINRATE_QUERY)
+            .bind(min)
+            .bind(max)
+            .fetch_all(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })
     }
 }
