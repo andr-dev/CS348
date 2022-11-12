@@ -9,6 +9,6 @@ cargo build
 cd ../
 
 export DATABASE_URL="./db/store.db"
-export RG_API_KEY="RGAPI-1ab0867b-862f-4725-84ee-86227720d97b"
+export RG_API_KEY=""
 
 ./server/target/debug/server

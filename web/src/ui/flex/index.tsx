@@ -21,11 +21,14 @@ interface IProps {
 
   children: React.ReactNode;
   className?: string;
+
+  onClick?: () => void
 }
 
-const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding, borderBottom, height, className, children }) => {
+const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding, borderBottom, height, className, children, onClick }) => {
   return (
-    <div style={{
+    <div
+    style={{
       display: "flex",
       flexDirection: column ? "column" : "row",
       flexWrap: "nowrap",
@@ -39,7 +42,10 @@ const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding
 
       padding: getPadding(padding),
       borderBottom: getBorder(borderBottom)
-    }} className={className}>
+    }}
+    className={className}
+    onClick={onClick}
+    >
       {children}
     </div>
   );

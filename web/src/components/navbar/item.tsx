@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const item = (props: {
     icon: IconProp
+    onClick?: () => void
     padding?: PaddingOptions
 }) => {
     const theme = useTheme()
 
     return (
         <Hover align='center'>
-            <Flex padding={props.padding ?? [4, 16]}>
+            <Flex padding={props.padding ?? [4, 16]} onClick={props.onClick}>
                 <FontAwesomeIcon icon={props.icon} size='lg' style={{ color: theme.colors.neutral }} />
             </Flex>
         </Hover>

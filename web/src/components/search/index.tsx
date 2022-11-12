@@ -31,16 +31,23 @@ const search = () => {
         <SearchContainer>
             <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
                 <TextField 
+                    color='primary'
                     label={summonerNameInput ? "" : "Search..."}
                     size="small" 
                     onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
                     InputProps={{
-                        onKeyDown: handleKeyPress
-                        
+                        onKeyDown: handleKeyPress,
                     }}
-                    InputLabelProps={{shrink: false}}
+                    InputLabelProps={{
+                        shrink: false,
+                        color: "primary",
+                    }}
                     sx={{
                         "& fieldset": { border: 'none' },
+                        "& label.Mui-focused": {
+                            // Hard-coded cause idk how to use theme here -dc
+                            color: 'rgba(0, 0, 0, 0.6)' 
+                        },
                     }}
                 />
                 <IconButton onClick={handleClick} size="small">
