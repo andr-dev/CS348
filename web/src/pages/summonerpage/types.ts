@@ -1,5 +1,10 @@
-export interface SummonerPageProps {
+export interface SummonerPagePresentationProps {
+    summonerPageInfo: SummonerPageInfo,
+}
 
+export interface SummonerPageInfo {
+    summoner?: Summoner,
+    matches?: Match[],
 }
 
 export interface Summoner {
@@ -18,7 +23,24 @@ export interface Kda {
     deaths: number,
     assists: number,
 }
-export interface SummonerPagePresentationProps {
-    summonerInfo: Summoner | null,
-}
 
+export interface Match {
+    matchid: string,
+    // gameid: string,
+    // data_version: string,
+    // participant0: string,
+    // participant1: string,
+    // participant2: string,
+    // participant3: string,
+    // participant4: string,
+    // participant5: string,
+    // participant6: string,
+    // participant7: string,
+    // participant8: string,
+    // participant9: string,
+    participants: string[],
+    // game_creation: number,
+    game_duration: number,
+    game_start_timestamp: number,
+    game_end_timestamp?: number,
+}
