@@ -1,31 +1,116 @@
 import Typography from "@ui/typography";
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import Flex from "@ui/flex";
 
 const Champs: React.FC = () => {
-	const [champData, setChampData] = useState({ winrate: [] });
+  const timeIntervals = [
+    { lo: 0, hi: 15 * 60 },
+    { lo: 15 * 60, hi: 30 * 60 },
+    { lo: 30 * 60, hi: 180 * 60 },
+  ];
 
-	useEffect(() => {
-		const fetchChampData = () => {
-			axios("http://localhost:8000/api/champion/winrate?min=0&max=10000").then((result) => {
-				console.log(result.data.Ok);
-				setChampData({ winrate: result.data.Ok });
-			});
-		}
+  const [champData, setChampData] = useState<any>({
+    intervalWinrates: [[], [], []],
+  });
+  useEffect(() => {
+    const fetchChampData = () => {
+      Promise.all(
+        timeIntervals.map((interval) =>
+          axios(
+            `http://localhost:8000/api/champion/winrate?min=${interval.lo}&max=${interval.hi}`
+          )
+        )
+      ).then((res) => {
+        const tmp1 = res.map((v) => v.data.Ok);
+        console.log(tmp1);
+        setChampData({
+          intervalWinrates: tmp1,
+        });
+      });
+    };
 
-		fetchChampData();
-	}, []);
+    fetchChampData();
+  }, []);
 
-	return (
-		<Flex column>
-			<Typography level="header">Champs</Typography>
-			<Flex column>
-				{champData.winrate.map((a, b) => <Typography level="button">{a[0]} - {a[1] * 100}%</Typography>)}
-			</Flex>
-		</Flex>
-	)
+  return (
+    <Flex column>
+      <Typography level="header">Champs</Typography>
+      <Flex>
+        <Typography
+          style={{
+            width: "100px",
+          }}
+          level="button"
+        >
+          Champion
+        </Typography>
+        <Typography
+          style={{
+            width: "100px",
+          }}
+          level="button"
+        >
+          {`Winrate`}
+        </Typography>
+      </Flex>
+      <Flex>
+        <Typography
+          style={{
+            width: "100px",
+            marginLeft: "100px",
+          }}
+          level="button"
+        >
+          {`0-15 min`}
+        </Typography>
+        <Typography
+          style={{
+            width: "100px",
+          }}
+          level="button"
+        >
+          {`15-30 min`}
+        </Typography>
+        <Typography
+          style={{
+            width: "100px",
+          }}
+          level="button"
+        >
+          {`30+ min`}
+        </Typography>
+      </Flex>
+      {champData.intervalWinrates[0]?.map((a: any, i: any) => (
+        <Flex>
+          <Typography
+            style={{
+              width: "100px",
+            }}
+            level="button"
+          >{`${a[0]}`}</Typography>
+          <Typography
+            style={{
+              width: "100px",
+            }}
+            level="button"
+          >{` ${a[1] * 100}%`}</Typography>
+          <Typography
+            style={{
+              width: "100px",
+            }}
+            level="button"
+          >{` ${champData.intervalWinrates[1][i][1] * 100}%`}</Typography>
+          <Typography
+            style={{
+              width: "100px",
+            }}
+            level="button"
+          >{` ${champData.intervalWinrates[2][i][1] * 100}%`}</Typography>
+        </Flex>
+      ))}
+    </Flex>
+  );
 };
-
 
 export default Champs;
