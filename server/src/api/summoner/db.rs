@@ -11,6 +11,7 @@ use crate::queries::SUMMONER_FIND_BY_PUUID_QUERY;
 use crate::queries::SUMMONER_GET_BY_NAME_QUERY;
 use crate::queries::SUMMONER_INSERT_QUERY;
 use crate::queries::SUMMONER_UPDATE_QUERY;
+use crate::queries::SUMMONER_MATCH_IDS_BY_PUUID_QUERY;
 
 #[derive(FromRow, Serialize, Debug)]
 #[serde(crate = "rocket::serde")]
@@ -83,5 +84,13 @@ impl DbSummoner {
             puuid: summoner.puuid,
             summonerlevel: summoner.summoner_level,
         }
+    }
+
+    pub async fn get_match_ids_by_puuid(pool: &Pool<Sqlite>, puuid: &String) -> Result<Vec<String>, Error> {
+        sqlx::query_as::<_, (String,)>(SUMMONER_MATCH_IDS_BY_PUUID_QUERY)
+            .bind(puuid)
+            .fetch_all(pool)
+            .await
+            .map(|v| v.iter().map(|x| x.0.clone()).collect::<Vec<String>>())
     }
 }

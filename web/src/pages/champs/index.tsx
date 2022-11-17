@@ -21,10 +21,11 @@ const Champs: React.FC = () => {
 		<Flex column>
 			<Typography level="header">Champs</Typography>
 			<Flex column>
-				{champData.winrate.map((a, b) => <p>{a}</p>)}
+				{champData.winrate.map((a, b) => <Typography level="button">{a[0]} - {a[1] * 100}%</Typography>)}
 			</Flex>
 		</Flex>
 	)
 };
+
 
 export default Champs;

@@ -168,10 +168,12 @@ fn get_participants(db_match: &DbMatch) -> [&str; 10] {
     ]
 }
 
-// #[get("/summoner/<puuid>/matches")]
-// pub async fn matches(state: &State<AppState>, puuid: String) -> Json<Result<Vec<String>, ServiceError>> {
-//
-// }
+#[get("/summoner/<puuid>/matches")]
+pub async fn matches(state: &State<AppState>, puuid: String) -> Json<Result<Vec<String>, ServiceError>> {
+    Json(DbSummoner::get_match_ids_by_puuid(&state.pool, &puuid).await.map_err(|_| ServiceError {
+        error: format!("failed to get matches for puuid {}", puuid).into()
+    }))
+}
 
 #[get("/summoner/<puuid>/kda")]
 pub async fn kda(
@@ -188,5 +190,5 @@ pub async fn kda(
 }
 
 pub fn routes() -> Vec<Route> {
-    routes![name, kda]
+    routes![name, matches, kda]
 }
