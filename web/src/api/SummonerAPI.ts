@@ -12,7 +12,8 @@ export const getSummonerKda = (puuid: string) => {
     return axios(`${domain}/${puuid}/kda`)
 }
 
-// todo: implement this in backend. For now just mock.
-export const getSummonerMatches = (summonerName: string) => {
-    return axios(`${domain}/${summonerName}/matches`)
+// maybe this should be taking in summonerName instead of puuid, would require
+// backend change
+export const getSummonerMatches = (puuid: string) => {
+    return axios(`${domain}/${puuid}/matches`)
 }

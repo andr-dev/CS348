@@ -25,7 +25,7 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
                 </Typography>
 
                 {summonerPageInfo?.matches?.map((match) => (
-                    <SummonerMatch match={match}/>
+                    <SummonerMatch match={match} key={match.matchid}/>
                 ))}
             </>
         </Box>
