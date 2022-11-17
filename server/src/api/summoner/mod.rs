@@ -29,10 +29,12 @@ pub async fn name(state: &State<AppState>, name: String, from_rito: Option<bool>
         update = true;
     }
 
-    if let Some(from_rito) = from_rito && from_rito {
-        return Json(Err(ServiceError {
-            error: "summoner does not exist in db".into()
-        }));
+    if let Some(from_rito) = from_rito {
+        if from_rito {
+            return Json(Err(ServiceError {
+                error: "summoner does not exist in db".into()
+            }));
+        }
     }
 
     println!("HERE: {:?}", update);
@@ -165,6 +167,11 @@ fn get_participants(db_match: &DbMatch) -> [&str; 10] {
         &db_match.participant9,
     ]
 }
+
+// #[get("/summoner/<puuid>/matches")]
+// pub async fn matches(state: &State<AppState>, puuid: String) -> Json<Result<Vec<String>, ServiceError>> {
+//
+// }
 
 #[get("/summoner/<puuid>/kda")]
 pub async fn kda(
