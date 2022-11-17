@@ -1,5 +1,10 @@
 export interface SummonerPagePresentationProps {
     summonerPageInfo: SummonerPageInfo,
+    updateSummonerPageInfo: () => void,
+}
+
+export interface SummonerMatchProps {
+    match: Match,
 }
 
 export interface SummonerPageInfo {

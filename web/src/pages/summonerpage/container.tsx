@@ -1,5 +1,5 @@
 import Loader from '@components/loader';
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { SummonerPagePresentation } from './presentation'
 import { Kda, SummonerPageInfo } from './types'
@@ -12,14 +12,14 @@ export const SummonerPage: FC = () => {
 
     const [loading, setLoading] = useState<Boolean>(true);
     // Probably important to keep all info fetched from API into one state variable here
-    // beecause otherwise we may re-render several times as we update the state after 
+    // because otherwise we may re-render several times as we update the state after
     // each API fetch.
     const [summonerPageInfo, setSummonerPageInfo] = useState<SummonerPageInfo>({});
 
-    useEffect(() => {
+    const fetchSummonerPageInfo = (isUpdatingInfo: boolean = false) => {
         let pageInfo: SummonerPageInfo = {}
 
-        getSummoner(summonerName).then((result) => {
+        getSummoner(summonerName, isUpdatingInfo).then((result) => {
             const summonerData = result?.data?.Ok
             if (summonerData) {
                 pageInfo.summoner = summonerData
@@ -50,12 +50,24 @@ export const SummonerPage: FC = () => {
                 setLoading(false)
             }
         })
+    }
+
+    useEffect(() => {
+        fetchSummonerPageInfo(false)
+    }, [])
+
+    const handleUpdateSummonerPageInfo = useCallback(() => {
+        setLoading(true)
+        fetchSummonerPageInfo(true)
     }, [])
 
     if (loading) {
         return <Loader />
     } else if (summonerPageInfo) {
-        return <SummonerPagePresentation summonerPageInfo={summonerPageInfo}/>
+        return (<SummonerPagePresentation
+            summonerPageInfo={summonerPageInfo}
+            updateSummonerPageInfo={handleUpdateSummonerPageInfo}
+        />)
     } else {
         // MUI theme isn't set up so hard-code to white instead of using "text"
         return <Typography color="white">summoner not found rip</Typography>

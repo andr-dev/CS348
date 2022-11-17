@@ -2,11 +2,11 @@ import axios from 'axios'
 
 const domain = 'http://localhost:8000' + '/api/summoner'
 
-export const getSummoner = (summonerName: string) => {
-    return axios(`${domain}/${summonerName}`)
+export const getSummoner = (summonerName: string, isUpdate: boolean) => {
+    return axios(`${domain}/${summonerName}?from_rito=${isUpdate.toString()}`)
 }
 
-// maybe this should be taking in summoneerName instead of puuid, would require
+// maybe this should be taking in summonerName instead of puuid, would require
 // backend change
 export const getSummonerKda = (puuid: string) => {
     return axios(`${domain}/${puuid}/kda`)
