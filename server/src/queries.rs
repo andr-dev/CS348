@@ -19,13 +19,13 @@ pub const SUMMONER_MATCHES_KDA_QUERY: &'static str = "SELECT AVG(kills), AVG(dea
 pub const SUMMONER_MATCHES_INSERT_QUERY: &'static str =
     "INSERT INTO summoner_matches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 pub const CHAMPION_WINRATE_QUERY: &'static str = "
-    SELECT cname, AVG(CASE WHEN win THEN 1 ELSE 0 END) winrate
-    FROM summoner_matches
-    INNER JOIN champions
+    SELECT cname, AVG(CASE WHEN win THEN 1 ELSE 0 END) winrate FROM champions LEFT JOIN summoner_matches
     ON summoner_matches.championid = champions.championid
     WHERE summoner_matches.matchid IN (
         SELECT matchid FROM
         matches
-        WHERE game_duration >= ? AND game_duration <= ?
-    )
-    GROUP BY summoner_matches.championid";
+        WHERE game_duration >= 0 AND game_duration <= 10000
+    ) OR summoner_matches.matchid IS NULL
+    GROUP BY champions.championid
+    ORDER BY champions.cname";
+
