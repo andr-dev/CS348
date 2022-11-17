@@ -5,7 +5,6 @@ import { SummonerPagePresentation } from './presentation'
 import { Kda, SummonerPageInfo } from './types'
 import { getSummoner, getSummonerKda, getSummonerMatches } from 'src/api/SummonerAPI';
 import { Typography } from '@mui/material';
-import { mockMatchesResponse } from './constants';
 import { getMatchById } from 'src/api/MatchAPI';
 
 export const SummonerPage: FC = () => {
@@ -34,9 +33,9 @@ export const SummonerPage: FC = () => {
                     const summonerKdaArr = results[0]?.data?.Ok
                     if (summonerKdaArr && summonerKdaArr.length) {
                         const summonerKda: Kda = {
-                            kills: summonerKdaArr[0],
-                            deaths: summonerKdaArr[1],
-                            assists: summonerKdaArr[2],
+                            kills: summonerKdaArr[0].toFixed(2),
+                            deaths: summonerKdaArr[1].toFixed(2),
+                            assists: summonerKdaArr[2].toFixed(2),
                         }
                         if (pageInfo.summoner) {
                             pageInfo.summoner.kda = summonerKda
