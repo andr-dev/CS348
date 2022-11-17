@@ -24,6 +24,7 @@ module.exports = {
         path: packageFolder,
         sourceMapFilename: '[file].map',
         filename: `assets/js/[name].min.js`,
+		publicPath: '/'
     },
 
     resolve: {
@@ -159,7 +160,8 @@ module.exports = {
         host: '0.0.0.0',
         compress: true,
         allowedHosts: 'all',
-        hot: true
+        hot: true,
+		historyApiFallback: true,
     },
 
     performance: {
