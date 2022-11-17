@@ -12,12 +12,12 @@ use super::matches::DbMatch;
 mod db;
 pub use db::DbSummoner;
 
-#[get("/summoner/<name>")]
-pub async fn name(state: &State<AppState>, name: String) -> Json<Result<DbSummoner, ServiceError>> {
+#[get("/summoner/<name>?<from_rito>")]
+pub async fn name(state: &State<AppState>, name: String, from_rito: Option<bool>) -> Json<Result<DbSummoner, ServiceError>> {
     let mut update = false;
 
     if let Ok(summoner) = DbSummoner::get_by_summoner_name(&state.pool, &name).await {
-        if ((summoner.lastupdate.timestamp() + 60 * 5) as u128)
+        if from_rito.unwrap_or(false) || ((summoner.lastupdate.timestamp() + 60 * 5) as u128)
             > SystemTime::now()
                 .duration_since(UNIX_EPOCH)
                 .expect("Time went backwards!")
@@ -27,6 +27,12 @@ pub async fn name(state: &State<AppState>, name: String) -> Json<Result<DbSummon
         }
 
         update = true;
+    }
+
+    if let Some(from_rito) = from_rito && from_rito {
+        return Json(Err(ServiceError {
+            error: "summoner does not exist in db".into()
+        }));
     }
 
     println!("HERE: {:?}", update);
