@@ -59,6 +59,7 @@ const Champs: React.FC = () => {
           style={{
             width: "100px",
             marginLeft: "100px",
+            marginRight: "10px",
           }}
           level="button"
         >
@@ -67,6 +68,7 @@ const Champs: React.FC = () => {
         <Typography
           style={{
             width: "100px",
+            marginRight: "10px",
           }}
           level="button"
         >
@@ -75,6 +77,7 @@ const Champs: React.FC = () => {
         <Typography
           style={{
             width: "100px",
+            marginRight: "10px",
           }}
           level="button"
         >
@@ -86,27 +89,38 @@ const Champs: React.FC = () => {
           <Typography
             style={{
               width: "100px",
+              overflow: "hidden",
             }}
             level="button"
           >{`${a[0]}`}</Typography>
           <Typography
             style={{
               width: "100px",
+              overflow: "hidden",
+              marginRight: "10px",
             }}
             level="button"
-          >{` ${a[1] * 100}%`}</Typography>
+          >{` ${(a[1] * 100).toFixed(2)}%`}</Typography>
           <Typography
             style={{
               width: "100px",
+              overflow: "hidden",
+              marginRight: "10px",
             }}
             level="button"
-          >{` ${champData.intervalWinrates[1][i][1] * 100}%`}</Typography>
+          >{` ${(champData.intervalWinrates[1][i][1] * 100).toFixed(
+            2
+          )}%`}</Typography>
           <Typography
             style={{
               width: "100px",
+              overflow: "hidden",
+              marginRight: "10px",
             }}
             level="button"
-          >{` ${champData.intervalWinrates[2][i][1] * 100}%`}</Typography>
+          >{` ${(champData.intervalWinrates[2][i][1] * 100).toFixed(
+            2
+          )}%`}</Typography>
         </Flex>
       ))}
     </Flex>
