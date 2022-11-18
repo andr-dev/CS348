@@ -46,12 +46,12 @@ Backend:
    - [x] kda by puuid
  - [x] matches (`./server/src/api/matches/mod.rs` and `./server/src/api/matches/db.rs`)
    - [x] get by match id
- - [x] champion (`./server/src/api/champion/mod.rs` and `./server/src/api/champion/db.rs`)
+ - [x] Feature 3: champion (`./server/src/api/champion/mod.rs` and `./server/src/api/champion/db.rs`)
    - [x] get by id
    - [x] get by name
    - [x] get winrates by game duration
 
 Frontend:
  - [x] Seach summoners by name
- - [x] Summoner info page with detailed statistics such as KDA (`./web/src/pages/summonerpage/index.tsx`)
- - [x] Champion winrate by game duration page (`./web/src/pages/champs/index.tsx`)
+ - [x] Feature 1: Summoner info page with detailed statistics such as KDA (`./web/src/pages/summonerpage/index.tsx`)
+ - [x] Feature 2: Champion winrate by game duration page (`./web/src/pages/champs/index.tsx`)
