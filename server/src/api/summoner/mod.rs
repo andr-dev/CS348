@@ -11,16 +11,21 @@ use super::matches::DbMatch;
 mod db;
 pub use db::DbSummoner;
 
-#[get("/summoner/<name>?<from_rito>")]
-pub async fn name(state: &State<AppState>, name: String, from_rito: Option<bool>) -> Json<Result<DbSummoner, ServiceError>> {
+#[get("/summoner/name/<name>?<from_rito>")]
+pub async fn name(
+    state: &State<AppState>,
+    name: String,
+    from_rito: Option<bool>,
+) -> Json<Result<DbSummoner, ServiceError>> {
     let mut update = false;
 
     if let Ok(summoner) = DbSummoner::get_by_summoner_name(&state.pool, &name).await {
-        if !from_rito.unwrap_or(true) || ((summoner.lastupdate.timestamp() + 60 * 5) as u128)
-            > SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .expect("Time went backwards!")
-                .as_millis()
+        if !from_rito.unwrap_or(true)
+            || ((summoner.lastupdate.timestamp() + 60 * 5) as u128)
+                > SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .expect("Time went backwards!")
+                    .as_millis()
         {
             return Json(Ok(summoner));
         }
@@ -30,7 +35,7 @@ pub async fn name(state: &State<AppState>, name: String, from_rito: Option<bool>
 
     if !from_rito.unwrap_or(true) {
         return Json(Err(ServiceError {
-            error: "summoner does not exist in db".into()
+            error: "summoner does not exist in db".into(),
         }));
     }
 
@@ -157,11 +162,32 @@ fn get_participants(db_match: &DbMatch) -> [&str; 10] {
     ]
 }
 
+#[get("/summoner/<puuid>")]
+pub async fn puuid(
+    state: &State<AppState>,
+    puuid: String,
+) -> Json<Result<DbSummoner, ServiceError>> {
+    Json(
+        DbSummoner::get_by_summoner_puuid(&state.pool, &puuid)
+            .await
+            .map_err(|_| ServiceError {
+                error: format!("failed to get summoner with puuid {}", puuid).into(),
+            }),
+    )
+}
+
 #[get("/summoner/<puuid>/matches")]
-pub async fn matches(state: &State<AppState>, puuid: String) -> Json<Result<Vec<String>, ServiceError>> {
-    Json(DbSummoner::get_match_ids_by_puuid(&state.pool, &puuid).await.map_err(|_| ServiceError {
-        error: format!("failed to get matches for puuid {}", puuid).into()
-    }))
+pub async fn matches(
+    state: &State<AppState>,
+    puuid: String,
+) -> Json<Result<Vec<String>, ServiceError>> {
+    Json(
+        DbSummoner::get_match_ids_by_puuid(&state.pool, &puuid)
+            .await
+            .map_err(|_| ServiceError {
+                error: format!("failed to get matches for puuid {}", puuid).into(),
+            }),
+    )
 }
 
 #[get("/summoner/<puuid>/kda")]
@@ -179,5 +205,5 @@ pub async fn kda(
 }
 
 pub fn routes() -> Vec<Route> {
-    routes![name, matches, kda]
+    routes![name, matches, puuid, kda]
 }

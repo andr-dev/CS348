@@ -53,15 +53,18 @@ const Champs: React.FC = () => {
       </TableRow>
       <Spacer>{ }</Spacer>
       {champData.intervalWinrates[0]?.map((a: any, i: any) => (
-        <TableRow align="center">
-          <Flex grow={1} align="center">
-            <img src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/${getChampName(a[0])}.png`} style={{ padding: "8px" }} />
-            <Typography level="button">{a[0]}</Typography>
-          </Flex>
-          <TableItem><Typography level="button">{(a[1] * 100).toFixed(2)}%</Typography></TableItem>
-          <TableItem><Typography level="button">{(champData.intervalWinrates[1][i][1] * 100).toFixed(2)}%</Typography></TableItem>
-          <TableItem><Typography level="button">{(champData.intervalWinrates[2][i][1] * 100).toFixed(2)}%</Typography></TableItem>
-        </TableRow>
+        <>
+          <TableRow align="center" key={i}>
+            <Flex grow={1} align="center">
+              <img src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/${getChampName(a[0])}.png`} style={{ paddingRight: "8px", height: "48px" }} />
+              <Typography level="button">{a[0]}</Typography>
+            </Flex>
+            <TableItem><Typography level="button">{(a[1] * 100).toFixed(2)}%</Typography></TableItem>
+            <TableItem><Typography level="button">{(champData.intervalWinrates[1][i][1] * 100).toFixed(2)}%</Typography></TableItem>
+            <TableItem><Typography level="button">{(champData.intervalWinrates[2][i][1] * 100).toFixed(2)}%</Typography></TableItem>
+          </TableRow>
+          <div style={{ height: "4px" }} />
+        </>
       ))
       }
     </Flex >
