@@ -1,7 +1,6 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use crate::api::matches::DbSummonerMatch;
-use crate::api::DbChampion;
 use crate::error::ServiceError;
 use crate::state::AppState;
 use rocket::State;
@@ -81,7 +80,7 @@ pub async fn update_summoner_games(
         .map_err(|e| ServiceError { error: Box::new(e) })?;
 
     for match_id in match_ids {
-        // Only fetch if match does not yet exist in database or TODO: If end_timestamp is null and match could now be over
+        // Only fetch if match does not yet exist in database
         if DbMatch::find_by_match_id(&state.pool, &match_id)
             .await
             .is_none()
@@ -112,8 +111,6 @@ pub async fn update_summoner_games(
                         }
                     }
 
-                    println!("DONE WITH SUMMONERS");
-
                     DbMatch::insert_match(&state.pool, &db_match).await?;
 
                     for participant in rito_match.info.participants {
@@ -123,8 +120,6 @@ pub async fn update_summoner_games(
 
                         DbSummonerMatch::insert_summoner_match(&state.pool, summoner_match).await?;
                     }
-
-                    println!("DONE ADDING");
                 }
                 Err(e) => match e {
                     rito::apis::Error::Reqwest(e) => {
@@ -138,15 +133,11 @@ pub async fn update_summoner_games(
                     }
                     rito::apis::Error::ResponseError(e) => {
                         println!("RESPONSE ERROR: {:?}", e);
-                    } // _ => {
-                      //     return Err(ServiceError { error: Box::new(e) });
-                      // }
+                    }
                 },
             }
         }
     }
-
-    println!("OK!");
 
     Ok(())
 }
