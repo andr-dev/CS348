@@ -12,6 +12,7 @@ use crate::queries::SUMMONER_GET_BY_NAME_QUERY;
 use crate::queries::SUMMONER_INSERT_QUERY;
 use crate::queries::SUMMONER_UPDATE_QUERY;
 use crate::queries::SUMMONER_MATCH_IDS_BY_PUUID_QUERY;
+use crate::queries::SUMMONER_CHAMPION_WINRATE_QUERY;
 
 #[derive(FromRow, Serialize, Debug)]
 #[serde(crate = "rocket::serde")]
@@ -61,10 +62,13 @@ impl DbSummoner {
     }
 
     pub async fn update_summoner(pool: &Pool<Sqlite>, summoner: &DbSummoner) -> Result<(), Error> {
-        println!("SUMMONER: {:?}", summoner);
-
         sqlx::query(SUMMONER_UPDATE_QUERY)
             .bind(summoner.accountid.clone())
+            .bind(summoner.profileiconid.clone())
+            .bind(summoner.lastupdate.clone())
+            .bind(summoner.sname.clone())
+            .bind(summoner.id.clone())
+            .bind(summoner.summonerlevel.clone())
             .bind(summoner.puuid.clone())
             .execute(pool)
             .await
@@ -92,5 +96,12 @@ impl DbSummoner {
             .fetch_all(pool)
             .await
             .map(|v| v.iter().map(|x| x.0.clone()).collect::<Vec<String>>())
+    }
+
+    pub async fn get_champion_winrates_by_puuid(pool: &Pool<Sqlite>, puuid: &String) -> Result<Vec<(i64, f64)>, Error> {
+        sqlx::query_as::<_, (i64, f64)>(SUMMONER_CHAMPION_WINRATE_QUERY)
+            .bind(puuid)
+            .fetch_all(pool)
+            .await
     }
 }

@@ -19,6 +19,8 @@ pub async fn name(
 ) -> Json<Result<DbSummoner, ServiceError>> {
     let mut update = false;
 
+    println!("FETCHING NAME: {:?}", name);
+
     if let Ok(summoner) = DbSummoner::get_by_summoner_name(&state.pool, &name).await {
         if !from_rito.unwrap_or(true)
             || ((summoner.lastupdate.timestamp() + 60 * 5) as u128)
@@ -204,6 +206,20 @@ pub async fn kda(
     )
 }
 
+#[get("/summoner/<puuid>/champion_winrates")]
+pub async fn champion_winrates(
+    state: &State<AppState>,
+    puuid: String,
+) -> Json<Result<Vec<(i64, f64)>, ServiceError>> {
+    Json(
+        DbSummoner::get_champion_winrates_by_puuid(&state.pool, &puuid)
+        .await
+        .map_err(|_| ServiceError {
+            error: format!("failed to fetch summoner with puuid {}", puuid).into(),
+        }),
+    )
+}
+
 pub fn routes() -> Vec<Route> {
-    routes![name, matches, puuid, kda]
+    routes![name, matches, puuid, kda, champion_winrates]
 }
