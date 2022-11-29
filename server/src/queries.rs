@@ -34,7 +34,7 @@ pub const CHAMPION_WINRATE_QUERY: &'static str = "
     GROUP BY champions.championid
     ORDER BY champions.cname";
 
-pub const CHAMPION_WORST_MATCHUPS_QUERY: $'static str = "
+pub const CHAMPION_WORST_MATCHUPS_QUERY: &'static str = "
     SELECT *
     FROM (
     SELECT teamRed.championid AS champion, teamBlue.championid AS counter, 
