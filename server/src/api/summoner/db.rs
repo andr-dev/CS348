@@ -98,8 +98,8 @@ impl DbSummoner {
             .map(|v| v.iter().map(|x| x.0.clone()).collect::<Vec<String>>())
     }
 
-    pub async fn get_champion_winrates_by_puuid(pool: &Pool<Sqlite>, puuid: &String) -> Result<Vec<(i64, f64)>, Error> {
-        sqlx::query_as::<_, (i64, f64)>(SUMMONER_CHAMPION_WINRATE_QUERY)
+    pub async fn get_champion_winrates_by_puuid(pool: &Pool<Sqlite>, puuid: &String) -> Result<Vec<(String, f64)>, Error> {
+        sqlx::query_as::<_, (String, f64)>(SUMMONER_CHAMPION_WINRATE_QUERY)
             .bind(puuid)
             .fetch_all(pool)
             .await

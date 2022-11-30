@@ -18,10 +18,10 @@ pub const SUMMONER_MATCH_IDS_BY_PUUID_QUERY: &'static str = "SELECT matchid FROM
 pub const SUMMONER_MATCHES_KDA_QUERY: &'static str = "SELECT AVG(kills), AVG(deaths), AVG(assists) FROM summoner_matches WHERE puuid = ?";
 
 pub const SUMMONER_CHAMPION_WINRATE_QUERY: &'static str = "
-    SELECT championid, AVG(CASE WHEN win THEN 1 ELSE 0 END) winrate
+    SELECT cname, AVG(CASE WHEN win THEN 1 ELSE 0 END) winrate
     FROM summoner_matches
     WHERE puuid = ?
-    GROUP BY championid
+    GROUP BY cname
     ORDER BY winrate DESC;";
 
 pub const SUMMONER_MATCHES_INSERT_QUERY: &'static str =
