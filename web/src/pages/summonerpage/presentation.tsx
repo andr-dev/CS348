@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { SummonerMatch } from "./summoner-match";
 import { SummonerPagePresentationProps } from "./types";
 import Flex from '@ui/flex';
+import { SummonerChampionStats } from "./summoner-champion-stats";
 
 export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
     summonerPageInfo,
@@ -12,10 +13,9 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
 
     return (
         <Box sx={{ color: 'white' }}>
-            <Flex gap={16} padding={[16, 0]}>
+            <Flex gap={24} padding={[16, 0]}>
                 <img src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/profileicon/${summonerPageInfo.summoner?.profileiconid}.png`} />
-
-                <Flex column gap={8} grow={1} justify="between">
+                <Flex column gap={8} grow={1} justify="between" width="300px">
                     <Flex column gap={8} grow={1}>
                         <Typography>
                             Player Name: {summonerPageInfo?.summoner?.sname}.
@@ -33,6 +33,8 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
 
                     <Button variant="contained" onClick={updateSummonerPageInfo}>Fetch latest matches</Button>
                 </Flex>
+                {/* tmp prop */}
+                <SummonerChampionStats champWinrates={[['Hecarim', 0.5],['Swain', 0.4],['Morgana', 0.0],['Shaco', 1.0],['Ezreal', 1.0]]}/>
             </Flex>
 
             <div style={{ height: "8px" }} />

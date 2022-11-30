@@ -18,6 +18,7 @@ interface IProps {
   borderBottom?: BorderOptions;
 
   height?: string
+  width?: string
 
   children: React.ReactNode;
   className?: string;
@@ -25,7 +26,7 @@ interface IProps {
   onClick?: () => void
 }
 
-const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding, borderBottom, height, className, children, onClick }) => {
+const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding, borderBottom, height, width, className, children, onClick }) => {
   return (
     <div
     style={{
@@ -39,6 +40,7 @@ const flex: React.FC<IProps> = ({ column, justify, align, grow, gap, bg, padding
       backgroundColor: bg,
 
       height,
+      width,
 
       padding: getPadding(padding),
       borderBottom: getBorder(borderBottom)
