@@ -210,7 +210,7 @@ pub async fn kda(
 pub async fn champion_winrates(
     state: &State<AppState>,
     puuid: String,
-) -> Json<Result<Vec<(i64, f64)>, ServiceError>> {
+) -> Json<Result<Vec<(String, f64)>, ServiceError>> {
     Json(
         DbSummoner::get_champion_winrates_by_puuid(&state.pool, &puuid)
         .await
