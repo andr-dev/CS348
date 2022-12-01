@@ -34,7 +34,7 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
                     <Button variant="contained" onClick={updateSummonerPageInfo}>Fetch latest matches</Button>
                 </Flex>
                 {/* tmp prop */}
-                <SummonerChampionStats champWinrates={[['Hecarim', 0.5],['Swain', 0.4],['Morgana', 0.0],['Shaco', 1.0],['Ezreal', 1.0]]}/>
+                { !!summonerPageInfo?.champWinrates && <SummonerChampionStats champWinrates={summonerPageInfo.champWinrates}/> }
             </Flex>
 
             <div style={{ height: "8px" }} />

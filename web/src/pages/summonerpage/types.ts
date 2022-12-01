@@ -14,6 +14,7 @@ export interface SummonerChampionStatsProps {
 export interface SummonerPageInfo {
     summoner?: Summoner,
     matches?: Match[],
+    champWinrates?: [string, number][],
 }
 
 export interface Summoner {

@@ -21,3 +21,7 @@ export const getSummonerKda = (puuid: string) => {
 export const getSummonerMatches = (puuid: string) => {
     return axios(`${domain}/${puuid}/matches`)
 }
+
+export const getSummonerChampWinrates = (puuid: string) => {
+    return axios(`${domain}/${puuid}/champion_winrates`)
+}
