@@ -9,7 +9,7 @@ const sidebar = () => {
 
   return (
     <SidebarContainer bg={theme.colors.secondary} column justify='start' align='center'>
-      <SidebarLogo justify="center" align='center'>Logo</SidebarLogo>
+      <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
       <SidebarItem icon={faHouse} label="Home" to="/" />
       <SidebarItem icon={faUser} label="Champs" to="/champs" />
       <SidebarItem icon={faUser} label="Champion" to="/champion" />
@@ -33,7 +33,8 @@ const SidebarContainer = styled(Flex)`
 const SidebarLogo = styled(Flex)`
   width: 100%;
   height: ${props => props.theme.layout.navbarHeight}px;
-
+  color: rgb(245, 245, 245);
+  font-weight: bold;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
 `;
 

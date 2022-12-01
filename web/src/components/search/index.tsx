@@ -6,7 +6,7 @@ import Typography from "@ui/typography";
 import { useNavigate } from "react-router-dom";
 import { useState, KeyboardEvent } from "react";
 import Button from "@mui/material/Button";
-import { IconButton, Input, TextField } from "@mui/material";
+import { Grid, IconButton, Input, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 const search = () => {
@@ -29,7 +29,9 @@ const search = () => {
 
     return (
         <SearchContainer>
-            <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
+            {/* <SearchWrapper justify="around" gap={8} align="center" bg="#FFF"> */}
+            <Grid container sx={{width: '100%', maxWidth: '256px', borderRadius: '6px'}}>
+                <Grid item xs={8}>
                 <TextField 
                     color='primary'
                     label={summonerNameInput ? "" : "Search Summoner..."}
@@ -49,11 +51,15 @@ const search = () => {
                             color: 'rgba(0, 0, 0, 0.6)' 
                         },
                     }}
-                />
+                    />
+                </Grid>
+                <Grid item xs={4}>
                 <IconButton onClick={handleClick} size="small">
                     <SearchIcon />
                 </IconButton>
-            </SearchWrapper>
+                </Grid>
+            </Grid>
+            {/* </SearchWrapper> */}
         </SearchContainer>
     )
 }
