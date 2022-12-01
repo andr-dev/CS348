@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import Flex from '@ui/flex';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import Typography from "@ui/typography";
 import { useNavigate } from "react-router-dom";
-import { useState, KeyboardEvent } from "react";
-import Button from "@mui/material/Button";
-import { IconButton, Input, TextField } from "@mui/material";
+import { useState, KeyboardEvent, FC } from "react";
+import { Grid, IconButton, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
-const search = () => {
+interface SearchProps {
+    maxWidth?: string
+    autoFocus?: boolean
+    width?: string
+}
+
+const search: FC<SearchProps> = ({ maxWidth = '256px', autoFocus = false, width = '256px' }) => {
     const navigate = useNavigate();
     const [summonerNameInput, setSummonerNameInput] = useState<string>("");
 
@@ -29,48 +30,43 @@ const search = () => {
 
     return (
         <SearchContainer>
-            <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
-                <TextField 
-                    color='primary'
-                    label={summonerNameInput ? "" : "Search Summoner..."}
-                    size="small" 
-                    onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
-                    InputProps={{
-                        onKeyDown: handleKeyPress,
-                    }}
-                    InputLabelProps={{
-                        shrink: false,
-                        color: "primary",
-                    }}
-                    sx={{
-                        "& fieldset": { border: 'none' },
-                        "& label.Mui-focused": {
-                            // Hard-coded cause idk how to use theme here -dc
-                            color: 'rgba(0, 0, 0, 0.6)' 
-                        },
-                    }}
-                />
-                <IconButton onClick={handleClick} size="small">
-                    <SearchIcon />
-                </IconButton>
-            </SearchWrapper>
+            <Grid container sx={{width: '100%', maxWidth: maxWidth, borderRadius: '6px', background: '#FFF'}}>
+                <Grid item xs={10}>
+                    <TextField 
+                        color='primary'
+                        label={summonerNameInput ? "" : "Search Summoner..."}
+                        size="small" 
+                        onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
+                        autoFocus={autoFocus}
+                        InputProps={{
+                            onKeyDown: handleKeyPress,
+                        }}
+                        InputLabelProps={{
+                            shrink: false,
+                            color: "primary",
+                        }}
+                        sx={{
+                            width: width,
+                            "& fieldset": { border: 'none' },
+                            "& label.Mui-focused": {
+                                // Hard-coded cause idk how to use theme here -dc
+                                color: 'rgba(0, 0, 0, 0.6)' 
+                            },
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={2} container alignItems="center" justifyContent="flex-end">
+                    <IconButton onClick={handleClick} size="small">
+                        <SearchIcon />
+                    </IconButton>
+                </Grid>
+            </Grid>
         </SearchContainer>
     )
 }
 
 const SearchContainer = styled.div`
     padding: 8px;
-`;
-
-const SearchWrapper = styled(Flex)`
-    width: 100%;
-    max-width: 256px;
-
-    border-radius: 6px;
-`;
-
-const SearchInput = styled(Typography)`
-    flex-grow: 1;
 `;
 
 export default search;
