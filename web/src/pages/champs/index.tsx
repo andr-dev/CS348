@@ -81,6 +81,18 @@ const getChampName = (name: any) => {
     return "Nunu";
   }
 
+  if(x == "Wukong") {
+    return "MonkeyKing";
+  }
+
+  if(x == "Rek'Sai"){
+      return "RekSai";
+  }
+
+  if(x == "Kog'Maw"){
+      return "KogMaw";
+  }
+
   if (ai != -1) {
     return x.substr(0, ai) + x.charAt(ai + 1).toLowerCase() + x.substr(ai + 2);
   } else if (pi != -1) {

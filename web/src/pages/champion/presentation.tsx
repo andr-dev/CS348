@@ -51,11 +51,12 @@ export const ChampionPagePresentation: FC<ChampionPagePresentationProps> = ({
                         }}
                     />
                 </SearchWrapper>
+                <Typography level="header">Matchups</Typography>
                 <TableRow>
                     <Flex grow={1}>
                     <Typography level="button">Champion</Typography>
                     </Flex>
-                    <TableItem><Typography level="button">Matchup Winrate</Typography></TableItem>
+                    <TableItem><Typography level="button">Winrate</Typography></TableItem>
                 </TableRow>
                 <Spacer>{ }</Spacer>
                 {championMatchupInfo.matchup?.map((a: ChampionMatchup, i: any) => (
@@ -83,6 +84,18 @@ const getChampName = (name: any) => {
   
     if (x == "Nunu&Willump") {
       return "Nunu";
+    }
+
+    if(x == "Wukong") {
+        return "MonkeyKing";
+    }
+
+    if(x == "Rek'Sai"){
+        return "RekSai";
+    }
+
+    if(x == "Kog'Maw"){
+        return "KogMaw";
     }
   
     if (ai != -1) {
