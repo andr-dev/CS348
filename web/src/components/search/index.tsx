@@ -32,7 +32,7 @@ const search = () => {
             <SearchWrapper justify="around" gap={8} align="center" bg="#FFF">
                 <TextField 
                     color='primary'
-                    label={summonerNameInput ? "" : "Search..."}
+                    label={summonerNameInput ? "" : "Search Summoner..."}
                     size="small" 
                     onInput={e => setSummonerNameInput((e.target as HTMLInputElement).value)}
                     InputProps={{
