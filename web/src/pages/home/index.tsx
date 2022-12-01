@@ -1,5 +1,5 @@
 import Search from "@components/search";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import React, { FC } from "react";
 
 const Home: FC = () => {
@@ -29,7 +29,7 @@ const Home: FC = () => {
                 </Typography>
             </Grid>
             <Grid item sx={{color: 'rgb(105, 105, 105)'}}>
-                <Search />
+                <Search maxWidth="100%" autoFocus width='350px'/>
             </Grid>
         </Grid>
     );
