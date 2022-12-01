@@ -51,6 +51,6 @@ pub const CHAMPION_WORST_MATCHUPS_QUERY: &'static str = "
     (summoner_matches INNER JOIN champions
         ON summoner_matches.championid = champions.championid
     ) as teamRed
-    WHERE teamRed.win != teamBlue.win AND teamRed.matchid = teamBlue.matchid AND teamRed.cname = 'Vladimir'
+    WHERE teamRed.win != teamBlue.win AND teamRed.matchid = teamBlue.matchid AND teamRed.cname = ?
     GROUP BY teamRed.championid, teamBlue.championid
     ORDER BY winrate ASC";
