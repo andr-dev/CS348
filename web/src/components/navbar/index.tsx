@@ -28,9 +28,6 @@ const navbar = () => {
           <Search />
         </Flex>
         <Flex align='center' height="100%">
-          <ButtonWrapper>
-            <Button label="SIGN IN" onClick={handleClickSignIn}/>
-          </ButtonWrapper>
           <NavbarItem icon={faCircleQuestion} padding={[0, 14]} onClick={handleClickHelp}/>
           <NavbarItem icon={faLanguage} padding={[0, 12]} />
         </Flex>
@@ -49,10 +46,6 @@ const NavbarContainer = styled(Flex)`
 
   height: ${props => props.theme.layout.navbarHeight}px;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
-`;
-
-const ButtonWrapper = styled.div`
-  padding: 0 8px;
 `;
 
 export default navbar;

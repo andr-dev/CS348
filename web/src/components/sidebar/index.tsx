@@ -13,8 +13,6 @@ const sidebar = () => {
       <SidebarItem icon={faHouse} label="Home" to="/" />
       <SidebarItem icon={faUser} label="Champs" to="/champs" />
       <SidebarItem icon={faUser} label="Champion" to="/champion" />
-      <SidebarItem icon={faUser} label="Profile" to="/profile" />
-      <SidebarItem icon={faUser} label="About" to="/about" />
     </SidebarContainer>
   )
 }
