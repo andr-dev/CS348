@@ -21,7 +21,6 @@ export const ChampionPage: FC = () => {
     const getChampionDetails = (cname: string) => {
         axios(`http://localhost:8000/api/champion/champion/${cname}`).then((res) => {
             setChampionDetails({champion: res?.data?.Ok});
-            console.log( res?.data?.Ok);
         });
         
     };
@@ -29,7 +28,6 @@ export const ChampionPage: FC = () => {
     const getChampionMatchups = (cname: string) => {
         axios(`http://localhost:8000/api/champion/matchup/${cname}`).then((res) => {
             setChampionMatchups({matchup: res?.data?.Ok.map((v: any)=> ({cname1: v[0], cname2: v[1], winrate: v[2].toFixed(2)}))});
-            console.log( res?.data?.Ok);
         });
         
     };

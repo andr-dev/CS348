@@ -59,10 +59,8 @@ export const SummonerPage: FC = () => {
                     }))
                 })
             } else if (isUpdatingInfo === false) {
-                console.log('Summoner not found in existing database. Attempting to fetch from Riot API.')
                 fetchSummonerPageInfo(true)
             } else {
-                console.log('Summoner not found in existing database nor Riot API.')
                 setLoading(false)
             }
         })

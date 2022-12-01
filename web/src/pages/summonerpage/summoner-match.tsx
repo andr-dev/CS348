@@ -51,7 +51,6 @@ const GameParticipant = (match: any, x: number, key: number) => {
 
     const fetchSummonerId = () => {
         getSummonerByPuuid(match[`participant${x}`], false).then((result) => {
-            console.log(result.data.Ok)
             setSummonerInfo(result.data.Ok)
         })
     }

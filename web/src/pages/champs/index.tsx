@@ -24,7 +24,6 @@ const Champs: React.FC = () => {
         )
       ).then((res) => {
         const tmp1 = res.map((v) => v.data.Ok);
-        console.log(tmp1);
         setChampData({
           intervalWinrates: tmp1,
         });

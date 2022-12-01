@@ -9,8 +9,6 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
     summonerPageInfo,
     updateSummonerPageInfo,
 }) => {
-    console.log(summonerPageInfo)
-
     return (
         <Box sx={{ color: 'white' }}>
             <Flex gap={24} padding={[16, 0]}>
