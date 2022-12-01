@@ -16,6 +16,7 @@ const Champs: React.FC = () => {
   });
   useEffect(() => {
     const fetchChampData = () => {
+	  setTimeout(function() {
       Promise.all(
         timeIntervals.map((interval) =>
           axios(
@@ -28,6 +29,7 @@ const Champs: React.FC = () => {
           intervalWinrates: tmp1,
         });
       });
+	  }, 300);
     };
 
     fetchChampData();
