@@ -43,12 +43,14 @@ pub const CHAMPION_WINRATE_QUERY: &'static str = "
     ORDER BY champions.cname;";
 
 pub const CHAMPION_WORST_MATCHUPS_QUERY: &'static str = "
-    SELECT *
-    FROM (
-        SELECT teamRed.championid AS champion, teamBlue.championid AS counter, 
-        AVG(CASE WHEN teamRed.win THEN 1 ELSE 0 END) winrate
-        FROM summoner_matches AS teamRed, summoner_matches AS teamBlue
-        WHERE teamRed.win != teamBlue.win AND teamRed.matchid = teamBlue.matchid
-        GROUP BY teamRed.championid, teamBlue.championid
-    )
-    ORDER BY winrate ASC;";
+    SELECT teamRed.cname AS champion, teamBlue.cname AS counter, 
+    AVG(CASE WHEN teamRed.win THEN 1 ELSE 0 END) winrate
+    FROM (summoner_matches INNER JOIN champions
+        ON summoner_matches.championid = champions.championid
+    ) AS teamBlue, 
+    (summoner_matches INNER JOIN champions
+        ON summoner_matches.championid = champions.championid
+    ) as teamRed
+    WHERE teamRed.win != teamBlue.win AND teamRed.matchid = teamBlue.matchid AND teamRed.cname = 'Vladimir'
+    GROUP BY teamRed.championid, teamBlue.championid
+    ORDER BY winrate ASC";

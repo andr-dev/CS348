@@ -74,4 +74,12 @@ impl DbChampion {
             .await
             .map_err(|e| ServiceError { error: Box::new(e) })
     }
+
+    pub async fn get_matchup(pool: &Pool<Sqlite>, cname: &String) -> Result<Vec<(String, String, f64)>, ServiceError> {
+        sqlx::query_as::<_, (String, String, f64)>(CHAMPION_WORST_MATCHUPS_QUERY)
+            .bind(cname)
+            .fetch_all(pool)
+            .await
+            .map_err(|e| ServiceError { error: Box::new(e) })
+    }
 }

@@ -27,11 +27,14 @@ pub async fn name(state: &State<AppState>, name: String) -> Json<Result<DbChampi
 
 #[get("/champion/winrate?<min>&<max>")]
 pub async fn winrate(state: &State<AppState>, min: u32, max: u32) -> Json<Result<Vec<(String, f64)>, ServiceError>> {
-    let winrate = DbChampion::get_win_rate(&state.pool, min, max).await;
+    Json(DbChampion::get_win_rate(&state.pool, min, max).await)
+}
 
-    Json(winrate)
+#[get("/champion/matchup/<cname>")]
+pub async fn matchup(state: &State<AppState>, cname: String) -> Json<Result<Vec<(String, String, f64)>, ServiceError>> {
+    Json(DbChampion::get_matchup(&state.pool, &cname).await)
 }
 
 pub fn routes() -> Vec<Route> {
-    routes![name, id, winrate]
+    routes![name, id, winrate, matchup]
 }
