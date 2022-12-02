@@ -33,10 +33,10 @@ const SidebarContainer = styled(Flex)`
 `;
 
 const SidebarLogoContainer = styled.div`
-  background: -webkit-linear-gradient(45deg, #30CFD0 0%, #5b308f 100%);
+  background: -webkit-linear-gradient(45deg, #818a8a 0%, white 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-`;
+  `;
 // Version with gradient border instead
 // const SidebarLogoContainer = styled.div`
 //   background: -webkit-linear-gradient(45deg, #30CFD0 0%, #330867 100%);
