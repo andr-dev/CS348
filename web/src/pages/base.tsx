@@ -19,7 +19,7 @@ const BasePage: React.FC = (props) => {
 
 const FullHeightDiv = styled.div`
     height: calc(100vh - ${(props) => props.theme.layout.navbarHeight}px - 32px);
-    padding: 16px;
+    padding: 32px;
 `;
 
 export default BasePage;

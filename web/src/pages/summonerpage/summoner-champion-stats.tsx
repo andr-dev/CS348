@@ -38,13 +38,13 @@ export const SummonerChampionStats: FC<SummonerChampionStatsProps> = ({ champWin
             direction="column"
             justifyContent="flex-start"
             alignItems="flex-start"
-            sx={{ width: '300px' }}
+            sx={{ width: '400px' }}
         >
             {/* background colour should be 'theme.grey' */}
             <Typography variant="h6">
                 Champion Winrates
             </Typography>
-            {champWinrates.map((champWinrate) => <ChampStats championName={champWinrate[0]} winrate={champWinrate[1]} />)}
+            {champWinrates.map((champWinrate, i) => <ChampStats key={i} championName={champWinrate[0]} winrate={champWinrate[1]} />)}
         </Grid>
     )
 }

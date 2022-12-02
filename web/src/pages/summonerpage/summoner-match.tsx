@@ -3,6 +3,7 @@ import { Typography } from '@mui/material'
 import { Match, SummonerMatchProps } from './types'
 import Flex from "@ui/flex";
 import { getSummoner, getSummonerByPuuid } from 'src/api/SummonerAPI';
+import styled from 'styled-components';
 
 export const SummonerMatch: FC<SummonerMatchProps> = ({ match }) => {
     const getDurationString = (ms: number) => {
@@ -25,14 +26,13 @@ export const SummonerMatch: FC<SummonerMatchProps> = ({ match }) => {
     }
 
     return (
-        <Flex key={match.matchid} align="center" justify="between" gap={32}>
-            <Flex column gap={4}>
+        <FullFlex key={match.matchid} align="center" justify="between" gap={48}>
+            <Flex column gap={6} grow={1}>
                 <Typography>Match: {match.matchid}</Typography>
                 <Typography>Duration: {getDurationString(match.game_duration)}</Typography>
                 <Typography>Game Start Time: {getTimeFromUnixTimestamp(match.game_start_timestamp)}</Typography>
                 {match?.game_end_timestamp
                     && <Typography>Game End Time: {getTimeFromUnixTimestamp(match.game_end_timestamp)}</Typography>}
-                <div style={{ width: "512px" }} />
             </Flex>
             <Flex gap={16}>
                 <Flex column>
@@ -42,9 +42,13 @@ export const SummonerMatch: FC<SummonerMatchProps> = ({ match }) => {
                     {[0, 1, 2, 3, 4].map((x, i) => GameParticipant(match, x + 5, i))}
                 </Flex>
             </Flex>
-        </Flex>
+        </FullFlex>
     )
 }
+
+const FullFlex = styled(Flex)`
+    width: 100%;
+`;
 
 const GameParticipant = (match: any, x: number, key: number) => {
     const [summonerInfo, setSummonerInfo] = useState<any>(null);
@@ -67,7 +71,7 @@ const GameParticipant = (match: any, x: number, key: number) => {
                         src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/profileicon/${summonerInfo.profileiconid}.png`}
                         style={{ height: "48px" }}
                     />
-                    <div style={{ width: "192px" }}><Typography>{summonerInfo.sname}</Typography></div>
+                    <div style={{ width: "256px" }}><Typography>{summonerInfo.sname}</Typography></div>
                 </>
                 : null
             }
