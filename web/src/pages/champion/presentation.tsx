@@ -76,7 +76,7 @@ export const ChampionPagePresentation: FC<ChampionPagePresentationProps> = ({
     )
 }
 
-const getChampName = (name: any) => {
+export const getChampName = (name: any) => {
     let x = name.replace(/\s/g, '');
   
     let ai = x.indexOf("'");
