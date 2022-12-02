@@ -10,7 +10,7 @@ const sidebar = () => {
   return (
     <SidebarContainer bg={theme.colors.secondary} column justify='start' align='center'>
       <SidebarLogoContainer>
-        <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
+        <SidebarLogo justify="center" align='center' grow={1}>GG.OP</SidebarLogo>
       </SidebarLogoContainer>
       <SidebarItem icon={faHouse} label="Home" to="/" />
       <SidebarItem icon={faHardDrive} label="Stats" to="/stats" />
