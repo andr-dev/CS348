@@ -10,7 +10,7 @@ const sidebar = () => {
   return (
     <SidebarContainer bg={theme.colors.secondary} column justify='start' align='center'>
       <SidebarLogoContainer>
-        <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
+        <SidebarLogo justify="center" align='center' grow={1}>GG.OP</SidebarLogo>
       </SidebarLogoContainer>
       <SidebarItem icon={faHouse} label="Home" to="/" />
       <SidebarItem icon={faHardDrive} label="Stats" to="/stats" />
@@ -32,10 +32,11 @@ const SidebarContainer = styled(Flex)`
   border-right: 1px solid ${props => props.theme.colors.grey};
 `;
 
-const SidebarLogoContainer = styled.div`
+const SidebarLogoContainer = styled(Flex)`
   background: -webkit-linear-gradient(45deg, #30CFD0 0%, #5b308f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: 100%;
 `;
 // Version with gradient border instead
 // const SidebarLogoContainer = styled.div`
