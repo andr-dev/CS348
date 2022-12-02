@@ -40,7 +40,7 @@ const AppLayout: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
                     <Routes location={location} key={location.pathname} >
                         <Route path="/" element={<BasePage />}>
                             <Route index element={<Home />} />
-                            <Route path="champs" element={<Champs />} />
+                            <Route path="stats" element={<Champs />} />
                             <Route path="champion" element={<ChampionPage />} />
                             <Route path="summoner/:summonerName" element={<SummonerPage />} />
                         </Route>
