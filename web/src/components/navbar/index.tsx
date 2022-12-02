@@ -1,10 +1,8 @@
 import styled, { useTheme } from 'styled-components';
 import Flex from '@ui/flex';
-import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 
 import NavbarItem from "./item";
-import Button from '@components/button';
 import Search from '@components/search';
 import { useState } from 'react';
 import { HelpDrawer } from '@components/help-drawer';

@@ -9,7 +9,9 @@ const sidebar = () => {
 
   return (
     <SidebarContainer bg={theme.colors.secondary} column justify='start' align='center'>
-      <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
+      <SidebarLogoContainer>
+        <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
+      </SidebarLogoContainer>
       <SidebarItem icon={faHouse} label="Home" to="/" />
       <SidebarItem icon={faUser} label="Champs" to="/champs" />
       <SidebarItem icon={faUser} label="Champion" to="/champion" />
@@ -30,11 +32,24 @@ const SidebarContainer = styled(Flex)`
   border-right: 1px solid ${props => props.theme.colors.grey};
 `;
 
+const SidebarLogoContainer = styled.div`
+  background: -webkit-linear-gradient(45deg, #30CFD0 0%, #5b308f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+// Version with gradient border instead
+// const SidebarLogoContainer = styled.div`
+//   background: -webkit-linear-gradient(45deg, #30CFD0 0%, #330867 100%);
+//   -webkit-background-clip: text;
+//   -webkit-text-stroke: 0px transparent;
+//   color: white
+// `;
+
 const SidebarLogo = styled(Flex)`
   width: 100%;
   height: ${props => props.theme.layout.navbarHeight}px;
-  color: rgb(245, 245, 245);
   font-weight: bold;
+  font-size: 24px;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
 `;
 

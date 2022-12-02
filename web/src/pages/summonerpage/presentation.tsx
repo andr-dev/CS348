@@ -13,7 +13,7 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
         <Box sx={{ color: 'white' }}>
             <Flex gap={24} padding={[16, 0]}>
                 <img src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/profileicon/${summonerPageInfo.summoner?.profileiconid}.png`} />
-                <Flex column gap={8} grow={1} justify="between" width="300px">
+                <Flex column gap={8} justify="between" width="300px">
                     <Flex column gap={8} grow={1}>
                         <Typography>
                             Player Name: {summonerPageInfo?.summoner?.sname}.

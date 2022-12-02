@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 
-import Flex from '@ui/flex';
 import styled from "styled-components";
 
 const BasePage: React.FC = (props) => {
