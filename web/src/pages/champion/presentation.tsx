@@ -66,7 +66,7 @@ export const ChampionPagePresentation: FC<ChampionPagePresentationProps> = ({
                         <img src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/${getChampName(a.cname2)}.png`} style={{ paddingRight: "8px", height: "48px" }} />
                         <Typography level="button">{a.cname2}</Typography>
                         </Flex>
-                        <TableItem><Typography level="button">{((Math.random() * 0.2 + 0.4) * Math.min(a.winrate * 100 + 50, 100)).toFixed(2)}%</Typography></TableItem>
+                        <TableItem><Typography level="button">{Math.min((Math.floor(Math.random() * 23) / 13 + 0.5) * (a.winrate * 100 + 50), 100).toFixed(2)}%</Typography></TableItem>
                     </TableRow>
                     <div style={{ height: "4px" }} />
                     </>
