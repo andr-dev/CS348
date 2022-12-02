@@ -16,11 +16,11 @@ export const SummonerPagePresentation: FC<SummonerPagePresentationProps> = ({
                 <Flex column gap={8} justify="between" width="300px">
                     <Flex column gap={8} grow={1}>
                         <Typography>
-                            Player Name: {summonerPageInfo?.summoner?.sname}.
+                            Player Name: {summonerPageInfo?.summoner?.sname}
                         </Typography>
 
                         <Typography>
-                            Player Level: {summonerPageInfo?.summoner?.summonerlevel}.
+                            Player Level: {summonerPageInfo?.summoner?.summonerlevel}
                         </Typography>
 
                         <Typography>

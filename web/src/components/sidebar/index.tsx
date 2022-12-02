@@ -51,7 +51,6 @@ const SidebarLogo = styled(Flex)`
   font-weight: bold;
   font-size: 24px;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
-  font-size: 18px;
 `;
 
 export default sidebar;
