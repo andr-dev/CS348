@@ -36,6 +36,7 @@ const SidebarLogoContainer = styled.div`
   background: -webkit-linear-gradient(45deg, #818a8a 0%, white 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: 100%;
   `;
 // Version with gradient border instead
 // const SidebarLogoContainer = styled.div`
