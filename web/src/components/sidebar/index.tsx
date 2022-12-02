@@ -1,8 +1,8 @@
 import styled, { useTheme } from 'styled-components';
 import Flex from '@ui/flex';
 import SidebarItem from "./item";
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faHouse, faHelmetSafety } from '@fortawesome/free-solid-svg-icons';
+import { faHardDrive } from '@fortawesome/free-regular-svg-icons';
 
 const sidebar = () => {
   const theme = useTheme();
@@ -13,8 +13,8 @@ const sidebar = () => {
         <SidebarLogo justify="center" align='center'>GG.OP</SidebarLogo>
       </SidebarLogoContainer>
       <SidebarItem icon={faHouse} label="Home" to="/" />
-      <SidebarItem icon={faUser} label="Champs" to="/champs" />
-      <SidebarItem icon={faUser} label="Champion" to="/champion" />
+      <SidebarItem icon={faHardDrive} label="Stats" to="/stats" />
+      <SidebarItem icon={faHelmetSafety} label="Champion" to="/champion" />
     </SidebarContainer>
   )
 }
@@ -51,6 +51,7 @@ const SidebarLogo = styled(Flex)`
   font-weight: bold;
   font-size: 24px;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
+  font-size: 18px;
 `;
 
 export default sidebar;

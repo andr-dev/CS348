@@ -37,7 +37,7 @@ const Champs: React.FC = () => {
 
   return (
     <Flex column grow={1}>
-      <Typography level="header">Champs</Typography>
+      <Typography level="header">Champion Stats</Typography>
       <TableRow>
         <Flex grow={1}>
           <Typography level="button">Champion</Typography>

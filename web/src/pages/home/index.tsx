@@ -28,6 +28,7 @@ const Home: FC = () => {
                     GG.OP
                 </Typography>
             </Grid>
+			<div style={{height: "16px"}} />
             <Grid item sx={{color: 'rgb(105, 105, 105)'}}>
                 <Search maxWidth="100%" autoFocus width='350px'/>
             </Grid>
